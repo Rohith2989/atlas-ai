@@ -1,0 +1,17 @@
+{
+  "id": "sekkari",
+  "order": 10,
+  "name": "Sekkari",
+  "sector": "Photonic computing",
+  "country": "United Kingdom",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/sekkari",
+  "cover": "/portfolio/sekkari-cover.webp",
+  "logo": "/portfolio/sekkari-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/sekkari",
+    "cover": "https://static.wixstatic.com/media/00bf0d_244f5b1a59f5408aac052c4e8447a04c~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_0bcc960212a148668cd9c11f6ba6a240~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
