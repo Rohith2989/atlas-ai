@@ -2,13 +2,8 @@ import gsap from "gsap";
 import "./portfolio.css";
 import "./portfolio-index.css";
 import { clamp, smooth, rowHeights } from "./portfolio-motion.js";
-const records = import.meta.glob("./data/companies/*.json", {
-  eager: true,
-  import: "default",
-});
-export const companies = Object.values(records).sort(
-  (a, b) => a.order - b.order,
-);
+import { companies } from './company-data.js';
+export { companies };
 export const featured = [
   "civils-ai",
   "bioleap",
@@ -82,49 +77,6 @@ export function mountPortfolio() {
   transition.className = "portfolio-turn";
   transition.setAttribute("aria-hidden", "true");
   document.getElementById("artboard").append(transition);
-  mountAllCompanies();
-}
-function mountAllCompanies() {
-  const dialog = document.getElementById("portfolio-index"),
-    list = dialog.querySelector(".index-list");
-  companies.forEach((c, i) => {
-    const a = document.createElement("a");
-    a.className = "index-company";
-    a.href = c.url;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    a.dataset.search = [c.name, c.sector, c.country, c.status]
-      .join(" ")
-      .toLowerCase();
-    a.innerHTML = `<span class="index-number">${String(i + 1).padStart(2, "0")}</span><img class="index-cover" src="${c.cover}" alt="" width="150" height="110" loading="lazy" decoding="async"><span class="index-detail"><strong>${c.name}</strong><span>${c.sector}</span></span><span class="index-country">${c.country}<small>${c.status === "Exited" ? "Exited" : "In portfolio"}</small></span>${c.logo ? `<img class="index-logo" src="${c.logo}" alt="${c.name} logo" width="100" height="42" loading="lazy">` : '<span class="index-logo">8x</span>'}<span aria-hidden="true">↗</span>`;
-    list.append(a);
-  });
-  document.querySelectorAll("[data-open-index]").forEach((b) =>
-    b.addEventListener("click", () => {
-      dialog.showModal();
-      document.dispatchEvent(new CustomEvent("atlas:index", { detail: true }));
-      dialog.querySelector("input").focus();
-    }),
-  );
-  dialog
-    .querySelector("[data-close-index]")
-    .addEventListener("click", () => dialog.close());
-  dialog.addEventListener("close", () =>
-    document.dispatchEvent(new CustomEvent("atlas:index", { detail: false })),
-  );
-  dialog.addEventListener("click", (e) => {
-    if (e.target === dialog) dialog.close();
-  });
-  dialog.querySelector("input").addEventListener("input", (e) => {
-    const query = e.target.value.toLowerCase().trim();
-    let count = 0;
-    list.querySelectorAll("a").forEach((a) => {
-      a.hidden = !a.dataset.search.includes(query);
-      if (!a.hidden) count++;
-    });
-    dialog.querySelector(".index-results").textContent =
-      `${count} ${count === 1 ? "company" : "companies"}`;
-  });
 }
 function paintRows() {
   let y = 0;

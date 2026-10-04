@@ -2,29 +2,3 @@ button, input { font:inherit; }
 button { color:inherit; cursor:pointer; }
 button:focus-visible, input:focus-visible { outline:2px solid var(--accent); outline-offset:5px; }
 .index-button { background:none; border:0; padding:0 0 7px; font-size:14px; }
-.portfolio-index { position:fixed; width:calc(100% - 48px); max-width:1250px; height:calc(100svh - 48px); max-height:none; padding:30px; border:1px solid #f3f1e345; color:var(--field-ink); background:var(--field); overscroll-behavior:contain; }
-.portfolio-index::backdrop { background:#081e18a8; backdrop-filter:blur(12px); }
-.index-header { display:flex; justify-content:space-between; align-items:start; }
-.index-header h2 { font-size:32px; font-weight:400; letter-spacing:-.04em; margin:5px 0 20px; }
-.index-header button { border:1px solid #f3f1e340; width:44px; height:44px; border-radius:50%; background:none; font-size:22px; }
-.index-search { display:flex; align-items:center; gap:25px; margin-bottom:25px; border-bottom:1px solid #f3f1e345; }
-.index-search input { width:100%; background:none; color:inherit; border:0; padding:16px 0; font-size:18px; outline-offset:-2px; }
-.index-search input::placeholder { color:#f3f1e399; }
-.index-results { font-size:12px; white-space:nowrap; }
-.index-company { display:grid; grid-template-columns:35px 120px 1fr 150px 110px 20px; gap:20px; align-items:center; padding:20px 0; border-top:1px solid #f3f1e328; }
-.index-company:hover { text-decoration:none; color:var(--accent); }
-.index-company[hidden] { display:none; }
-.index-number { font-size:11px; opacity:.6; }
-.index-cover { width:120px; height:85px; object-fit:cover; }
-.index-detail strong { font-size:24px; font-weight:500; letter-spacing:-.04em; }
-.index-detail>span { display:block; font-size:13px; margin-top:3px; }
-.index-country { font-size:12px; }
-.index-country small { display:block; font-size:10px; margin-top:8px; color:var(--accent); }
-.index-logo { max-width:100px; max-height:42px; object-fit:contain; }
-@media (max-width:700px) {
- .portfolio-index { width:calc(100% - 20px); height:calc(100svh - 20px); padding:20px; }
- .index-company { grid-template-columns:70px 1fr 15px; gap:14px; }
- .index-number, .index-country, .index-logo { display:none; }
- .index-cover { width:70px; height:65px; } .index-detail strong { font-size:21px; }
- .index-detail>span { font-size:11px; } .index-results { font-size:10px; }
-}

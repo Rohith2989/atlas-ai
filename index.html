@@ -70,7 +70,7 @@
       >
       <nav aria-label="Main navigation">
         <a href="#investment-thesis" data-scene="investment-thesis">Manifesto</a
-        ><a href="#companies" data-scene="companies">Companies</a
+        ><a href="/portfolio/">Companies</a
         ><a href="#people" data-scene="people">People</a
         ><a href="#contact" class="arrow" aria-label="Get in touch">↗</a>
       </nav>
@@ -258,7 +258,7 @@
           <section id="companies" class="scene" aria-label="Selected Atlas portfolio companies">
             <div class="company-toolbar">
               <h2 class="sr-only">Selected companies</h2>
-              <button class="index-button" type="button" data-open-index>Explore all 28 companies ↗</button>
+              <a class="index-button" href="/portfolio/">Explore all 28 companies ↗</a>
             </div>
             <div id="company-world"></div>
             <a class="company-outro" href="#approach" data-scene="approach">The thinking behind the companies <span aria-hidden="true">↘</span></a>
@@ -288,7 +288,7 @@
         <p class="footer-signoff">Early conviction.<br /><em>Lasting possibility.</em></p>
         <nav class="footer-navigation" aria-label="Explore Atlas">
           <a href="#investment-thesis" data-scene="investment-thesis">Our conviction <span aria-hidden="true">↗</span></a>
-          <a href="#companies" data-scene="companies">Our companies <span aria-hidden="true">↗</span></a>
+          <a href="/portfolio/">Our companies <span aria-hidden="true">↗</span></a>
           <a href="#people" data-scene="people">Our people <span aria-hidden="true">↗</span></a>
           <a href="https://www.atlasaivbfund.com/" target="_blank" rel="noopener noreferrer">Get in touch <span aria-hidden="true">↗</span></a>
         </nav>
@@ -310,11 +310,6 @@
         </nav>
       </div>
     </footer>
-    <dialog id="portfolio-index" class="portfolio-index" aria-labelledby="index-title" data-lenis-prevent>
-      <div class="index-header"><div><p class="overline">ATLAS AI VB FUND</p><h2 id="index-title">The company we keep.</h2></div><button type="button" data-close-index aria-label="Close company index">×</button></div>
-      <label class="index-search"><span class="sr-only">Search companies by name, country or sector</span><input type="search" placeholder="Search companies, sectors, places…" autocomplete="off"><span class="index-results" aria-live="polite">28 companies</span></label>
-      <div class="index-list"></div>
-    </dialog>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

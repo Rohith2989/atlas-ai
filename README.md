@@ -1,6 +1,6 @@
 # Atlas AI VB Fund
 
-A scroll-driven website built with Vite, GSAP ScrollTrigger and Lenis. The white hero flows into **c02 Malachite**, the original team portraits, “THE EDGE / RUNS DEEP.”, and a pinned diagonal portfolio. Text is HTML; motion follows the visitor’s scroll and reverses with it.
+A scroll-driven website built with Vite, GSAP ScrollTrigger and Lenis. The white hero flows into **c02 Malachite**, the original team portraits, “THE EDGE / RUNS DEEP.”, and an unfolding ribbon portfolio. Text is HTML; motion follows the visitor’s scroll and reverses with it.
 
 The live palette is `#256C50` Malachite, `#F3F1E3` warm ivory and `#CBBDE5` lilac. The hero retains its original paper background.
 
@@ -28,7 +28,9 @@ Open `/design/greens/index.html` for the original seven-option review. **02 Mala
 
 ## Portfolio
 
-The thesis photographs retain their positions when they become the first two images in a continuous diagonal field. Six selected companies move across the pinned viewport in different proportions: **Civils.ai → Bioleap → ZeroDrift → Tilki → Sekkari → 8x**. Previous/next controls move through those companies. The sequence settles on 8x, then continues into the three-part investment approach before reaching the contact footer. A searchable modal index contains all 28 companies in Atlas’s public portfolio, including the explicitly marked Tylo AI exit.
+The dedicated **`/portfolio/`** page includes all 28 companies in an unfolding ribbon index, with search and multi-select Industry, Country, Venture builder, Stage and Status filters. Selections survive reload and browser history. The original Atlas collection supplies every filter value. See [the portfolio page notes](docs/PORTFOLIO-PAGE.md). Both homepage and portfolio are built as Vite entry points for Vercel.
+
+On the homepage, six continuous ribbons turn the thesis imagery into an interactive company list: **Civils.ai → Bioleap → ZeroDrift → Tilki → Sekkari → 8x**. Opening a company reveals its artwork and details while neighboring rows compress within the same viewport. The sequence continues into the three-part investment approach. “Explore all 28 companies” opens the dedicated portfolio page, including the explicitly marked Tylo AI exit. See `docs/PORTFOLIO-RIBBONS.md` for the homepage transition.
 
 ZeroDrift, Tilki and Sekkari have generated brand artwork grounded in their public company imagery and visual identities. Their original marks are overlaid separately. The 8x cover uses the exact official SVG paths with satin shading and a masked light sweep. Its animation respects reduced-motion preferences. Artwork source URLs and final prompts are recorded in `docs/company-artwork-prompts.json`.
 

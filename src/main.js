@@ -525,7 +525,6 @@ Promise.all([
     // A cold-load scroll can otherwise be clamped to the pre-pin document height.
     requestAnimationFrame(() => requestAnimationFrame(applyInitialScene));
     window.addEventListener('hashchange', applyInitialScene);
-    document.addEventListener('atlas:index',e=>{ if(lenis) e.detail?lenis.stop():lenis.start(); });
     const revealSheen = () => {
       if (reduced.matches) return;
       gsap.fromTo(
