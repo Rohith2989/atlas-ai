@@ -68,6 +68,30 @@
 - All nine tests and the production build passed; no browser errors or warnings were recorded. The existing Vite advisory remains for the lazy Three.js ribbon chunk (approximately 135.5 kB gzipped).
 - Browser proof: `screenshots/portfolio-ribbon-colour-matched.jpg`. The logo loading screen is a later task.
 
+## Original-logo entrance
+
+- Integrated the approved figure/globe lift as SVG/GSAP at approximately 3.5 seconds.
+  All 39 visible paths and the three counter shapes match the original logo.
+  The ivory mark switches to dark ink at the same rising edge that reveals the
+  real hero; the landing uses the actual responsive header-mask bounds.
+- Desktop review at 1440 × 900 and mobile review at 390 × 844 confirmed the
+  resolved mark, hero handoff and restored header. Corrected the scrollbar-gutter
+  offset and a pre-existing mobile home-anchor offset found during these checks.
+- Skip intro and Escape removed the overlay and restored focus/access. A repeat
+  visit skipped it, and a direct Contact link bypassed it even with the replay
+  parameter. No intro locks, image masks or temporary headline wrappers remained
+  after completion. The mobile content and scroll widths both measured 375px.
+- The Companies link and Tilki accordion remained interactive after the entrance.
+  No errors or warnings were recorded in the browser's console during this review.
+- All 12 tests and the production build passed. New tests cover reduced-motion,
+  session/deep-link policy, storage failures, timeout/BFCache cleanup, idempotent
+  release and original vector geometry. Reduced motion and failure cases were
+  tested with a mocked browser environment; an actual network outage and OS
+  preference change were not emulated. The existing lazy Three.js chunk advisory
+  remains. The loader adds no runtime dependency or video download.
+- Proof frames: `screenshots/intro-resolve.jpg`, `screenshots/intro-unveil.jpg`,
+  `screenshots/intro-land.jpg` and `screenshots/intro-mobile.jpg`.
+
 ## Limits
 
 This is visual and functional browser verification, focused automated tests and a production build. Reduced-motion fallback is implemented; the browser review did not emulate the operating system setting. Physical phones and Safari have not been tested. Desktop screenshots capture the visible in-app browser panel; its right edge can crop the larger test viewport. Malachite remains selected. Historical checks above describe the site at their respective implementation stages; the approved approach section supersedes the earlier portfolio-to-footer ending.

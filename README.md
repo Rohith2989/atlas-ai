@@ -54,6 +54,13 @@ The footer preserves the original Atlas SGR logo geometry at page width. It rise
 
 ## Motion and accessibility
 
+The first home-page visit opens with **The lift**, an approximately 3.5-second
+animation of the original Atlas figure and globe that reveals the live hero and
+lands on the header logo. It runs once per tab session, honors reduced motion,
+and provides Skip intro / Escape. Direct chapter links open immediately. Use
+`/?intro=replay#hero` to review the entrance. See `docs/INTRO.md` for readiness,
+failure handling and SVG provenance.
+
 - Desktop widths of 900px and above use one pinned, reversible scroll sequence.
 - Smaller screens use a complete, naturally scrolling layout.
 - Reduced-motion preferences use the natural layout and remove the text sheen.
