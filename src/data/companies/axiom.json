@@ -1,0 +1,17 @@
+{
+  "id": "axiom",
+  "order": 16,
+  "name": "Axiom",
+  "sector": "AI drug discovery",
+  "country": "United Kingdom",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/axiom",
+  "cover": "/portfolio/axiom-cover.webp",
+  "logo": "/portfolio/axiom-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/axiom",
+    "cover": "https://static.wixstatic.com/media/00bf0d_b4f3ee2c652a4281826bc064dc757506~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_3e67d4e68f8a49c7b547a564575b7a20~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
