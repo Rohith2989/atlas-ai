@@ -1,0 +1,17 @@
+{
+  "id": "m11",
+  "order": 11,
+  "name": "M11",
+  "sector": "Agentic commerce",
+  "country": "United States",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/m11",
+  "cover": "/portfolio/m11-cover.webp",
+  "logo": "/portfolio/m11-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/m11",
+    "cover": "https://static.wixstatic.com/media/00bf0d_e09001b37c7b4ed8969391c2dea19d61~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_3c6e54691cae4350a9334effbd2997e3~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
