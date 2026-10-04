@@ -6,12 +6,20 @@
   "country": "United States",
   "status": "In portfolio",
   "url": "https://www.atlasaivbfund.com/portafoglio/zero-drift",
-  "cover": "/portfolio/zero-drift-cover.webp",
+  "cover": "/portfolio/zero-drift-brand-v3.webp",
   "logo": "/portfolio/zero-drift-logo.webp",
   "source": {
     "page": "https://www.atlasaivbfund.com/portafoglio/zero-drift",
     "cover": "https://static.wixstatic.com/media/00bf0d_a9a3d52435ba46f6ac93e8ddfc340da9~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_75f65abd75b3491790158ea9f8916464~mv2.png",
-    "checked": "2026-10-04"
+    "checked": "2026-10-04",
+    "website": "https://zerodrift.com/"
+  },
+  "artwork": {
+    "type": "generated-brand-editorial",
+    "alt": "ZeroDrift brand artwork showing communication lines aligned through a radial enforcement mark.",
+    "width": 1536,
+    "height": 1024,
+    "provenance": "docs/company-artwork-prompts.json"
   }
 }
