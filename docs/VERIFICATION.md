@@ -52,6 +52,14 @@
 - Vite production build and all five existing motion/renderer tests passed. No browser errors or warnings were recorded in the phone review. Desktop proof images are `docs/screenshots/contact-desktop.jpg` and `docs/screenshots/footer-desktop.jpg`.
 - The proposed company-gallery replacement is a separate visual concept for review. The current six-company implementation remains available until the new design is selected.
 
+## Turning-wave portfolio replacement
+
+- Replaced the superseded gallery and its fold code with six compact accordion rows and the approved, scroll-driven 3D ribbon entrance. The outgoing scene is printed on the front; the company art and names emerge on the reverse. Actual HTML controls take over when the wave settles.
+- Reviewed entry, midpoint, landing and settled index at 1440 × 900. Forward wheel input advanced progress from 0.50 to 0.625; the matching reverse input returned to 0.499. Opening Tilki, switching to 8x and Escape-closing each exposed the correct accessible state. Searching “photon” in the full dialog returned Sekkari as the single result.
+- At 1440 × 700, the expanded ZeroDrift details stayed inside the row and all six names remained visible. At 390 × 844, Bioleap expanded to a readable 473px article with no horizontal overflow; all six closed rows remain compact. Desktop/mobile resizing rebuilds the scene and releases the previous WebGL context.
+- Nine tests and the production build passed. The corrected VSM renderer produced no new console errors or warnings in the final browser review. The lazy renderer chunk is 135 kB gzipped; the build retains Vite’s default large-chunk advisory.
+- Contact still lands below the pinned sequence and links to the original Atlas website. Implementation notes and limits are in `PORTFOLIO-RIBBONS.md`.
+
 ## Limits
 
 This is visual and functional browser verification, focused automated tests and a production build. Reduced-motion fallback is implemented; the browser review did not emulate the operating system setting. Physical phones and Safari have not been tested. Desktop screenshots capture the visible in-app browser panel; its right edge can crop the larger test viewport. Malachite remains selected. Historical checks above describe the site at their respective implementation stages; the approved approach section supersedes the earlier portfolio-to-footer ending.
