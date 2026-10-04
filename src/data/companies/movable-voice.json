@@ -1,0 +1,17 @@
+{
+  "id": "movable-voice",
+  "order": 18,
+  "name": "Movable Voice",
+  "sector": "Frontline voice AI",
+  "country": "United States",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/movable-voice",
+  "cover": "/portfolio/movable-voice-cover.webp",
+  "logo": "/portfolio/movable-voice-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/movable-voice",
+    "cover": "https://static.wixstatic.com/media/00bf0d_e82fc094215c4bacb2b13fc491e0f982~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_847cf7e759d845e3bbeb0a09d35f54d8~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
