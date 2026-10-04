@@ -1,0 +1,65 @@
+[
+  {
+    "id": "01-cypress",
+    "name": "Cypress",
+    "background": "#153D32",
+    "ink": "#F1EFDF",
+    "accent": "#C7DEA7",
+    "description": "Deep cypress and warm ivory. The most composed, confident direction.",
+    "textContrast": 10.4
+  },
+  {
+    "id": "02-malachite",
+    "name": "Malachite",
+    "background": "#256C50",
+    "ink": "#F3F1E3",
+    "accent": "#CBBDE5",
+    "description": "Rich mineral green with ivory and a quiet lilac accent. A brighter brand presence.",
+    "textContrast": 5.54
+  },
+  {
+    "id": "03-laurel",
+    "name": "Laurel",
+    "background": "#A9BD98",
+    "ink": "#263C2D",
+    "accent": "#E9EBD1",
+    "description": "Grey sage with botanical ink. Soft, editorial and grounded.",
+    "textContrast": 5.9
+  },
+  {
+    "id": "04-celadon",
+    "name": "Celadon",
+    "background": "#CDDFCE",
+    "ink": "#173F35",
+    "accent": "#AEC491",
+    "description": "Pale ceramic green with deep pine ink. The calmest and most spacious direction.",
+    "textContrast": 8.36
+  },
+  {
+    "id": "05-verdigris",
+    "name": "Verdigris",
+    "background": "#76A99A",
+    "ink": "#153D36",
+    "accent": "#EEEBDC",
+    "description": "Patinated blue-green with dark pine. A distinctive mineral tone.",
+    "textContrast": 4.51
+  },
+  {
+    "id": "06-pistachio",
+    "name": "Pistachio",
+    "background": "#DCE3B7",
+    "ink": "#2B4937",
+    "accent": "#CABAD9",
+    "description": "Warm pale pistachio with moss ink and a lilac accent. Gentle and sunlit.",
+    "textContrast": 7.44
+  },
+  {
+    "id": "07-moss",
+    "name": "Moss",
+    "background": "#89966A",
+    "ink": "#152D24",
+    "accent": "#ECE9D9",
+    "description": "Olive moss with evergreen ink. Earthy, restrained and warm.",
+    "textContrast": 4.63
+  }
+]

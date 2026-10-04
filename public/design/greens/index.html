@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Atlas — seven directions in green</title>
+    <style>
+      @font-face {
+        font-family: Instrument;
+        src: url("/assets/instrument-sans.woff2") format("woff2");
+        font-weight: 400 700;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: Bodoni;
+        src: url("/assets/bodoni-display.woff2") format("woff2");
+        font-weight: 900;
+        font-display: swap;
+      }
+      :root {
+        color-scheme: light;
+        --paper: #f5f6f3;
+        --ink: #193c30;
+        --line: #d3ddd3;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          14px/1.4 Instrument,
+          sans-serif;
+      }
+      a {
+        color: inherit;
+        text-underline-offset: 3px;
+      }
+      button {
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+      }
+      button:focus-visible,
+      a:focus-visible {
+        outline: 2px solid #193c30;
+        outline-offset: 5px;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+        padding: 20px 3%;
+        border-bottom: 1px solid var(--line);
+      }
+      .identity {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+      .identity img {
+        width: 140px;
+        height: 42px;
+        object-fit: contain;
+      }
+      .identity p {
+        margin: 0;
+        font-size: 12px;
+      }
+      .identity span {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        margin-top: 4px;
+        opacity: 0.7;
+      }
+      header nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .compare {
+        border: 1px solid var(--line);
+        background: none;
+        padding: 9px 16px;
+      }
+      main {
+        max-width: 1760px;
+        margin: 0 auto;
+        padding: 24px 3% 32px;
+      }
+      .intro {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 25px;
+        margin-bottom: 22px;
+      }
+      h1 {
+        font:
+          900 40px/1.05 Bodoni,
+          serif;
+        letter-spacing: -0.035em;
+        margin: 0;
+      }
+      .intro p {
+        font-size: 12px;
+        max-width: 360px;
+        margin: 0;
+      }
+      .palettes {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 9px;
+        margin-bottom: 22px;
+      }
+      .palette {
+        border: 1px solid var(--line);
+        background: none;
+        text-align: left;
+        padding: 9px 9px 10px;
+      }
+      .palette[aria-pressed="true"] {
+        outline: 2px solid var(--ink);
+        outline-offset: 1px;
+      }
+      .swatch {
+        height: 18px;
+        display: flex;
+        margin-bottom: 9px;
+      }
+      .swatch i:nth-child(1) {
+        width: 68%;
+      }
+      .swatch i:nth-child(2) {
+        width: 22%;
+      }
+      .swatch i:nth-child(3) {
+        width: 10%;
+      }
+      .palette strong {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .palette small {
+        font-size: 10px;
+        display: block;
+        margin-top: 2px;
+        letter-spacing: 0.02em;
+        opacity: 0.7;
+      }
+      .stage {
+        margin: 0 auto;
+        width: fit-content;
+        line-height: 0;
+      }
+      .stage img {
+        display: block;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        max-height: calc(100vh - 360px);
+        min-height: 220px;
+        object-fit: contain;
+      }
+      .detail {
+        display: flex;
+        gap: 30px;
+        align-items: start;
+        justify-content: space-between;
+        max-width: 1100px;
+        margin: 18px auto 0;
+      }
+      .detail h2 {
+        font-size: 17px;
+        margin: 0 0 5px;
+      }
+      .detail p {
+        font-size: 12px;
+        margin: 0;
+        max-width: 550px;
+      }
+      .tokens {
+        display: flex;
+        gap: 20px;
+        font-size: 10px;
+        white-space: nowrap;
+      }
+      .tokens span {
+        display: block;
+        opacity: 0.65;
+        margin-bottom: 3px;
+      }
+      .detail a {
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      footer {
+        display: flex;
+        gap: 30px;
+        justify-content: space-between;
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+        margin-top: 26px;
+        font-size: 11px;
+        opacity: 0.75;
+      }
+      .overview {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 20px;
+      }
+      .overview article {
+        margin: 0;
+      }
+      .overview img {
+        width: 100%;
+        display: block;
+      }
+      .overview h2 {
+        font-size: 16px;
+        margin: 12px 0 4px;
+      }
+      .overview p {
+        font-size: 11px;
+        margin: 0;
+      }
+      .overview a {
+        display: block;
+        text-decoration: none;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      @media (max-width: 850px) {
+        .identity img {
+          width: 100px;
+        }
+        .identity {
+          gap: 14px;
+        }
+        .identity span {
+          max-width: 160px;
+        }
+        .intro {
+          display: block;
+        }
+        h1 {
+          font-size: 34px;
+        }
+        .intro p {
+          margin-top: 12px;
+        }
+        .palettes {
+          display: flex;
+          overflow: auto;
+          padding: 4px 3px 5px;
+        }
+        .palette {
+          min-width: 135px;
+        }
+        .stage {
+          width: 100%;
+        }
+        .stage img {
+          max-height: none;
+          min-height: 0;
+          width: 100%;
+        }
+        .detail {
+          display: block;
+        }
+        .tokens {
+          margin: 15px 0;
+        }
+        .detail a {
+          display: inline-block;
+          margin-top: 10px;
+        }
+        .overview {
+          grid-template-columns: 1fr;
+        }
+        footer {
+          display: block;
+        }
+        footer p {
+          margin: 0 0 8px;
+        }
+      }
+      @media (max-width: 520px) {
+        header {
+          padding: 15px 4%;
+          align-items: start;
+        }
+        .identity p {
+          font-size: 10px;
+        }
+        .identity span {
+          display: none;
+        }
+        .identity {
+          display: block;
+        }
+        .identity img {
+          width: 105px;
+          height: 32px;
+        }
+        .identity p {
+          margin-top: 5px;
+        }
+        header nav {
+          gap: 10px;
+          font-size: 11px;
+        }
+        .compare {
+          padding: 7px 10px;
+        }
+        main {
+          padding: 20px 4% 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="identity">
+        <img src="/assets/atlas-header.svg" alt="Atlas SGR" />
+        <p>AI VB FUND<span>COLOR DIRECTION / OCTOBER 2026</span></p>
+      </div>
+      <nav aria-label="Review controls">
+        <a href="/">Website ↗</a
+        ><button
+          class="compare"
+          id="compare"
+          type="button"
+          aria-pressed="false"
+        >
+          Compare all seven
+        </button>
+      </nav>
+    </header>
+    <main>
+      <div class="intro">
+        <h1>Atlas, in green.</h1>
+        <p>
+          Seven palettes on the approved thesis layout. The white hero remains
+          the opening; these greens explore the rest of the page.
+        </p>
+      </div>
+      <div class="palettes" aria-label="Green palette options"></div>
+      <section id="single" aria-label="Selected palette preview">
+        <figure class="stage"><img id="frame" alt="" /></figure>
+        <div class="detail" aria-live="polite">
+          <div>
+            <h2 id="name"></h2>
+            <p id="mood"></p>
+          </div>
+          <div class="tokens" id="tokens"></div>
+          <a id="full-image" target="_blank" rel="noopener"
+            >Open full size ↗</a
+          >
+        </div>
+      </section>
+      <section
+        class="overview"
+        id="overview"
+        aria-label="All seven palette previews"
+        hidden
+      ></section>
+      <footer>
+        <p>
+          Selected: 02 Malachite. This palette is now applied to the live website.
+        </p>
+        <p>
+          Use 1–7 or ← / → to compare.
+          <a href="palettes-and-prompts.json" target="_blank" rel="noopener"
+            >Palette values & exact prompts ↗</a
+          >
+        </p>
+      </footer>
+    </main>
+    <script>
+      const palettes = [
+        {
+          id: "01-cypress",
+          name: "Cypress",
+          background: "#153D32",
+          ink: "#F1EFDF",
+          accent: "#C7DEA7",
+          description:
+            "Deep cypress and warm ivory. The most composed, confident direction.",
+          textContrast: 10.4,
+        },
+        {
+          id: "02-malachite",
+          name: "Malachite",
+          background: "#256C50",
+          ink: "#F3F1E3",
+          accent: "#CBBDE5",
+          description:
+            "Rich mineral green with ivory and a quiet lilac accent. A brighter brand presence.",
+          textContrast: 5.54,
+        },
+        {
+          id: "03-laurel",
+          name: "Laurel",
+          background: "#A9BD98",
+          ink: "#263C2D",
+          accent: "#E9EBD1",
+          description:
+            "Grey sage with botanical ink. Soft, editorial and grounded.",
+          textContrast: 5.9,
+        },
+        {
+          id: "04-celadon",
+          name: "Celadon",
+          background: "#CDDFCE",
+          ink: "#173F35",
+          accent: "#AEC491",
+          description:
+            "Pale ceramic green with deep pine ink. The calmest and most spacious direction.",
+          textContrast: 8.36,
+        },
+        {
+          id: "05-verdigris",
+          name: "Verdigris",
+          background: "#76A99A",
+          ink: "#153D36",
+          accent: "#EEEBDC",
+          description:
+            "Patinated blue-green with dark pine. A distinctive mineral tone.",
+          textContrast: 4.51,
+        },
+        {
+          id: "06-pistachio",
+          name: "Pistachio",
+          background: "#DCE3B7",
+          ink: "#2B4937",
+          accent: "#CABAD9",
+          description:
+            "Warm pale pistachio with moss ink and a lilac accent. Gentle and sunlit.",
+          textContrast: 7.44,
+        },
+        {
+          id: "07-moss",
+          name: "Moss",
+          background: "#89966A",
+          ink: "#152D24",
+          accent: "#ECE9D9",
+          description:
+            "Olive moss with evergreen ink. Earthy, restrained and warm.",
+          textContrast: 4.63,
+        },
+      ];
+      let active = 0;
+      const controls = document.querySelector(".palettes");
+      palettes.forEach((p, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "palette";
+        b.setAttribute("aria-pressed", "false");
+        b.innerHTML =
+          '<span class="swatch" aria-hidden="true"><i style="background:' +
+          p.background +
+          '"></i><i style="background:' +
+          p.ink +
+          '"></i><i style="background:' +
+          p.accent +
+          '"></i></span><strong>0' +
+          (i + 1) +
+          " · " +
+          p.name +
+          "</strong><small>" +
+          p.background +
+          "</small>";
+        b.onclick = () => show(i);
+        controls.appendChild(b);
+        const article = document.createElement("article");
+        article.innerHTML =
+          '<a href="frames/' +
+          p.id +
+          '.webp" target="_blank" rel="noopener"><img loading="lazy" src="frames/' +
+          p.id +
+          '.webp" alt="' +
+          p.name +
+          ' green on the approved Atlas thesis layout"><h2>0' +
+          (i + 1) +
+          " · " +
+          p.name +
+          "</h2></a><p>" +
+          p.background +
+          " background · " +
+          p.ink +
+          " type</p>";
+        document.getElementById("overview").appendChild(article);
+      });
+      function show(i) {
+        active = (i + palettes.length) % palettes.length;
+        const p = palettes[active];
+        document
+          .querySelectorAll(".palette")
+          .forEach((b, j) =>
+            b.setAttribute("aria-pressed", j === active ? "true" : "false"),
+          );
+        document.getElementById("frame").src = "frames/" + p.id + ".webp";
+        document.getElementById("frame").alt =
+          p.name +
+          " green palette applied to the approved Atlas Runs Deep website section, with its original logo, font and photographs.";
+        document.getElementById("name").textContent =
+          "0" + (active + 1) + " · " + p.name;
+        document.getElementById("mood").textContent = p.description;
+        document.getElementById("tokens").innerHTML =
+          "<div><span>Background</span>" +
+          p.background +
+          "</div><div><span>Type / logo</span>" +
+          p.ink +
+          "</div><div><span>Accent</span>" +
+          p.accent +
+          "</div>";
+        document.getElementById("full-image").href = "frames/" + p.id + ".webp";
+        history.replaceState(null, "", "#" + (active + 1));
+      }
+      document.getElementById("compare").onclick = (e) => {
+        const open = e.currentTarget.getAttribute("aria-pressed") !== "true";
+        e.currentTarget.setAttribute("aria-pressed", String(open));
+        e.currentTarget.textContent = open
+          ? "Single preview"
+          : "Compare all seven";
+        document.getElementById("single").hidden = open;
+        document.getElementById("overview").hidden = !open;
+      };
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          show(active + 1);
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          show(active - 1);
+        } else if (/^[1-7]$/.test(e.key)) show(Number(e.key) - 1);
+      });
+      show(
+        /^[1-7]$/.test(location.hash.slice(1))
+          ? Number(location.hash.slice(1)) - 1
+          : 1,
+      );
+    </script>
+  </body>
+</html>
