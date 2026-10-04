@@ -21,6 +21,17 @@
 - The next-section aperture proposal was subsequently rejected and archived outside this repository’s public output. A seven-option green palette gallery replaces the design review.
 - Green review: all seven images loaded; palette switching and the comparison view worked; 390px and desktop layouts showed no horizontal overflow. Specified text/background pairs have contrast ratios from 4.51:1 to 10.40:1. These are palette specification checks, rather than pixel measurements of the generated mockups.
 
+## Approved approach implementation
+
+- Replaced the previous camera/table approach with the approved portrait, engineering bands and wafer compositions. Real HTML captions use the existing Instrument Sans font; the new image assets contain no baked typography.
+- Reviewed all six desktop storyboard poses at 1440 × 900. The portrait entry, alternating band handoff, settled compositions and wafer release were compared with the approved studies. The compact desktop layout was also checked at 1024 × 768.
+- Forward and reverse wheel input returned through the same engineering/wafer states (74% → 50% → 74%). Chapter links and direct reloads restore the matching reading holds. Desktop hashes no longer cause the nested pinned artboard to scroll independently.
+- Mobile review at 390 × 844 confirmed all three natural-flow articles, visible loaded artwork, correct chapter bookmark mapping, and no horizontal overflow (375px content and scroll widths). Moving between mobile and desktop restores the selected chapter.
+- Five Node tests passed: reading holds; opposing handoff order; wafer/hand/detail timing; bounded forward and reverse sampling; and renderer allocation, redraw, context restoration and cleanup. WebGL lifecycle assertions use a mocked context; actual shader compilation and visual rendering were checked in the browser.
+- Vite production build passed. The new renderer is a separate lazy chunk (9.59 kB uncompressed at verification). The three transparent WebP assets total 889,054 bytes. No video generation service or runtime API key is needed.
+- No browser errors or warnings were recorded during the new scene review. The existing hero, actual team portraits and six-company sequence are preserved. The new approach now sits between the final 8x company and the existing footer.
+- Individual wafer components are not animated in this pass; its reveal, hand and detail crop are implemented for review first.
+
 ## Limits
 
-This is visual and functional browser verification plus a production build. Reduced-motion fallback is implemented; the browser review did not emulate the operating system setting. Physical phones and Safari have not been tested. Desktop screenshots capture the visible in-app browser panel; its right edge can crop the larger test viewport. Malachite remains selected. The next creative section will be designed separately.
+This is visual and functional browser verification, focused automated tests and a production build. Reduced-motion fallback is implemented; the browser review did not emulate the operating system setting. Physical phones and Safari have not been tested. Desktop screenshots capture the visible in-app browser panel; its right edge can crop the larger test viewport. Malachite remains selected. Historical checks above describe the site at their respective implementation stages; the approved approach section supersedes the earlier portfolio-to-footer ending.

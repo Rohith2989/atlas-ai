@@ -28,9 +28,17 @@ Open `/design/greens/index.html` for the original seven-option review. **02 Mala
 
 ## Portfolio
 
-The thesis photographs retain their positions when they become the first two images in a continuous diagonal field. Six selected companies move across the pinned viewport in different proportions: **Civils.ai → Bioleap → ZeroDrift → Tilki → Sekkari → 8x**. Previous/next controls move through those companies. The sequence settles on 8x and flows into the contact footer. A searchable modal index contains all 28 companies in Atlas’s public portfolio, including the explicitly marked Tylo AI exit.
+The thesis photographs retain their positions when they become the first two images in a continuous diagonal field. Six selected companies move across the pinned viewport in different proportions: **Civils.ai → Bioleap → ZeroDrift → Tilki → Sekkari → 8x**. Previous/next controls move through those companies. The sequence settles on 8x, then continues into the three-part investment approach before reaching the contact footer. A searchable modal index contains all 28 companies in Atlas’s public portfolio, including the explicitly marked Tylo AI exit.
 
 ZeroDrift, Tilki and Sekkari have generated brand artwork grounded in their public company imagery and visual identities. Their original marks are overlaid separately. The 8x cover uses the exact official SVG paths with satin shading and a masked light sweep. Its animation respects reduced-motion preferences. Artwork source URLs and final prompts are recorded in `docs/company-artwork-prompts.json`.
+
+## Investment approach
+
+The approved photographic studies become three reversible reveals on the same Malachite field: a founder emerges from grain, four opposing bands introduce technical risk, and a central aperture releases a silicon wafer before its hand and detail crop resolve. Captions remain semantic HTML. One lazy-loaded WebGL canvas composites three transparent WebP assets, totaling 889,054 bytes; it draws only when the scroll state changes. A normal image fallback remains available if WebGL cannot run.
+
+Start at `/#approach`. Reading holds are `/#approach-founders`, `/#approach-engineering`, and `/#approach-defensible`. The six approved storyboard poses are directly reviewable at `/#approach-frame-1` through `/#approach-frame-6`. Small screens and reduced-motion preferences use a complete natural layout. Independent animation of the wafer’s individual components is reserved for the next design pass.
+
+See `docs/APPROACH.md` for choreography, asset provenance and implementation details. Run `npm test` to check motion sampling and renderer lifecycle behavior.
 
 ## Motion and accessibility
 
