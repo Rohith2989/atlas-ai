@@ -1,0 +1,17 @@
+{
+  "id": "genie-fertility",
+  "order": 5,
+  "name": "Genie Fertility",
+  "sector": "Fertility intelligence",
+  "country": "United Kingdom",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/genie-fertility",
+  "cover": "/portfolio/genie-fertility-cover.webp",
+  "logo": "/portfolio/genie-fertility-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/genie-fertility",
+    "cover": "https://static.wixstatic.com/media/00bf0d_54f89666ed6b4cf28cf55ab2d17d99c9~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_a20600c9f2a642728bade102f84a498d~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
