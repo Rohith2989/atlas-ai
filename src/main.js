@@ -3,7 +3,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import "./styles.css";
 import { mountPortfolio, layoutPortfolio, setActiveCompany, currentCompany, featured } from './portfolio';
-import { mountProof, animateProof, updateProof } from './proof';
 gsap.registerPlugin(ScrollTrigger);
 const root = document.documentElement;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)");
@@ -11,9 +10,8 @@ const canvas = document.createElement("canvas").getContext("2d");
 let timeline, trigger, context, lenis, resizeTimer;
 let lastWidth = 0,
   lastHeight = 0;
-const galleryStart = 35.6, galleryDuration = 18, proofStart = 56.5;
+const galleryStart = 35.6, galleryDuration = 9;
 mountPortfolio();
-mountProof();
 function fitType() {
   canvas.font = "900 500px Bodoni";
   canvas.letterSpacing = "-7.5px";
@@ -29,15 +27,24 @@ function fitType() {
       1,
       m.actualBoundingBoxLeft + m.actualBoundingBoxRight,
     );
-    const sx = (slot.clientWidth - 5) / width,
-      sy = (slot.clientHeight - 5) / cap;
+    const isHero = Boolean(el.closest('#hero'));
+    const fitX = (slot.clientWidth - 5) / width,
+      fitY = (slot.clientHeight - 5) / cap;
+    // Keep the hero's original letter proportions at every viewport aspect ratio.
+    const sx = isHero ? Math.min(fitX, fitY) : fitX,
+      sy = isHero ? sx : fitY,
+      offsetY = isHero ? (slot.clientHeight - cap * sy) / 2 : 0;
+    if (isHero) {
+      slot.style.setProperty('--glyph-top', offsetY - 8 + 'px');
+      slot.style.setProperty('--glyph-height', cap * sy + 16 + 'px');
+    }
     Object.assign(el.style, {
       fontSize: "500px",
       width: width + "px",
       height: cap + "px",
       lineHeight: cap + "px",
       transform: "scale(" + sx + "," + sy + ")",
-      top: -top * sy + "px",
+      top: offsetY - top * sy + "px",
       left: m.actualBoundingBoxLeft * sx + "px",
     });
   });
@@ -78,10 +85,9 @@ function build() {
   document.getElementById("people").inert = false;
   document.getElementById("thesis").inert = false;
   document.getElementById("companies").inert = false;
-  document.getElementById("proof").inert = false;
   document.getElementById("explore").inert = false;
   document.getElementById('hero').inert=false;
-  document.querySelectorAll('.company-frame,.proof-panel').forEach(e=>e.inert=false);
+  document.querySelectorAll('.company-frame').forEach(e=>e.inert=false);
   strips();
   fitType();
   if (!desktop) {
@@ -95,7 +101,6 @@ function build() {
   document.getElementById('people').inert=true;
   document.getElementById('thesis').inert=true;
   document.getElementById('companies').inert=true;
-  document.getElementById('proof').inert=true;
   context = gsap.context(() => {
     timeline = gsap.timeline({ paused: true });
     const tl = timeline;
@@ -405,12 +410,10 @@ function build() {
     tl.set('#companies', {opacity:1},34.4);
     tl.set('#science,#material', {opacity:0},34.4);
     tl.to('#biology', {x:750,y:-H*.45,opacity:0,duration:2,ease:'power2.in'},33.7);
-    tl.fromTo('.company-toolbar,.company-sequence,.company-next', {opacity:0,y:18}, {opacity:1,y:0,duration:1.15,stagger:.15,ease:'power3.out'},35);
+    tl.fromTo('.company-toolbar,.company-sequence', {opacity:0,y:18}, {opacity:1,y:0,duration:1.15,stagger:.15,ease:'power3.out'},35);
     tl.to('#company-world', {x:-(featured.length-2)*660,y:-(featured.length-2)*H*.30,duration:galleryDuration,ease:'none'},galleryStart);
-    tl.to('#company-world', {x:'-=1000',y:-H*3.1,duration:2.6,ease:'power3.inOut'},55.3);
-    tl.to('.company-toolbar,.company-sequence,.company-next',{opacity:0,y:-25,duration:1},55.6);
-    tl.to('#companies',{opacity:0,duration:1},57);
-    animateProof(tl,H,proofStart);
+    // Settle on 8x, then let the existing contact footer enter in normal page flow.
+    tl.to({}, {duration:2.4}, galleryStart + galleryDuration);
     tl.addLabel("hero", 0)
       .addLabel("people", 16.5)
       .addLabel("thesis", 32)
@@ -420,7 +423,7 @@ function build() {
       pin: true,
       animation: tl,
       start: "top top",
-      end: () => "+=" + innerHeight * 19,
+      end: () => "+=" + innerHeight * tl.duration() / 3.6,
       scrub: 0.55,
       anticipatePin: 1,
       invalidateOnRefresh: true,
@@ -430,14 +433,10 @@ function build() {
         document.getElementById("people").inert = t < 10 || t > 21;
         document.getElementById("explore").inert = t > 6;
         document.getElementById('hero').inert=t>6;
-        const galleryActive=t>=34.4&&t<57;
-        const proofActive=t>=proofStart;
+        const galleryActive=t>=34.4;
         document.getElementById('companies').inert=!galleryActive;
-        document.getElementById('proof').inert=!proofActive;
         document.getElementById('companies').classList.toggle('is-active',galleryActive);
-        document.getElementById('proof').classList.toggle('is-active',proofActive);
         if(galleryActive) setActiveCompany(1+Math.round(Math.max(0,Math.min(1,(t-galleryStart)/galleryDuration))*(featured.length-2)));
-        if(proofActive) updateProof(t,proofStart);
       },
     });
     tl.time(previous ? previous * tl.duration() : 2.5);
