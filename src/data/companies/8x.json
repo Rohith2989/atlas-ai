@@ -1,0 +1,17 @@
+{
+  "id": "8x",
+  "order": 27,
+  "name": "8x",
+  "sector": "Human-in-the-loop AI",
+  "country": "United States",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/8x",
+  "cover": "/portfolio/8x-cover.webp",
+  "logo": null,
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/8x",
+    "cover": "https://static.wixstatic.com/media/00bf0d_d02f0bc38dd849e4a05228bea5b6e403~mv2.png",
+    "logo": null,
+    "checked": "2026-10-04"
+  }
+}
