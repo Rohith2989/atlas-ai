@@ -1,0 +1,17 @@
+{
+  "id": "otee",
+  "order": 14,
+  "name": "Otee",
+  "sector": "Industrial automation",
+  "country": "Norway",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/otee",
+  "cover": "/portfolio/otee-cover.webp",
+  "logo": "/portfolio/otee-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/otee",
+    "cover": "https://static.wixstatic.com/media/00bf0d_97287bcb6886434c82824238258fefab~mv2.avif",
+    "logo": "https://static.wixstatic.com/media/00bf0d_b07db52d940b48e88b02c72ab5a85ea9~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
