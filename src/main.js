@@ -6,11 +6,13 @@ import { mountPortfolio, resetPortfolio, syncPortfolio, appendPortfolio } from '
 import { mountApproach, appendApproach, syncApproach, resetApproach, approachDuration, approachNames } from './approach';
 import { mountBeliefs, appendBeliefs, syncBeliefs, resetBeliefs, beliefsNames } from './beliefs';
 import { mountClosing } from './closing';
+import { mountIntro } from './intro';
 gsap.registerPlugin(ScrollTrigger);
 const root = document.documentElement;
 // Browser hash restoration must not scroll the nested, pinned artboard itself.
 history.scrollRestoration = 'manual';
 const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+const intro = mountIntro();
 const canvas = document.createElement("canvas").getContext("2d");
 let timeline, trigger, context, lenis, resizeTimer;
 let lastWidth = 0,
@@ -455,6 +457,13 @@ function build() {
 function applyInitialScene() {
   const hash = location.hash.slice(1);
   if (!trigger) {
+    // The mobile header is in normal flow, above #hero. Home must include it
+    // so the intro can land on the visible logo rather than above the viewport.
+    if (!hash || hash === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      lenis?.resize();
+      return;
+    }
     const frame = /^approach-frame-([1-6])$/.exec(hash);
     const thesisFrame = /^thesis-frame-([1-6])$/.exec(hash);
     const mobileId = /^portfolio-turn-[1-5]$/.test(hash) ? 'companies' : frame ? 'approach-' + approachNames[Math.floor((Number(frame[1])-1)/2)] : thesisFrame ? beliefsNames[Math.floor((Number(thesisFrame[1])-1)/2)] : hash;
@@ -502,6 +511,7 @@ Promise.all([
       lenis.on("scroll", ScrollTrigger.update);
       gsap.ticker.add((t) => lenis.raf(t * 1000));
       gsap.ticker.lagSmoothing(0);
+      if (window.__atlasIntro?.active) lenis.stop();
     }
     build();
     mountClosing();
@@ -512,7 +522,8 @@ Promise.all([
     requestAnimationFrame(() => requestAnimationFrame(applyInitialScene));
     window.addEventListener('hashchange', applyInitialScene);
     document.addEventListener('atlas:index',e=>{ if(lenis) e.detail?lenis.stop():lenis.start(); });
-    if (!reduced.matches)
+    const revealSheen = () => {
+      if (reduced.matches) return;
       gsap.fromTo(
         "#hero .sheen",
         { backgroundPosition: "100% 50%" },
@@ -524,6 +535,18 @@ Promise.all([
           ease: "sine.inOut",
         },
       );
+    };
+    if (window.__atlasIntro?.active) {
+      document.addEventListener('atlas:intro-end', () => {
+        lenis?.start();
+        ScrollTrigger.refresh();
+        revealSheen();
+      }, { once: true });
+      requestAnimationFrame(() => requestAnimationFrame(() => intro.ready().catch(error => {
+        console.error('Atlas introduction failed:', error);
+        intro.cancel();
+      })));
+    } else revealSheen();
     document
       .querySelectorAll("[data-scene]")
       .forEach((a) => a.addEventListener("click", (e) => navigate(a, e)));
@@ -566,4 +589,4 @@ Promise.all([
       once: true,
     });
   })
-  .catch(error => { console.error('Atlas motion initialization failed:',error); root.classList.remove("motion-ready"); });
+  .catch(error => { console.error('Atlas motion initialization failed:',error); root.classList.remove("motion-ready"); intro.cancel(); });

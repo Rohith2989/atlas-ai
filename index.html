@@ -17,8 +17,50 @@
       crossorigin
     />
     <link rel="icon" href="/assets/atlas-header.svg" type="image/svg+xml" />
+    <style>
+      html { scrollbar-gutter: stable; }
+      #atlas-intro { display: none; }
+      html.atlas-entering { overflow: hidden; }
+      .atlas-entering #atlas-intro { display: block; position: fixed; inset: 0; width: 100vw; z-index: 2000; background: #256c50; }
+      .atlas-entering .header .atlas-lockup { visibility: hidden; }
+    </style>
+    <script id="atlas-intro-boot">
+      (() => {
+        const root = document.documentElement;
+        const key = 'atlas-intro-v1';
+        const replay = new URLSearchParams(location.search).get('intro') === 'replay';
+        let seen = false;
+        try { seen = sessionStorage.getItem(key) === 'seen'; } catch {}
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches ||
+            (location.hash && location.hash !== '#hero') || (seen && !replay)) return;
+        root.classList.add('atlas-entering');
+        let deadline;
+        window.__atlasIntro = {
+          active: true,
+          release() {
+            if (!this.active) return;
+            this.active = false;
+            clearTimeout(deadline);
+            root.classList.remove('atlas-entering');
+            document.querySelectorAll('[data-intro-inert]').forEach(el => {
+              el.inert = false;
+              el.removeAttribute('data-intro-inert');
+            });
+            try { sessionStorage.setItem(key, 'seen'); } catch {}
+            document.dispatchEvent(new Event('atlas:intro-end'));
+          }
+        };
+        // Even a failed module download must never trap the visitor behind a veil.
+        deadline = setTimeout(() => window.__atlasIntro.release(), 8000);
+        addEventListener('pageshow', event => { if (event.persisted) window.__atlasIntro.release(); });
+      })();
+    </script>
   </head>
   <body>
+    <div id="atlas-intro" aria-label="Atlas introduction">
+      <span class="sr-only" role="status">Welcome to Atlas.</span>
+      <button class="intro-skip" type="button" onclick="window.__atlasIntro?.release()">Skip intro <span aria-hidden="true">↗</span></button>
+    </div>
     <a class="skip" href="#investment-thesis">Skip to our investment thesis</a>
     <header class="header">
       <a
