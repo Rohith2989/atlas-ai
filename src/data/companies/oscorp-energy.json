@@ -1,0 +1,17 @@
+{
+  "id": "oscorp-energy",
+  "order": 26,
+  "name": "Oscorp Energy",
+  "sector": "Circular energy",
+  "country": "Australia",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/oscorp-energy",
+  "cover": "/portfolio/oscorp-energy-cover.webp",
+  "logo": "/portfolio/oscorp-energy-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/oscorp-energy",
+    "cover": "https://static.wixstatic.com/media/00bf0d_adaa8dbedcd042478d3d247ba41e2225~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_50d434e8fb6d48438b5c67a96032321f~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
