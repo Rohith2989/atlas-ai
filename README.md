@@ -72,13 +72,13 @@ variant, and forced-color mode retains system colors.
 - Reduced-motion preferences use the natural layout and remove the text sheen.
 - The navigation jumps to settled scroll states. A skip link, focus indicators, alt text and semantic headings are included.
 - Inactive scenes and distant portfolio images are excluded from keyboard focus. The company dialog uses native modal focus handling and Escape to close.
-- The four original team photographs stay unchanged. The original Atlas logo geometry is preserved, recolored to fit the palette.
+- The team photographs retain their natural appearance; Matteo's portrait uses the replacement supplied by the site owner. The original Atlas logo geometry is preserved, recolored to fit the palette.
 
 ## Sources and assets
 
 Fund positioning, team names and roles, and portfolio context come from the public [Atlas website](https://www.atlasaivbfund.com/), [manifesto](https://www.atlasaivbfund.com/manifesto) and [portfolio](https://www.atlasaivbfund.com/portfolio). Company and manifesto links currently open those official pages.
 
-The hero and thesis photographs are generated editorial imagery, rather than depictions of Atlas staff, offices or specific portfolio products. Three selected company covers are generated brand interpretations; 8x is authored from its official logo. Other company imagery and official logos are local copies of public source assets. Each company’s record in `src/data/companies/` includes its source URLs, country, status and verification date. Short sector descriptions are editorial summaries. The original team files are byte-for-byte copies of their public source assets.
+The hero and thesis photographs are generated editorial imagery, rather than depictions of Atlas staff, offices or specific portfolio products. Three selected company covers are generated brand interpretations; 8x is authored from its official logo. Other company imagery and official logos are local copies of public source assets. Each company’s record in `src/data/companies/` includes its source URLs, country, status and verification date. Short sector descriptions are editorial summaries. Matteo's active portrait (`public/assets/matteo-confalonieri.png`) is the unmodified image supplied by the site owner on 4 October 2026. The other team files are byte-for-byte copies of their public source assets.
 
 Typography uses locally hosted Bodoni Moda and Instrument Sans. Their SIL Open Font License files are included in `public/assets/`.
 
