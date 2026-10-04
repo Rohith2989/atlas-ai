@@ -15,7 +15,10 @@ export function mountPortfolio() {
     const f = document.createElement('figure');
     f.className = 'company-frame';
     f.dataset.company = c.id;
-    f.innerHTML = `<a class="company-image" href="${c.url}" target="_blank" rel="noopener noreferrer" aria-label="Discover ${c.name}"><img src="${editorial[c.id] || c.cover}" alt="${editorial[c.id] ? 'Editorial study' : 'Company imagery'} — ${c.name}" loading="lazy" decoding="async" width="900" height="650"><span class="image-visit" aria-hidden="true">↗</span></a><figcaption><a href="${c.url}" target="_blank" rel="noopener noreferrer">${c.name} ↗</a><span>${c.sector} · ${c.country}</span></figcaption>`;
+    const alt = c.artwork?.alt || `${editorial[c.id] ? 'Editorial study' : 'Company imagery'} — ${c.name}`;
+    const brand = c.artwork?.type === 'generated-brand-editorial' && c.logo
+      ? `<span class="company-brand" aria-hidden="true"><img src="${c.logo}" alt="" width="180" height="36"></span>` : '';
+    f.innerHTML = `<a class="company-image" href="${c.url}" target="_blank" rel="noopener noreferrer" aria-label="Discover ${c.name}"><img class="company-artwork" src="${editorial[c.id] || c.cover}" alt="${alt}" loading="lazy" decoding="async" width="${c.artwork?.width || 900}" height="${c.artwork?.height || 650}">${brand}<span class="image-visit" aria-hidden="true">↗</span></a><figcaption><a href="${c.url}" target="_blank" rel="noopener noreferrer">${c.name} ↗</a><span>${c.sector} · ${c.country}</span></figcaption>`;
     world.appendChild(f);
   });
   const dialog = document.getElementById('portfolio-index');

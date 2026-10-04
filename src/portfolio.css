@@ -4,9 +4,9 @@ button { color:inherit; cursor:pointer; }
 button:focus-visible, input:focus-visible { outline:2px solid var(--accent); outline-offset:5px; }
 .company-toolbar { display:flex; justify-content:space-between; align-items:flex-start; gap:30px; }
 .company-toolbar h2 { font-size:28px; font-weight:400; letter-spacing:-.045em; margin:12px 0 25px; }
-.index-button, .next-chapter { background:none; border:0; padding:0 0 7px; border-bottom:1px solid currentColor; font-size:14px; }
+.index-button { background:none; border:0; padding:0 0 7px; border-bottom:1px solid currentColor; font-size:14px; }
 .company-toolbar .index-button { margin-top:12px; }
-.company-sequence { padding:45px 0 20px; font-size:12px; display:flex; gap:20px; align-items:center; }
+.company-sequence { display:none; }
 .sequence-controls { display:flex; gap:5px; margin-left:auto; }
 .sequence-controls button { border:1px solid #f3f1e345; border-radius:50%; background:transparent; width:42px; height:42px; font-size:22px; transition:background .2s; }
 .sequence-controls button:hover { background:#f3f1e318; }
@@ -14,14 +14,15 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--accent); out
 .company-frame { margin:60px 0 85px; width:80%; }
 .company-frame:nth-child(even) { width:63%; margin-left:37%; }
 .company-image { display:block; position:relative; width:100%; height:100%; overflow:hidden; }
-.company-image img { width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.2,.7,.2,1); }
-.company-image:hover img { transform:scale(1.035); }
+.company-artwork { width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.2,.7,.2,1); }
+.company-image:hover .company-artwork { transform:scale(1.035); }
+.company-brand { position:absolute; top:16px; left:16px; width:160px; height:42px; padding:9px 12px; background:#f5f6f3; }
+.company-brand img { width:100%; height:100%; object-fit:contain; min-height:0 !important; }
 .image-visit { position:absolute; right:15px; bottom:15px; width:40px; height:40px; display:grid; place-items:center; color:var(--field); background:var(--field-ink); border-radius:50%; font-size:24px; transform:translateY(65px); transition:transform .35s; }
 .company-image:hover .image-visit, .company-image:focus-visible .image-visit { transform:none; }
 .company-frame figcaption { margin-top:12px; font-size:18px; line-height:1.2; }
 .company-frame figcaption span { display:block; margin-top:5px; font-size:12px; }
 .company-frame img { min-height:200px; }
-.company-next { margin-top:50px; }
 .motion-ready #companies { opacity:0; z-index:25; pointer-events:none; }
 .motion-ready #companies.is-active { pointer-events:auto; }
 .motion-ready .company-toolbar { position:absolute; top:11%; left:3.44%; right:3.44%; z-index:3; pointer-events:none; }
@@ -37,7 +38,6 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--accent); out
 .motion-ready .sequence-controls button { width:33px; height:33px; font-size:19px; }
 .motion-ready #company-current { grid-column:1; grid-row:2; }
 .motion-ready #company-count { font-variant-numeric:tabular-nums; color:var(--accent); }
-.motion-ready .company-next { position:absolute; bottom:4%; right:3.44%; z-index:3; margin:0; background:var(--field); }
 .portfolio-index { position:fixed; width:calc(100% - 48px); max-width:1250px; height:calc(100svh - 48px); max-height:none; padding:30px; border:1px solid #f3f1e345; color:var(--field-ink); background:var(--field); overscroll-behavior:contain; }
 .portfolio-index::backdrop { background:#081e18a8; backdrop-filter:blur(12px); }
 .index-header { display:flex; justify-content:space-between; align-items:start; }
@@ -67,4 +67,4 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--accent); out
  .index-cover { width:70px; height:65px; } .index-detail strong { font-size:21px; }
  .index-detail>span { font-size:11px; } .index-results { font-size:10px; }
 }
-@media (prefers-reduced-motion:reduce) { .company-image img, .image-visit { transition:none; } }
+@media (prefers-reduced-motion:reduce) { .company-artwork, .image-visit { transition:none; } }
