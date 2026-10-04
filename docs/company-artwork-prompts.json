@@ -1,0 +1,73 @@
+{
+  "mode": "Three covers: built-in image_gen; 8x: code-native SVG",
+  "direction": "User selected bold artwork built around each company's brand",
+  "researched": "2026-10-04",
+  "assets": [
+    {
+      "id": "tilki",
+      "refs": [
+        "public/portfolio/tilki-logo.webp",
+        "public/portfolio/tilki-cover.webp"
+      ],
+      "sources": [
+        "https://www.atlasaivbfund.com/portafoglio/tilki",
+        "https://tilki.com/"
+      ],
+      "alt": "Tilki brand artwork combining its orange fox geometry with its original game-character imagery.",
+      "prompt": "Generate a polished, bold brand campaign artwork for TILKI, an AI game-creation company. Input 1 is the official orange fox identity: use its angular geometry and orange/black palette as the design language, not a new logo. Input 2 is the company's published game-character image: retain the three adventurers as the photographic subject, tightly crop them at torso level so the focus is characters, not scenery. Transform the photograph into rich, high-contrast monochrome with exceptionally refined fine halftone and gritty photographic texture. Behind and cutting around the figures, large flat vivid-orange triangular fox-derived shapes create a striking asymmetric editorial composition on deep charcoal. Subtle fine orange character-selection outlines provide the game-creation cue. Contemporary experimental magazine cover quality, sharp graphic layers, intentional negative space, no castle city, no floating island, no decorative 3D sculpture, no UI dashboard, no text, no logo text, no labels. Single edge-to-edge 3:2 landscape image. The actual logo will be added separately in the website.",
+      "master": "../concept/company-brand-artwork-v3/masters/tilki.png",
+      "output": "public/portfolio/tilki-brand-v3.webp",
+      "sourceImages": [
+        "https://static.wixstatic.com/media/00bf0d_0b0456842b8f41878e4c65e4ef3bca7f~mv2.webp",
+        "https://static.wixstatic.com/media/00bf0d_230287f812114561b911e8409052470d~mv2.webp"
+      ]
+    },
+    {
+      "id": "sekkari",
+      "refs": [
+        "public/portfolio/sekkari-logo.webp",
+        "public/portfolio/sekkari-cover.webp"
+      ],
+      "sources": [
+        "https://www.atlasaivbfund.com/portafoglio/sekkari",
+        "https://www.sekkari.co.uk/",
+        "https://www.joinef.com/companies/sekkari/?pagenum=2"
+      ],
+      "alt": "Sekkari brand artwork of photonic waveguide routing in cobalt, silver and graphite.",
+      "prompt": "Generate bold premium brand artwork for SEKKARI, photonic AI processing. Input 1 is the official identity: the linked diamond shapes provide the graphic structure, do not redesign the mark. Input 2 is the company's photonic-waveguide image and is the technological subject. Reinterpret it as an extreme close crop of elegant etched optical waveguide tracks: thin polished silver routes sweep in precise bends across matte graphite silicon, intercepted by one intense cobalt-blue line of light. Abstract crop of real chip geometry rather than an entire generic computer processor. The route arrangement echoes the paired diamond geometry subtly. The upper third is a bold flat cobalt field sliced by a precise diagonal graphite edge, merging sharply into the chip macro image. Exceptional industrial material detail, restrained luminous highlights, clean Swiss campaign art direction, high visual contrast, minimal and monumental, deep black, cobalt and silver. No robot, no glass sculpture, no motherboard, no invented specifications, no text or logo text. Edge-to-edge portrait 2:3 artwork, main optical routing centred. Official logo will be overlaid in code.",
+      "master": "../concept/company-brand-artwork-v3/masters/sekkari.png",
+      "output": "public/portfolio/sekkari-brand-v3.webp",
+      "sourceImages": [
+        "https://static.wixstatic.com/media/00bf0d_0bcc960212a148668cd9c11f6ba6a240~mv2.png",
+        "https://static.wixstatic.com/media/00bf0d_244f5b1a59f5408aac052c4e8447a04c~mv2.png"
+      ]
+    },
+    {
+      "id": "zero-drift",
+      "refs": [
+        "public/portfolio/zero-drift-logo.webp",
+        "public/portfolio/zero-drift-cover.webp"
+      ],
+      "sources": [
+        "https://www.atlasaivbfund.com/portafoglio/zero-drift",
+        "https://zerodrift.com/"
+      ],
+      "alt": "ZeroDrift brand artwork showing communication lines aligned through a radial enforcement mark.",
+      "prompt": "Create bold professional brand campaign artwork for ZERODRIFT, software that enforces policy on messages before they are sent. Input 1 is its real identity: a circular ring of narrow radial black bars. Use that radial visual grammar prominently. Input 2 is actual company UI only as domain reference; do not reproduce the dashboard. A sophisticated flat editorial graphic on warm ivory: dark typographic-looking communication lines enter from upper left in fragmented uneven order, pass through a large off-centre radial black-bar aperture, and emerge as perfectly aligned parallel bands at lower right. One muted amber checking band crosses the ring with a crisp luminous edge. The company-specific idea is messages being checked and brought into compliance. Beautiful precise screen-print texture and restrained optical blur only where the incoming lines meet the ring, with exceptionally sharp output bands. Original, spare, high contrast, Bauhaus precision plus contemporary brand campaign polish. Mostly ink-black and warm ivory with amber used sparingly. No UI cards, no floating glass panes, no metal donut, no sculpture, no literal text, no fake data, no labels or wordmark. Landscape 3:2 edge-to-edge image. Actual logo goes on top in website code.",
+      "master": "../concept/company-brand-artwork-v3/masters/zero-drift.png",
+      "output": "public/portfolio/zero-drift-brand-v3.webp",
+      "sourceImages": [
+        "https://static.wixstatic.com/media/00bf0d_75f65abd75b3491790158ea9f8916464~mv2.png",
+        "https://static.wixstatic.com/media/00bf0d_a9a3d52435ba46f6ac93e8ddfc340da9~mv2.png"
+      ]
+    },
+    {
+      "id": "8x",
+      "mode": "code-native SVG",
+      "direction": "User requested the official 8x mark alone with a cool effect",
+      "source": "https://www.8x.social/assets/brand/8x_logo.svg",
+      "output": "public/portfolio/8x-brand-v3.svg",
+      "description": "Exact original path geometry with satin foil shading and a masked light sweep; no people or dashboard."
+    }
+  ]
+}

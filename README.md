@@ -1,6 +1,6 @@
 # Atlas AI VB Fund
 
-A scroll-driven website built with Vite, GSAP ScrollTrigger and Lenis. The white hero flows into **c02 Malachite**, the original team portraits, “THE EDGE / RUNS DEEP.”, a pinned diagonal portfolio and an original contour reveal of Atlas’s investment criteria. Text is HTML; motion follows the visitor’s scroll and reverses with it.
+A scroll-driven website built with Vite, GSAP ScrollTrigger and Lenis. The white hero flows into **c02 Malachite**, the original team portraits, “THE EDGE / RUNS DEEP.”, and a pinned diagonal portfolio. Text is HTML; motion follows the visitor’s scroll and reverses with it.
 
 The live palette is `#256C50` Malachite, `#F3F1E3` warm ivory and `#CBBDE5` lilac. The hero retains its original paper background.
 
@@ -26,11 +26,11 @@ Import this GitHub repository into Vercel. Use **Vite** as the framework, **npm 
 
 Open `/design/greens/index.html` for the original seven-option review. **02 Malachite** is selected and implemented on the main website. Exact color values and generation prompts accompany the historical previews.
 
-## Portfolio and the next section
+## Portfolio
 
-The thesis photographs retain their positions when they become the first two images in a continuous diagonal field. Ten selected companies move across the pinned viewport in different proportions. Previous/next controls and “Under the surface” allow visitors to move directly through the experience. A searchable modal index contains all 28 companies in Atlas’s public portfolio, including the explicitly marked Tylo AI exit.
+The thesis photographs retain their positions when they become the first two images in a continuous diagonal field. Six selected companies move across the pinned viewport in different proportions: **Civils.ai → Bioleap → ZeroDrift → Tilki → Sekkari → 8x**. Previous/next controls move through those companies. The sequence settles on 8x and flows into the contact footer. A searchable modal index contains all 28 companies in Atlas’s public portfolio, including the explicitly marked Tylo AI exit.
 
-The following scene uses an authored SVG contour field, with three layers for data, distribution and proprietary technology. Short lines of HTML text reveal alongside each layer. Its tabs jump to each settled state. This is browser code, not a rendered video or HyperFrames project.
+ZeroDrift, Tilki and Sekkari have generated brand artwork grounded in their public company imagery and visual identities. Their original marks are overlaid separately. The 8x cover uses the exact official SVG paths with satin shading and a masked light sweep. Its animation respects reduced-motion preferences. Artwork source URLs and final prompts are recorded in `docs/company-artwork-prompts.json`.
 
 ## Motion and accessibility
 
@@ -45,7 +45,7 @@ The following scene uses an authored SVG contour field, with three layers for da
 
 Fund positioning, team names and roles, and portfolio context come from the public [Atlas website](https://www.atlasaivbfund.com/), [manifesto](https://www.atlasaivbfund.com/manifesto) and [portfolio](https://www.atlasaivbfund.com/portfolio). Company and manifesto links currently open those official pages.
 
-The hero and thesis photographs are generated editorial imagery, rather than depictions of Atlas staff, offices or specific portfolio products. The rest of the company imagery and official logos are optimized local copies of Atlas’s public portfolio assets. Each company’s record in `src/data/companies/` includes its source URLs, country, status and verification date. Short sector descriptions are editorial summaries. The original team files are byte-for-byte copies of their public source assets.
+The hero and thesis photographs are generated editorial imagery, rather than depictions of Atlas staff, offices or specific portfolio products. Three selected company covers are generated brand interpretations; 8x is authored from its official logo. Other company imagery and official logos are local copies of public source assets. Each company’s record in `src/data/companies/` includes its source URLs, country, status and verification date. Short sector descriptions are editorial summaries. The original team files are byte-for-byte copies of their public source assets.
 
 Typography uses locally hosted Bodoni Moda and Instrument Sans. Their SIL Open Font License files are included in `public/assets/`.
 
