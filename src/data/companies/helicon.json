@@ -1,0 +1,17 @@
+{
+  "id": "helicon",
+  "order": 25,
+  "name": "Helicon",
+  "sector": "Drone manufacturing",
+  "country": "United States",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/helicon",
+  "cover": "/portfolio/helicon-cover.webp",
+  "logo": "/portfolio/helicon-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/helicon",
+    "cover": "https://static.wixstatic.com/media/00bf0d_25659e358ef94a1f81c4fbc1f74ef053~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_e6662260c2194174a51501b581d91d32~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
