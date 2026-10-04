@@ -1,0 +1,99 @@
+.contact,
+.site-footer {
+  --closing-rule: rgb(243 241 227 / 25%);
+  color: var(--field-ink);
+  background: var(--field);
+}
+
+#contact {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 9%;
+  padding: clamp(110px, 12vw, 190px) 5% clamp(100px, 12vw, 190px);
+  scroll-margin-top: 72px;
+}
+
+.closing-eyebrow,
+.invitation-top,
+.footer-baseline {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .17em;
+}
+
+.closing-eyebrow { display: flex; align-items: center; gap: 12px; }
+.contact-signal { width: 7px; height: 7px; flex: 0 0 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgb(203 189 229 / 10%); }
+.contact-heading h2 { margin: 38px 0 28px; font-size: clamp(44px, 5.2vw, 86px); font-weight: 400; line-height: 1.05; letter-spacing: -.065em; }
+.contact-heading h2 em { display: inline-block; padding-right: .06em; font-family: AtlasItalic, Georgia, serif; font-weight: 400; letter-spacing: -.045em; color: var(--accent); }
+.contact-intro { font-size: clamp(15px, 1.15vw, 19px); line-height: 1.5; }
+.contact-invitation { align-self: center; border-top: 1px solid var(--closing-rule); padding-top: 22px; }
+.invitation-top { display: flex; align-items: center; justify-content: space-between; }
+.invitation-top > :last-child { font-size: 24px; font-weight: 400; letter-spacing: 0; }
+.invitation-title { margin: 27px 0 20px; font-size: clamp(25px, 2.4vw, 38px); letter-spacing: -.045em; line-height: 1.13; }
+.conversation-lines { margin-bottom: 30px; }
+.conversation-lines span { display: block; padding: 12px 0; border-bottom: 1px solid var(--closing-rule); font-size: 15px; color: rgb(243 241 227 / 75%); }
+.contact-cta { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 17px 22px; color: var(--field); background: var(--field-ink); font-size: 18px; text-decoration: none; transition: background-color .25s, color .25s; }
+.contact-cta .cta-arrow { font-size: 27px; line-height: 1; transition: transform .35s cubic-bezier(.22, 1, .36, 1); }
+.contact-cta:hover, .contact-cta:focus-visible { background: var(--accent); color: #183e30; }
+.contact-cta:hover .cta-arrow, .contact-cta:focus-visible .cta-arrow { transform: translate(3px, -3px); }
+.contact-destination { margin-top: 14px; font-size: 12px; line-height: 1.5; color: rgb(243 241 227 / 72%); }
+
+.site-footer { padding: 0 3% 26px; overflow: clip; }
+.footer-directory { display: grid; grid-template-columns: 1.2fr 1fr 1fr; align-items: start; gap: 8%; padding: 39px 2.13% 52px; border-top: 1px solid var(--closing-rule); }
+.footer-signoff { font-size: clamp(22px, 2.2vw, 34px); font-weight: 400; letter-spacing: -.04em; line-height: 1.25; }
+.footer-signoff em { font-family: AtlasItalic, Georgia, serif; font-weight: 400; }
+.footer-navigation { display: grid; gap: 14px; font-size: 14px; }
+.footer-navigation a { display: flex; justify-content: space-between; gap: 24px; max-width: 210px; }
+.footer-navigation a span { transition: transform .25s; }
+.footer-navigation a:hover span { transform: translate(2px, -2px); }
+.footer-top { display: flex; gap: 17px; align-items: center; justify-content: flex-end; font-size: 12px; }
+.footer-top-arrow { display: grid; place-items: center; flex: 0 0 42px; height: 42px; border: 1px solid var(--closing-rule); border-radius: 50%; font-size: 22px; transition: background-color .25s, color .25s; }
+.footer-top:hover .footer-top-arrow { color: var(--field); background: var(--field-ink); }
+.footer-wordmark-window { overflow: clip; padding-block: 10px; }
+.footer-wordmark { --mark-light: 120%; display: block; position: relative; width: 100%; aspect-ratio: 1676 / 454; background: var(--field-ink); mask: url('/assets/atlas-header.svg') center / contain no-repeat; }
+.footer-wordmark::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, var(--accent) 46%, #fffdf3 50%, var(--accent) 54%, transparent 65%); background-size: 250% 100%; background-position: var(--mark-light) 50%; opacity: .7; pointer-events: none; }
+.footer-wordmark img { display: block; width: 100%; height: auto; opacity: 0; }
+.footer-wordmark:focus-visible { background: var(--accent); }
+.footer-wordmark-window:focus-within { outline: 2px solid var(--accent); outline-offset: 4px; }
+.footer-baseline { display: flex; justify-content: space-between; gap: 20px; padding: 24px 2.13% 40px; }
+.footer-baseline :last-child { letter-spacing: 0; font-size: 14px; font-weight: 400; }
+.footer-legal { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-inline: 2.13%; padding-top: 25px; border-top: 1px solid var(--closing-rule); font-size: 11px; line-height: 1.6; }
+.footer-legal p > span { color: rgb(243 241 227 / 68%); }
+.footer-legal nav { display: flex; flex-wrap: wrap; column-gap: 22px; row-gap: 12px; }
+.footer-legal a { padding-block: 5px; }
+.site-footer a, .contact a { text-decoration: none; }
+.footer-navigation a:hover, .footer-legal a:hover { color: var(--accent); }
+
+@media (max-width: 899px) {
+  #contact { gap: 6%; padding: 95px 5% 100px; scroll-margin-top: 20px; }
+  .contact-heading h2 { font-size: clamp(40px, 6.5vw, 59px); }
+  .closing-eyebrow { font-size: 9px; letter-spacing: .11em; }
+  .footer-directory { gap: 5%; grid-template-columns: 1.15fr 1fr; }
+  .footer-top { grid-column: 1 / -1; justify-content: flex-start; margin-top: 10px; }
+  .footer-top-arrow { order: -1; }
+  .footer-legal { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 599px) {
+  #contact { grid-template-columns: 1fr; gap: 56px; padding: 78px 6% 85px; }
+  .contact-heading h2 { font-size: clamp(42px, 11.5vw, 66px); margin: 29px 0 24px; }
+  .closing-eyebrow { font-size: 9px; letter-spacing: .12em; }
+  .invitation-title { font-size: 28px; margin-top: 21px; }
+  .contact-invitation { padding-top: 18px; }
+  .contact-cta { padding-block: 19px; }
+  .site-footer { padding-inline: 4%; }
+  .footer-directory { grid-template-columns: 1fr 1fr; padding: 30px 2.2% 34px; column-gap: 28px; row-gap: 29px; }
+  .footer-signoff { font-size: 22px; }
+  .footer-navigation { font-size: 12px; gap: 17px; }
+  .footer-navigation a { gap: 8px; }
+  .footer-top { margin-top: 0; }
+  .footer-baseline { padding: 14px 2.2% 26px; font-size: 9px; letter-spacing: .14em; }
+  .footer-baseline :last-child { font-size: 11px; }
+  .footer-legal { margin-inline: 2.2%; font-size: 10px; padding-top: 20px; gap: 18px; }
+  .footer-legal nav { column-gap: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact *, .site-footer * { transition: none !important; }
+  .footer-wordmark::after { display: none; }
+}

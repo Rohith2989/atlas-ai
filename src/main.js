@@ -5,6 +5,7 @@ import "./styles.css";
 import { mountPortfolio, layoutPortfolio, setActiveCompany, currentCompany, featured } from './portfolio';
 import { mountApproach, appendApproach, syncApproach, resetApproach, approachDuration, approachStops, approachNames } from './approach';
 import { mountBeliefs, appendBeliefs, syncBeliefs, resetBeliefs, beliefsNames } from './beliefs';
+import { mountClosing } from './closing';
 gsap.registerPlugin(ScrollTrigger);
 const root = document.documentElement;
 // Browser hash restoration must not scroll the nested, pinned artboard itself.
@@ -475,9 +476,9 @@ function applyInitialScene() {
     document.getElementById(mobileId)?.scrollIntoView({block:'start',behavior:'instant'});
     return;
   }
-  if (hash === 'contact') {
+  if (hash === 'contact' || hash === 'site-footer') {
     lenis.resize();
-    lenis.scrollTo('#contact', {immediate:true,force:true});
+    lenis.scrollTo('#' + hash, {immediate:true,force:true});
     timeline.time(timeline.duration());
     syncScenes();
     return;
@@ -524,6 +525,8 @@ Promise.all([
       gsap.ticker.lagSmoothing(0);
     }
     build();
+    mountClosing();
+    ScrollTrigger.refresh();
     applyInitialScene();
     // Restore again after the browser has painted ScrollTrigger's initial pin spacing.
     // A cold-load scroll can otherwise be clamped to the pre-pin document height.
