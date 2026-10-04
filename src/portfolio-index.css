@@ -1,0 +1,335 @@
+#companies {
+  background: var(--field);
+  padding: 65px 4%;
+  color: var(--field-ink);
+}
+.company-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 22px;
+}
+.company-toolbar h2.overline {
+  font:
+    500 12px/1.4 Instrument,
+    sans-serif;
+  letter-spacing: 0.25em;
+  margin: 0;
+}
+.company-toolbar .index-button {
+  font-size: 15px;
+  padding: 0;
+}
+.company-toolbar .index-button:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+#company-world {
+  position: relative;
+  border-top: 1px solid #f3f1e36e;
+}
+.company-row {
+  position: relative;
+  border-bottom: 1px solid #f3f1e36e;
+  --open: 0;
+  --detail: 0;
+  isolation: isolate;
+}
+.company-row h3 {
+  margin: 0;
+  font-weight: 400;
+}
+.company-toggle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  z-index: 3;
+  color: inherit;
+}
+.company-toggle:focus-visible {
+  outline-offset: -3px;
+  outline-width: 1px;
+}
+.company-number,
+.company-name,
+.company-sector,
+.company-plus {
+  position: absolute;
+  top: calc(50% * (1 - var(--open)) + 35px * var(--open));
+  transform: translateY(-50%);
+}
+.company-number {
+  left: 0;
+  font:
+    400 18px/1 Instrument,
+    sans-serif;
+}
+.company-name {
+  left: 5%;
+  font:
+    400 43px/1.12 Georgia,
+    "Times New Roman",
+    serif;
+  letter-spacing: -0.035em;
+}
+.company-sector {
+  left: 77%;
+  font:
+    400 16px/1.25 Instrument,
+    sans-serif;
+  max-width: 19%;
+  opacity: calc(1 - var(--open) * 2);
+}
+.company-plus {
+  right: 0;
+  width: 23px;
+  height: 23px;
+}
+.company-plus i {
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 23px;
+  height: 1px;
+  background: currentColor;
+}
+.company-plus i + i {
+  transform: rotate(calc(90deg * (1 - var(--open))));
+  opacity: calc(1 - var(--open));
+}
+.company-aperture {
+  position: absolute;
+  left: 25.5%;
+  width: calc(48.6% + var(--open) * 25.9%);
+  overflow: hidden;
+  z-index: 1;
+  will-change: clip-path;
+}
+.company-aperture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: none;
+  transition: filter 0.35s;
+}
+.company-row[data-company="8x"] .company-aperture {
+  background: #152452;
+}
+.company-row[data-company="8x"] .company-aperture img {
+  object-fit: contain;
+  height: 82%;
+  position: absolute;
+  top: 9%;
+}
+.company-row:not(.is-open):hover .company-aperture img {
+  filter: brightness(1.08);
+}
+.company-detail {
+  position: absolute;
+  left: 5%;
+  top: 85px;
+  width: 18.5%;
+  z-index: 4;
+  font:
+    400 16px/1.4 Instrument,
+    sans-serif;
+  opacity: var(--detail);
+  transform: translateY(calc((1 - var(--detail)) * 12px));
+  pointer-events: none;
+  visibility: hidden;
+}
+.company-row.is-open .company-detail {
+  pointer-events: auto;
+  visibility: visible;
+}
+.company-detail p + p {
+  margin-top: 12px;
+}
+.company-place {
+  opacity: 0.75;
+  font-size: 14px;
+}
+.company-detail .company-description {
+  margin-top: 24px;
+  max-width: 230px;
+}
+.company-detail a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
+  padding-bottom: 5px;
+  margin-top: 27px;
+  font-size: 15px;
+}
+.company-detail a:hover {
+  text-decoration: none;
+  color: var(--field-ink);
+}
+.company-outro {
+  display: block;
+  width: fit-content;
+  margin: 25px 0 0 auto;
+  font-size: 13px;
+  color: #f3f1e3bb;
+}
+.company-outro span {
+  margin-left: 15px;
+}
+.portfolio-turn {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 28;
+  pointer-events: none;
+  overflow: hidden;
+}
+.portfolio-turn canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.motion-ready .portfolio-turn {
+  display: block;
+}
+.motion-ready #companies {
+  z-index: 25;
+  pointer-events: none;
+  padding: 0;
+  visibility: hidden;
+}
+.motion-ready #companies.is-active {
+  pointer-events: auto;
+}
+.motion-ready .company-toolbar {
+  position: absolute;
+  top: 12.4%;
+  left: 3.75%;
+  right: 3.75%;
+  margin: 0;
+}
+.motion-ready #company-world {
+  position: absolute;
+  left: 3.75%;
+  right: 3.75%;
+  top: 15.6%;
+  height: 72%;
+  border-top: 0;
+}
+.motion-ready #company-world:before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: #f3f1e36e;
+}
+.motion-ready .company-row {
+  position: absolute;
+  width: 100%;
+  min-height: 0;
+}
+.motion-ready .company-outro {
+  position: absolute;
+  bottom: 3%;
+  right: 3.75%;
+  margin: 0;
+}
+.motion-ready #companies {
+  --row-text: 43px;
+}
+.motion-ready .company-name {
+  font-size: var(--row-text);
+}
+@media (min-aspect-ratio: 2/1) {
+  .motion-ready #companies {
+    --row-text: 35px;
+  }
+  .motion-ready .company-detail {
+    top: 68px;
+    font-size: 14px;
+  }
+  .motion-ready .company-detail .company-description {
+    margin-top: 12px;
+  }
+  .motion-ready .company-detail a {
+    margin-top: 15px;
+  }
+  .motion-ready .company-number {
+    font-size: 15px;
+  }
+  .motion-ready .company-sector {
+    font-size: 14px;
+  }
+}
+@media (max-width: 899px), (prefers-reduced-motion: reduce) {
+  #company-world {
+    height: auto;
+  }
+  .company-row {
+    height: 108px;
+  }
+  .company-name {
+    left: 28px;
+    font-size: 29px;
+    top: calc(54px * (1 - var(--open)) + 32px * var(--open));
+  }
+  .company-number {
+    left: 0;
+    font-size: 10px;
+    top: calc(54px * (1 - var(--open)) + 32px * var(--open));
+  }
+  .company-sector {
+    display: none;
+  }
+  .company-plus {
+    width: 17px;
+    height: 17px;
+    top: calc(54px * (1 - var(--open)) + 32px * var(--open));
+  }
+  .company-plus i {
+    width: 17px;
+    top: 8px;
+  }
+  .company-aperture {
+    left: calc(47% * (1 - var(--open)));
+    width: calc(44% + var(--open) * 56%);
+  }
+  .company-detail {
+    left: 28px;
+    top: 63px;
+    width: 80%;
+    font-size: 13px;
+  }
+  .company-detail .company-place {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .company-detail .company-description {
+    margin-top: 10px;
+    max-width: none;
+  }
+  .company-detail a {
+    margin-top: 12px;
+    font-size: 13px;
+  }
+  .company-toolbar h2.overline {
+    font-size: 10px;
+  }
+  .company-toolbar .index-button {
+    font-size: 12px;
+    max-width: 140px;
+    text-align: right;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .company-aperture img {
+    transition: none;
+  }
+}

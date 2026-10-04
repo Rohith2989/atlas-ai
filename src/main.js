@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import "./styles.css";
-import { mountPortfolio, layoutPortfolio, setActiveCompany, currentCompany, featured } from './portfolio';
+import { mountPortfolio, resetPortfolio, syncPortfolio, appendPortfolio } from './portfolio';
 import { mountApproach, appendApproach, syncApproach, resetApproach, approachDuration, approachStops, approachNames } from './approach';
 import { mountBeliefs, appendBeliefs, syncBeliefs, resetBeliefs, beliefsNames } from './beliefs';
 import { mountClosing } from './closing';
@@ -15,14 +15,14 @@ const canvas = document.createElement("canvas").getContext("2d");
 let timeline, trigger, context, lenis, resizeTimer;
 let lastWidth = 0,
   lastHeight = 0;
-const galleryStart = 35.6, galleryDuration = 9;
-const approachStart = galleryStart + galleryDuration + 2.4;
+const approachStart = 39.7;
 const beliefsStart = approachStart + approachDuration;
 mountPortfolio();
 mountApproach();
 mountBeliefs();
 function syncScenes() {
   if (!timeline) return;
+  syncPortfolio(timeline.time(),33.2,37.2,approachStart);
   syncApproach(timeline.time(),approachStart);
   syncBeliefs(timeline.time(),beliefsStart);
 }
@@ -92,11 +92,11 @@ function build() {
   document.getElementById("companies").inert = false;
   document.getElementById("explore").inert = false;
   document.getElementById('hero').inert=false;
-  document.querySelectorAll('.company-frame').forEach(e=>e.inert=false);
   resetApproach();
   resetBeliefs();
   strips();
   fitType();
+  resetPortfolio(desktop);
   if (!desktop) {
     document
       .querySelectorAll(".strip")
@@ -104,7 +104,6 @@ function build() {
     return;
   }
   const y = (n) => (n * H) / 1000;
-  layoutPortfolio(H);
   document.getElementById('people').inert=true;
   document.getElementById('thesis').inert=true;
   document.getElementById('companies').inert=true;
@@ -146,6 +145,9 @@ function build() {
       { backgroundColor: "#256C50", color: "#F3F1E3", duration: 2.5, ease: "sine.inOut" },
       3.8,
     );
+    // One continuous opaque field prevents antialiasing seams between the
+    // five hero reveal masks once they have covered the page.
+    tl.set('#substrate',{backgroundColor:'#256C50'},6.6);
     tl.to(
       "#hero-main .type-move",
       { y: y(-430), duration: 1.5, ease: "power3.in" },
@@ -412,21 +414,10 @@ function build() {
       31.1,
     );
     tl.to({}, { duration: 1.2 }, 32);
-    // Preserve coordinates as the thesis photographs join the moving portfolio.
-    tl.to('#edge,#deep,#thesis-copy,#criteria,#thesis-kicker,#all-companies', {y:'-=65',opacity:0,duration:1.8,stagger:.07,ease:'power2.in'},33.2);
-    tl.set('#companies', {opacity:1},34.4);
-    tl.set('#science,#material', {opacity:0},34.4);
-    tl.to('#biology', {x:750,y:-H*.45,opacity:0,duration:2,ease:'power2.in'},33.7);
-    tl.fromTo('.company-toolbar,.company-sequence', {opacity:0,y:18}, {opacity:1,y:0,duration:1.15,stagger:.15,ease:'power3.out'},35);
-    tl.to('#company-world', {x:-(featured.length-2)*660,y:-(featured.length-2)*H*.30,duration:galleryDuration,ease:'none'},galleryStart);
-    // Settle on 8x before carrying its diagonal into the portrait's grain reveal.
-    tl.to({}, {duration:2.4}, galleryStart + galleryDuration);
-    const finalX=-(featured.length-2)*660, finalY=-(featured.length-2)*H*.30;
-    tl.set('#companies',{backgroundColor:'transparent'},approachStart);
+    // The upper scene is printed onto the front of six curved surfaces.
+    // The same scroll clock turns them into the real, accessible portfolio.
+    appendPortfolio(tl,H,33.2,37.2,approachStart);
     tl.to('.header',{backgroundColor:'rgba(37,108,80,0)',duration:.4,ease:'none'},approachStart+.4);
-    tl.to('#company-world',{x:finalX-280,y:finalY-H*.52,opacity:0,duration:1.15,ease:'power2.inOut'},approachStart);
-    tl.to('.company-toolbar,.company-sequence',{opacity:0,y:-18,duration:.65,ease:'power2.in'},approachStart);
-    tl.to('#companies',{opacity:0,duration:.45,ease:'sine.inOut'},approachStart+.7);
     appendApproach(tl,H,approachStart);
     tl.to('#approach', {opacity:0,y:-H*.035,duration:.95,ease:'sine.inOut'},beliefsStart);
     tl.to('.header', {backgroundColor:'#256C50',duration:.6,ease:'sine.inOut'},beliefsStart);
@@ -435,7 +426,7 @@ function build() {
     tl.addLabel("hero", 0)
       .addLabel("people", 16.5)
       .addLabel("thesis", 32)
-      .addLabel("companies", 35.5);
+      .addLabel("companies", 38.2);
     trigger = ScrollTrigger.create({
       trigger: "#viewport",
       pin: true,
@@ -448,14 +439,10 @@ function build() {
       onRefresh: syncScenes,
       onUpdate(self) {
         const t = self.progress * tl.duration();
-        document.getElementById("thesis").inert = t < 18.4 || t > 34.4;
+        document.getElementById("thesis").inert = t < 18.4 || t > 33.2;
         document.getElementById("people").inert = t < 10 || t > 21;
         document.getElementById("explore").inert = t > 6;
         document.getElementById('hero').inert=t>6;
-        const galleryActive=t>=34.4 && t<approachStart+1.3;
-        document.getElementById('companies').inert=!galleryActive;
-        document.getElementById('companies').classList.toggle('is-active',galleryActive);
-        if(galleryActive) setActiveCompany(1+Math.round(Math.max(0,Math.min(1,(t-galleryStart)/galleryDuration))*(featured.length-2)));
       },
     });
     tl.time(previous ? previous * tl.duration() : 2.5);
@@ -472,7 +459,7 @@ function applyInitialScene() {
   if (!trigger) {
     const frame = /^approach-frame-([1-6])$/.exec(hash);
     const thesisFrame = /^thesis-frame-([1-6])$/.exec(hash);
-    const mobileId = frame ? 'approach-' + approachNames[Math.floor((Number(frame[1])-1)/2)] : thesisFrame ? beliefsNames[Math.floor((Number(thesisFrame[1])-1)/2)] : hash;
+    const mobileId = /^portfolio-turn-[1-5]$/.test(hash) ? 'companies' : frame ? 'approach-' + approachNames[Math.floor((Number(frame[1])-1)/2)] : thesisFrame ? beliefsNames[Math.floor((Number(thesisFrame[1])-1)/2)] : hash;
     document.getElementById(mobileId)?.scrollIntoView({block:'start',behavior:'instant'});
     return;
   }
@@ -492,12 +479,6 @@ function applyInitialScene() {
   lenis.scrollTo(destination, {immediate:true,force:true});
   timeline.time(time);
   syncScenes();
-}
-function goToCompany(direction) {
-  if(!trigger) return;
-  const index=Math.max(1,Math.min(featured.length-1,currentCompany()+direction));
-  const time=galleryStart+(index-1)/(featured.length-2)*galleryDuration;
-  lenis.scrollTo(trigger.start+time/timeline.duration()*(trigger.end-trigger.start),{duration:1.1});
 }
 function navigate(a, event) {
   if (!trigger) return;
@@ -532,8 +513,6 @@ Promise.all([
     // A cold-load scroll can otherwise be clamped to the pre-pin document height.
     requestAnimationFrame(() => requestAnimationFrame(applyInitialScene));
     window.addEventListener('hashchange', applyInitialScene);
-    document.querySelector('[data-company-prev]').addEventListener('click',()=>goToCompany(-1));
-    document.querySelector('[data-company-next]').addEventListener('click',()=>goToCompany(1));
     document.querySelectorAll('[data-approach-stop]').forEach(b=>b.addEventListener('click',event=>{
       if(!trigger || !lenis)return;
       event.preventDefault();
@@ -598,4 +577,4 @@ Promise.all([
       once: true,
     });
   })
-  .catch(() => root.classList.remove("motion-ready"));
+  .catch(error => { console.error('Atlas motion initialization failed:',error); root.classList.remove("motion-ready"); });
