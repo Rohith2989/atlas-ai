@@ -1,0 +1,17 @@
+{
+  "id": "spiraldot-health",
+  "order": 7,
+  "name": "Spiraldot Health",
+  "sector": "Precision oncology",
+  "country": "United States",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/spiraldot-health",
+  "cover": "/portfolio/spiraldot-health-cover.webp",
+  "logo": "/portfolio/spiraldot-health-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/spiraldot-health",
+    "cover": "https://static.wixstatic.com/media/00bf0d_a7c8fb876b5b4c5bbfe99ef06ea5e440~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_f1a0d7a7dca848349028a754f544b711~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
