@@ -1,0 +1,17 @@
+{
+  "id": "viantis",
+  "order": 20,
+  "name": "Viantis",
+  "sector": "Antiviral biotechnology",
+  "country": "Italy",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/viantis",
+  "cover": "/portfolio/viantis-cover.webp",
+  "logo": "/portfolio/viantis-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/viantis",
+    "cover": "https://static.wixstatic.com/media/00bf0d_9a812a28bad14edeabe6b997fe711836~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_afabab5668674b9e9c1f02156e07c564~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
