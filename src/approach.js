@@ -110,8 +110,9 @@ export function syncApproach(time, start) {
   if (!section || !document.documentElement.classList.contains('motion-ready')) return;
   current = (time-start) / approachDuration;
   if (current >= -.7) prepare();
-  const visible = current >= .002;
+  const visible = current >= .002 && current < 1 + .95 / approachDuration;
   section.inert = !visible;
+  section.setAttribute('aria-hidden',String(!visible));
   section.classList.toggle('is-active',visible);
   const state = sampleApproach(current);
   renderer?.draw(state);
@@ -145,6 +146,7 @@ export function resetApproach() {
   if (!section) return;
   stage.dataset.renderer='fallback';
   section.inert=false;
+  section.removeAttribute('aria-hidden');
   section.classList.remove('is-active');
   section.removeAttribute('data-chapter');
   section.removeAttribute('data-progress');

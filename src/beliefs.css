@@ -1,0 +1,118 @@
+@font-face{font-family:AtlasItalic;src:url('/assets/beliefs/bodoni-italic.ttf') format('truetype');font-style:italic;font-weight:400;font-display:swap}
+#investment-thesis{background:var(--field);color:var(--field-ink);padding:64px 5% 80px;overflow:clip}
+.beliefs-composition{position:relative;transform-origin:0 0;max-width:1380px;margin:auto}
+.belief-chapter{position:relative;padding:45px 0 64px;scroll-margin-top:24px}
+.belief-shared,.beliefs-navigation,.belief-desktop-break{display:none}
+.belief-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.24em;margin-bottom:28px}
+.belief-statement{font-size:clamp(30px,5.7vw,72px);font-weight:400;line-height:1.28;letter-spacing:-.043em}
+.belief-line{display:inline}
+.belief-line:after{content:' '}
+.belief-photo{position:relative;display:inline-block;overflow:hidden;vertical-align:middle;width:clamp(66px,16vw,160px);transform-origin:center;isolation:isolate}
+.belief-photo img{position:absolute;max-width:none;height:auto}
+[data-photo=pair]{aspect-ratio:365/395}
+[data-photo=pair] img{width:434.52%;left:-123.29%;top:-18.99%}
+[data-photo=book]{aspect-ratio:486/290}
+[data-photo=book] img{width:326.34%;left:-226.34%;top:-148.28%}
+[data-photo=walker]{aspect-ratio:280/365;width:clamp(55px,12vw,125px)}
+[data-photo=walker] img{width:566.43%;left:-25%;top:-142.47%}
+[data-photo=gripper]{aspect-ratio:395/220}
+[data-photo=gripper] img{width:401.52%;left:-124.05%;top:-77.27%}
+[data-photo=lenses]{aspect-ratio:350/210}
+[data-photo=lenses] img{width:453.14%;left:-340%;top:-169.05%}
+[data-photo=engineer]{aspect-ratio:260/290}
+[data-photo=engineer] img{width:610%;left:-271.15%;top:-170.34%}
+.belief-note{font:italic 400 clamp(25px,3.1vw,42px)/1.2 AtlasItalic,Georgia,serif;color:var(--accent);letter-spacing:-.025em;margin:30px 0 27px;max-width:900px}
+.belief-support{font-size:clamp(17px,2.1vw,23px);line-height:1.45;max-width:970px;letter-spacing:-.015em}
+#belief-pillars-title{font-size:clamp(35px,5.1vw,65px);font-weight:400;line-height:1.08;letter-spacing:-.043em;max-width:900px}
+.belief-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:45px 28px;margin-top:45px}
+.belief-card{position:relative;padding:18px 20px 25px 24px}
+.belief-rule-h,.belief-rule-v{position:absolute;background:#f3f1e380;transform-origin:0 0}
+.belief-rule-h{height:1px;top:0;left:0;width:100%}
+.belief-rule-v{width:1px;top:0;bottom:0;left:0}
+.belief-number{position:absolute;left:24px;top:20px;letter-spacing:.25em;font-size:11px}
+.belief-card-image{width:100%;height:220px;object-fit:contain;margin-bottom:15px}
+.belief-card h3{font-weight:400;font-size:26px;line-height:1.1;letter-spacing:-.04em;margin:0 0 18px}
+.belief-card-body{font-size:17px;line-height:1.45;letter-spacing:-.016em}
+.belief-contact{display:inline-flex;align-items:center;gap:24px;margin-top:12px;border-bottom:1px solid #f3f1e375;padding:12px 0;font-size:17px}
+.belief-contact span{font-size:24px}
+.motion-ready #investment-thesis{position:absolute;inset:0;z-index:25;padding:0;opacity:0;pointer-events:none;background:var(--field)}
+.motion-ready #investment-thesis.is-active{pointer-events:auto}
+.motion-ready #viewport:has(#investment-thesis.is-active){background:var(--field)}
+.motion-ready .beliefs-composition{position:absolute;max-width:none;margin:0;overflow:hidden}
+.motion-ready .belief-chapter{position:absolute;inset:0;padding:0;pointer-events:none}
+.motion-ready .belief-shared{display:block;position:absolute;left:180px;top:244px;font-size:82px;line-height:1.13;letter-spacing:-.043em}
+.motion-ready .belief-mobile-we{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.motion-ready .belief-eyebrow{position:absolute;left:121px;top:141px;font-size:14px;letter-spacing:.30em;margin:0}
+.motion-ready .belief-statement{font-size:82px;line-height:1.13;font-weight:400}
+.motion-ready .belief-line{position:absolute;white-space:nowrap}
+.motion-ready .belief-line:after{content:none}
+.motion-ready [data-line=meet]{left:324px;top:244px}
+.motion-ready [data-line=teams]{left:767px;top:244px}
+.motion-ready [data-line=beginning]{left:397px;top:364px}
+.motion-ready [data-line=builders]{left:180px;top:479px}
+.motion-ready [data-line=programs]{left:390px;top:620px}
+.motion-ready [data-line=take]{left:322px;top:244px}
+.motion-ready [data-line=risk]{left:858px;top:244px}
+.motion-ready [data-line=complexity]{left:288px;top:402px}
+.motion-ready [data-line=advantage]{left:183px;top:551px}
+.motion-ready [data-line=worth]{left:921px;top:551px}
+.motion-ready .belief-photo{position:absolute;z-index:2}
+.motion-ready [data-photo=pair]{left:530px;top:100px;width:239.8px}
+.motion-ready [data-photo=book]{left:1090px;top:447px;width:340.2px}
+.motion-ready [data-photo=walker]{left:220px;top:551px;width:162.4px}
+.motion-ready [data-photo=gripper]{left:518px;top:190px;width:308.1px}
+.motion-ready [data-photo=lenses]{left:1190px;top:357px;width:280px}
+.motion-ready [data-photo=engineer]{left:715px;top:493px;width:200.2px}
+.motion-ready .belief-mask{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .018em .12em;margin:0 -.018em -.12em}
+.motion-ready .belief-word{display:inline-block}
+.motion-ready .belief-note{position:absolute;font-size:45px;white-space:nowrap;max-width:none;margin:0}
+.motion-ready .belief-people .belief-note{left:460px;top:733px}
+.motion-ready .belief-risk .belief-note{left:302px;top:706px}
+.motion-ready .belief-support{position:absolute;left:183px;top:834px;font-size:24px;line-height:1.36;max-width:1260px;width:1260px}
+.motion-ready .belief-risk .belief-support{top:802px}
+.motion-ready .belief-pillars .belief-eyebrow{left:120px;top:132px}
+.motion-ready #belief-pillars-title{position:absolute;left:120px;top:170px;max-width:none;font-size:65px;white-space:nowrap}
+.motion-ready .belief-pillars .belief-note{right:120px;top:200px;font-size:30px}
+.motion-ready .belief-cards{display:contents;margin:0}
+.motion-ready .belief-card{position:absolute;width:300px;padding:0 24px}
+.motion-ready .belief-card[data-pillar="0"]{left:120px;top:288px}
+.motion-ready .belief-card[data-pillar="1"]{left:460px;top:328px}
+.motion-ready .belief-card[data-pillar="2"]{left:807px;top:288px}
+.motion-ready .belief-card[data-pillar="3"]{left:1155px;top:328px}
+.motion-ready .belief-rule-v{bottom:-22px}
+.motion-ready .belief-number{font-size:16px;top:22px}
+.motion-ready .belief-card-image{position:absolute;left:14px;top:40px;width:272px;height:207px;margin:0}
+.motion-ready [data-pillar="3"] .belief-card-image{left:32px;top:11px;width:235px;height:237px}
+.motion-ready .belief-card h3{margin:251px 0 19px;font-size:35px;line-height:1.04;white-space:nowrap}
+.motion-ready .belief-card-body{font-size:23px;line-height:1.31}
+.motion-ready .belief-body-mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.motion-ready .belief-body-mask>span{display:block}
+.motion-ready .beliefs-navigation{position:absolute;bottom:28px;left:120px;right:120px;display:flex;align-items:center;gap:30px;font-size:13px;z-index:4}
+.beliefs-navigation a{padding:12px 0;opacity:.5;transition:opacity .2s}
+.beliefs-navigation a[aria-current],.beliefs-navigation a:hover,.beliefs-navigation a:focus-visible{opacity:1}
+.belief-progress{flex:1;height:1px;background:#f3f1e33a;position:relative}
+.belief-progress i{position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(0)}
+.belief-count{font-size:12px;letter-spacing:.2em}
+.motion-ready .belief-contact{position:absolute;right:120px;bottom:69px;margin:0;padding:5px 0;font-size:20px;border:0;gap:16px;z-index:4}
+.motion-ready .belief-contact span{font-size:22px}
+@media(max-width:599px){
+  #investment-thesis{padding:30px 6% 50px}
+  .belief-chapter{padding-bottom:52px}
+  .belief-statement{font-size:34px;line-height:1.3}
+  .belief-line[data-line=beginning],.belief-line[data-line=builders],.belief-line[data-line=complexity]{display:block;margin-top:12px}
+  .belief-photo{margin:0 4px}
+  .belief-note{font-size:29px}
+  .belief-cards{grid-template-columns:1fr;gap:25px}
+  .belief-card{padding:22px 20px 28px 24px}
+  .belief-card-image{height:205px}
+  .belief-card-body{font-size:18px;max-width:460px}
+  .belief-card h3{font-size:30px}
+}
+@media(max-width:899px) and (prefers-reduced-motion:no-preference){
+  .belief-chapter{transition:opacity .7s ease,translate .9s cubic-bezier(.2,.7,.25,1)}
+  .belief-chapter:not(.is-in-view){opacity:.35;translate:0 16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .belief-chapter{transition:none}
+  .belief-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+}

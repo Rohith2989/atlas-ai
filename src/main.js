@@ -3,7 +3,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import "./styles.css";
 import { mountPortfolio, layoutPortfolio, setActiveCompany, currentCompany, featured } from './portfolio';
-import { mountApproach, appendApproach, syncApproach, resetApproach, approachStops, approachNames } from './approach';
+import { mountApproach, appendApproach, syncApproach, resetApproach, approachDuration, approachStops, approachNames } from './approach';
+import { mountBeliefs, appendBeliefs, syncBeliefs, resetBeliefs, beliefsNames } from './beliefs';
 gsap.registerPlugin(ScrollTrigger);
 const root = document.documentElement;
 // Browser hash restoration must not scroll the nested, pinned artboard itself.
@@ -15,8 +16,10 @@ let lastWidth = 0,
   lastHeight = 0;
 const galleryStart = 35.6, galleryDuration = 9;
 const approachStart = galleryStart + galleryDuration + 2.4;
+const beliefsStart = approachStart + approachDuration;
 mountPortfolio();
 mountApproach();
+mountBeliefs();
 function fitType() {
   canvas.font = "900 500px Bodoni";
   canvas.letterSpacing = "-7.5px";
@@ -85,6 +88,7 @@ function build() {
   document.getElementById('hero').inert=false;
   document.querySelectorAll('.company-frame').forEach(e=>e.inert=false);
   resetApproach();
+  resetBeliefs();
   strips();
   fitType();
   if (!desktop) {
@@ -418,7 +422,13 @@ function build() {
     tl.to('.company-toolbar,.company-sequence',{opacity:0,y:-18,duration:.65,ease:'power2.in'},approachStart);
     tl.to('#companies',{opacity:0,duration:.45,ease:'sine.inOut'},approachStart+.7);
     appendApproach(tl,H,approachStart);
-    tl.eventCallback('onUpdate',()=>syncApproach(tl.time(),approachStart));
+    tl.to('#approach', {opacity:0,y:-H*.035,duration:.95,ease:'sine.inOut'},beliefsStart);
+    tl.to('.header', {backgroundColor:'#256C50',duration:.6,ease:'sine.inOut'},beliefsStart);
+    appendBeliefs(tl,H,beliefsStart);
+    tl.eventCallback('onUpdate',()=>{
+      syncApproach(tl.time(),approachStart);
+      syncBeliefs(tl.time(),beliefsStart);
+    });
     tl.addLabel("hero", 0)
       .addLabel("people", 16.5)
       .addLabel("thesis", 32)
@@ -456,8 +466,14 @@ function applyInitialScene() {
   const hash = location.hash.slice(1);
   if (!trigger) {
     const frame = /^approach-frame-([1-6])$/.exec(hash);
-    const mobileId = frame ? 'approach-' + approachNames[Math.floor((Number(frame[1])-1)/2)] : hash;
+    const thesisFrame = /^thesis-frame-([1-6])$/.exec(hash);
+    const mobileId = frame ? 'approach-' + approachNames[Math.floor((Number(frame[1])-1)/2)] : thesisFrame ? beliefsNames[Math.floor((Number(thesisFrame[1])-1)/2)] : hash;
     document.getElementById(mobileId)?.scrollIntoView({block:'start',behavior:'instant'});
+    return;
+  }
+  if (hash === 'contact') {
+    lenis.resize();
+    lenis.scrollTo('#contact', {immediate:true,force:true});
     return;
   }
   const alias = [...document.querySelectorAll('[data-scene]')].find(a => a.getAttribute('href') === location.hash)?.dataset.scene;
@@ -491,6 +507,7 @@ function navigate(a, event) {
 Promise.all([
   document.fonts.load("900 500px Bodoni"),
   document.fonts.load("500 18px Instrument"),
+  document.fonts.load('italic 400 45px AtlasItalic'),
 ])
   .then(() => {
     if (!reduced.matches) {
@@ -533,19 +550,20 @@ Promise.all([
       .querySelectorAll("[data-scene]")
       .forEach((a) => a.addEventListener("click", (e) => navigate(a, e)));
     document
-      .querySelector('a[href="#contact"]')
-      .addEventListener("click", (e) => {
+      .querySelectorAll('a[href="#contact"]')
+      .forEach(a=>a.addEventListener("click", (e) => {
         if (lenis) {
           e.preventDefault();
+          history.replaceState(null,'','#contact');
           lenis.scrollTo("#contact", { duration: 1.15 });
         }
-      });
+      }));
     document.querySelector(".skip").addEventListener("click", (e) => {
       if (trigger) {
         e.preventDefault();
         lenis.scrollTo(
           trigger.start +
-            (timeline.labels.thesis / timeline.duration()) *
+            (timeline.labels['investment-thesis'] / timeline.duration()) *
               (trigger.end - trigger.start),
           { duration: 0.8 },
         );
