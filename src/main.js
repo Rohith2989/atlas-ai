@@ -117,7 +117,7 @@ function build() {
     );
     tl.to(
       ".header",
-      { backgroundColor: "#FF5D35", duration: 2.5, ease: "sine.inOut" },
+      { backgroundColor: "#256C50", color: "#F3F1E3", duration: 2.5, ease: "sine.inOut" },
       3.8,
     );
     tl.to(

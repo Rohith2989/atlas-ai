@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#FF5D35" />
+    <meta name="theme-color" content="#256C50" />
     <title>Atlas AI VB Fund — Uncommon. From day one.</title>
     <meta
       name="description"
@@ -26,14 +26,14 @@
         href="#hero"
         data-scene="hero"
         aria-label="Atlas AI VB Fund home"
-        ><img src="/assets/atlas-header.svg" alt="Atlas SGR" /><span
+        ><span class="atlas-lockup"><img src="/assets/atlas-header.svg" alt="Atlas SGR" /></span><span
           class="brand-rule"
         ></span
         ><span class="fund">AI VB FUND</span></a
       >
       <nav aria-label="Main navigation">
         <a href="#thesis" data-scene="thesis">Manifesto</a
-        ><a href="#thesis" data-scene="companies">Companies</a
+        ><a href="#companies" data-scene="companies">Companies</a
         ><a href="#people" data-scene="people">People</a
         ><a href="#contact" class="arrow" aria-label="Get in touch">↗</a>
       </nav>
@@ -223,9 +223,8 @@
             </figure>
             <a
               id="all-companies"
-              href="https://www.atlasaivbfund.com/portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#companies"
+              data-scene="companies"
               >Explore companies ↗</a
             >
           </section>
@@ -243,7 +242,7 @@
       </p>
       <div class="footer-meta">
         <div>
-          <img src="/assets/atlas-header.svg" alt="Atlas SGR" />
+          <span class="atlas-lockup"><img src="/assets/atlas-header.svg" alt="Atlas SGR" /></span>
           <p>AI VB FUND</p>
         </div>
         <nav aria-label="Further information">

@@ -12,9 +12,9 @@
 }
 :root {
   --paper: #f5f6f3;
-  --orange: #ff5d35;
-  --plum: #351039;
-  --acid: #edff75;
+  --field: #256c50;
+  --field-ink: #f3f1e3;
+  --accent: #cbbde5;
   --ink: #222221;
 }
 * {
@@ -28,7 +28,7 @@ body {
   font:
     16px/1.4 Instrument,
     sans-serif;
-  color: var(--plum);
+  color: var(--ink);
   background: var(--paper);
 }
 figure,
@@ -115,7 +115,7 @@ img {
 }
 #people,
 #thesis {
-  background: var(--orange);
+  background: var(--field);
   padding-top: 45px;
   padding-bottom: 65px;
 }
@@ -187,7 +187,7 @@ img {
   justify-content: space-between;
   gap: 16px;
   padding-top: 18px;
-  border-top: 1px solid #35103925;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
   font-size: 13px;
 }
 .overline {
@@ -238,7 +238,7 @@ img {
   display: block;
   width: 27px;
   height: 2px;
-  background: var(--acid);
+  background: var(--accent);
   margin-top: 10px;
 }
 #edge,
@@ -311,22 +311,22 @@ img {
     130deg,
     currentColor 0%,
     currentColor 40%,
-    color-mix(in srgb, #632b49 40%, currentColor) 47%,
-    #632b49 50%,
-    color-mix(in srgb, #632b49 40%, currentColor) 53%,
+    color-mix(in srgb, var(--accent) 40%, currentColor) 47%,
+    var(--accent) 50%,
+    color-mix(in srgb, var(--accent) 40%, currentColor) 53%,
     currentColor 60%,
     currentColor 100%
   );
 }
 #contact {
   padding: 80px 4% 28px;
-  background: var(--orange);
+  background: var(--field);
 }
 .footer-title {
   font-family: Bodoni, serif;
   font-weight: 900;
-  font-size: clamp(48px, 7vw, 110px);
-  letter-spacing: -0.06em;
+  font-size: clamp(30px, 3.3vw, 52px);
+  letter-spacing: -0.04em;
   line-height: 1.05;
 }
 .footer-meta {
@@ -334,7 +334,7 @@ img {
   align-items: flex-end;
   justify-content: space-between;
   gap: 30px;
-  border-top: 1px solid #35103930;
+  border-top: 1px solid color-mix(in srgb, var(--field-ink) 25%, transparent);
   margin-top: 65px;
   padding-top: 24px;
   font-size: 13px;
@@ -417,7 +417,7 @@ img {
 .motion-ready #substrate i {
   width: 20.05%;
   height: 100%;
-  background: var(--orange);
+  background: var(--field);
   clip-path: inset(100% 0 0 0);
 }
 .motion-ready .media {
@@ -701,3 +701,10 @@ img {
     scroll-behavior: auto !important;
   }
 }
+
+/* Atlas c02 — Malachite. The hero keeps its paper background. */
+#people, #thesis, #companies, #proof, #contact { color: var(--field-ink); }
+#hero-companies { color: var(--ink); }
+.atlas-lockup { display: block; width: 151px; height: 44px; background: currentColor; mask: url('/assets/atlas-header.svg') center / contain no-repeat; }
+.atlas-lockup img { width: 100%; height: 100%; opacity: 0; }
+@media (max-width:600px) { .atlas-lockup { width:115px; height:36px; } }
