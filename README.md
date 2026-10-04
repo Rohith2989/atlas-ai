@@ -44,7 +44,13 @@ See `docs/APPROACH.md` for choreography, asset provenance and implementation det
 
 After the wafer, two text-and-cutout compositions lead into the four strategic investment pillars on the same pinned scroll timeline. Words reveal inside masks, the first word holds through a continuous image handoff, and the four open columns draw in before their paragraphs arrive. Each complete thought has a reading hold. Six new transparent artwork assets are local and decode before the section enters.
 
-Open `/#investment-thesis` or use Manifesto. The reading holds are `/#thesis-people`, `/#thesis-risk`, and `/#investment-pillars`; the six preview poses are `/#thesis-frame-1` through `/#thesis-frame-6`. Phones and reduced-motion preferences use natural document flow. See `docs/BELIEFS.md` for timing, layout and provenance. The sequence currently leads into the existing Contact footer.
+Open `/#investment-thesis` or use Manifesto. The reading holds are `/#thesis-people`, `/#thesis-risk`, and `/#investment-pillars`; the six preview poses are `/#thesis-frame-1` through `/#thesis-frame-6`. Phones and reduced-motion preferences use natural document flow. See `docs/BELIEFS.md` for timing, layout and provenance. The sequence leads into the contact invitation and Atlas footer.
+
+## Contact and footer
+
+Open `/#contact` for the contact invitation or `/#site-footer` for the closing Atlas mark. At the owner's request, “Let’s talk” opens the original Atlas website, which contains its contact form. This prototype does not collect or send visitor data, so it needs no mail service, credentials or environment variables.
+
+The footer preserves the original Atlas SGR logo geometry at page width. It rises through a mask with a restrained lilac light sweep as it enters view; reduced-motion visitors see the complete static mark. Navigation returns to settled chapters in the page, and legal links open the original Atlas policies. The contact area and footer use normal document flow after the pinned thesis sequence.
 
 ## Motion and accessibility
 

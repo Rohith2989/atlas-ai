@@ -43,6 +43,15 @@
 - Existing five Node motion/renderer tests and the Vite production build passed. These unit tests cover the prior approach renderer; the new DOM choreography was checked through actual browser interactions.
 - Main navigation now links Manifesto to the complete investment thesis. The new sequence ends in the existing Contact footer; the later Get in Touch form is not part of this change.
 
+## Contact invitation and Atlas footer
+
+- Added the requested contact handoff: “Let’s talk” links to the original Atlas website in a new tab. No data-entry fields, submission endpoint, credentials or simulated success state are present.
+- Reviewed the contact and footer at 1100 × 800 and 390 × 844. The phone layout stacks the invitation, keeps the original wordmark fully visible and has no horizontal overflow.
+- Verified the footer's Back to the beginning link returns to `#hero`. Direct `#contact` and `#site-footer` loads resolve after the main pinned sequence. Original privacy, cookie, complaints and whistleblowing links were checked against Atlas's site.
+- The original logo file is reused without changing its geometry. The reveal and light sweep are separate scroll animations outside the pinned main sequence; CSS and JS both provide a reduced-motion fallback.
+- Vite production build and all five existing motion/renderer tests passed. No browser errors or warnings were recorded in the phone review. Desktop proof images are `docs/screenshots/contact-desktop.jpg` and `docs/screenshots/footer-desktop.jpg`.
+- The proposed company-gallery replacement is a separate visual concept for review. The current six-company implementation remains available until the new design is selected.
+
 ## Limits
 
 This is visual and functional browser verification, focused automated tests and a production build. Reduced-motion fallback is implemented; the browser review did not emulate the operating system setting. Physical phones and Safari have not been tested. Desktop screenshots capture the visible in-app browser panel; its right edge can crop the larger test viewport. Malachite remains selected. Historical checks above describe the site at their respective implementation stages; the approved approach section supersedes the earlier portfolio-to-footer ending.
