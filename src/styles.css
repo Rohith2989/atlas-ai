@@ -170,15 +170,6 @@ img {
   paint-order: stroke fill;
   line-height: 1;
 }
-#hero .ink { -webkit-text-stroke: 0; z-index: 1; }
-.motion-ready #hero-main .type-move::before {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  top: var(--glyph-top);
-  height: var(--glyph-height);
-  background: var(--paper);
-}
 #hero-sub {
   height: 14vw;
   width: 60%;

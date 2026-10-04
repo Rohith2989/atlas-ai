@@ -30,24 +30,15 @@ function fitType() {
       1,
       m.actualBoundingBoxLeft + m.actualBoundingBoxRight,
     );
-    const isHero = Boolean(el.closest('#hero'));
-    const fitX = (slot.clientWidth - 5) / width,
-      fitY = (slot.clientHeight - 5) / cap;
-    // Keep the hero's original letter proportions at every viewport aspect ratio.
-    const sx = isHero ? Math.min(fitX, fitY) : fitX,
-      sy = isHero ? sx : fitY,
-      offsetY = isHero ? (slot.clientHeight - cap * sy) / 2 : 0;
-    if (isHero) {
-      slot.style.setProperty('--glyph-top', offsetY - 8 + 'px');
-      slot.style.setProperty('--glyph-height', cap * sy + 16 + 'px');
-    }
+    const sx = (slot.clientWidth - 5) / width,
+      sy = (slot.clientHeight - 5) / cap;
     Object.assign(el.style, {
       fontSize: "500px",
       width: width + "px",
       height: cap + "px",
       lineHeight: cap + "px",
       transform: "scale(" + sx + "," + sy + ")",
-      top: offsetY - top * sy + "px",
+      top: -top * sy + "px",
       left: m.actualBoundingBoxLeft * sx + "px",
     });
   });
