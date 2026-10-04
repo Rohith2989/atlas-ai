@@ -13,16 +13,18 @@ handoff. The sequence uses the approved 1.7× website pace (approximately 3.5s).
 
 ## Loading behavior
 
-- Plays on the first home-page visit per tab session. `?intro=replay#hero` replays
-  for review without clearing browser storage.
-- Direct chapter links and reduced-motion preferences bypass the entrance.
+- Plays on every home-page load and every reload, including hard reloads. It no
+  longer reads or writes session storage. Ordinary in-page navigation does not
+  restart it. Reloading a chapter reveals that same chapter after the logo lift.
+- Fresh direct chapter links and reduced-motion preferences bypass the entrance.
 - Site fonts/layout and the three hero images prepare during the logo motion.
   Image decode can add at most 1.2s; a settled-logo hold waits for readiness.
 - An independent inline watchdog releases the page after 8s even if the main
   bundle fails. With JavaScript disabled, the overlay is hidden by default.
-- Skip intro and Escape release the page immediately. Focus returns to the
-  header only if the visitor was using the intro control. Background content is
-  inert during the entrance. All temporary transforms/masks/wrappers are removed.
+- No visible skip button is shown. Escape still releases the page immediately.
+  Background content is inert during the entrance. All temporary transforms,
+  masks and wrappers are removed. On mobile chapter reloads where the header is
+  above the viewport, the logo fades away as the existing chapter is revealed.
 - Resize, chapter navigation and a back-forward cache restore release the
   entrance. The site's existing scrolling sequence then owns all page motion.
 

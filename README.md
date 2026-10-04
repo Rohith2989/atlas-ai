@@ -54,12 +54,18 @@ The footer preserves the original Atlas SGR logo geometry at page width. It rise
 
 ## Motion and accessibility
 
-The first home-page visit opens with **The lift**, an approximately 3.5-second
+Each home-page load opens with **The lift**, an approximately 3.5-second
 animation of the original Atlas figure and globe that reveals the live hero and
-lands on the header logo. It runs once per tab session, honors reduced motion,
-and provides Skip intro / Escape. Direct chapter links open immediately. Use
-`/?intro=replay#hero` to review the entrance. See `docs/INTRO.md` for readiness,
+lands on the header logo. Refreshes and hard refreshes replay it, including at a
+chapter bookmark, while ordinary in-page navigation does not. The visible skip
+button is removed; Escape and reduced-motion support remain. Direct chapter
+links open immediately. See `docs/INTRO.md` for readiness,
 failure handling and SVG provenance.
+
+The scrollbar has a rounded 4px visible thumb, with Malachite ink on the white
+hero and ivory on green. Its track matches the page and has no arrows. The native
+drag target stays wider than the visible thumb. Firefox uses its native thin
+variant, and forced-color mode retains system colors.
 
 - Desktop widths of 900px and above use one pinned, reversible scroll sequence.
 - Smaller screens use a complete, naturally scrolling layout.

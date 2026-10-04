@@ -92,6 +92,32 @@
 - Proof frames: `screenshots/intro-resolve.jpg`, `screenshots/intro-unveil.jpg`,
   `screenshots/intro-land.jpg` and `screenshots/intro-mobile.jpg`.
 
+## Thin scrollbar and repeatable entrance
+
+- Added a 4px rounded visible thumb inside a 16px native drag area. Its 6px
+  transparent borders keep it inset from the edge; the track matches the page,
+  with no arrows. Malachite is used on the hero and ivory on the green sections.
+  Desktop theme changes follow the pinned timeline, while natural-flow layouts
+  follow the start of the green content. Native wheel, keyboard and dragging
+  behavior are retained. Firefox has a standard thin-width fallback.
+- Removed the visible Skip intro control and its animation/CSS. Home-page loads
+  and all reloads replay the original logo animation without a session-storage
+  gate. Reloading a section bookmark returns to that section after the reveal.
+  Reduced motion, Escape and the independent timeout release remain supported.
+- Reviewed both scrollbar colors on desktop and the natural-flow phone layout.
+  Computed desktop scrollbar width is 16px with 6px borders on each side, leaving
+  4px of visible ink. Mobile document and scroll widths match at 374px. Repeated
+  chapter reloads displayed the intro and restored the People section; ordinary
+  section navigation did not restart it. No skip button or stale intro locks
+  remained, and no browser console errors or warnings were recorded.
+- All 12 tests and the production build passed. Reload policy is explicitly
+  covered by the boot test, including chapter reloads and reduced motion.
+  Browser testing used regular reloads; hard reload uses the same navigation
+  type in the boot policy. The existing large lazy Three.js chunk advisory is
+  unchanged. Firefox and physical mobile devices were not tested.
+- Proof: `screenshots/scrollbar-hero.jpg`, `screenshots/scrollbar-green.jpg`,
+  `screenshots/scrollbar-mobile.jpg`, `screenshots/intro-without-skip.jpg`.
+
 ## Limits
 
 This is visual and functional browser verification, focused automated tests and a production build. Reduced-motion fallback is implemented; the browser review did not emulate the operating system setting. Physical phones and Safari have not been tested. Desktop screenshots capture the visible in-app browser panel; its right edge can crop the larger test viewport. Malachite remains selected. Historical checks above describe the site at their respective implementation stages; the approved approach section supersedes the earlier portfolio-to-footer ending.

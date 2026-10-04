@@ -120,10 +120,13 @@ export function mountIntro() {
       if (closed || !boot.active) return;
       // Measure the actual mask after responsive layout and ScrollTrigger setup.
       const box = document.querySelector('.atlas-lockup').getBoundingClientRect();
+      const home = !location.hash || location.hash === '#hero';
+      const headerVisible = box.bottom > 0 && box.top < innerHeight;
+      select('#intro-ink')[0].setAttribute('fill', getComputedStyle(document.querySelector('.header')).color);
       const scale = Math.min(box.width / 1676, box.height / 454);
       const target = { x: box.left + (box.width - 1676 * scale) / 2, y: box.top + (box.height - 454 * scale) / 2, scale };
       introContext = gsap.context(() => {
-        document.querySelectorAll('#hero .type-move').forEach(line => {
+        if (home) document.querySelectorAll('#hero .type-move').forEach(line => {
           const wrapper = document.createElement('span');
           wrapper.className = 'intro-line';
           line.before(wrapper);
@@ -134,14 +137,16 @@ export function mountIntro() {
         tl.to(field, { scaleY: 0, svgOrigin: '0 0', duration: .94, ease: 'power3.inOut' }, 3.73);
         tl.to(paper, { y: 0, duration: .94, ease: 'power3.inOut' }, 3.73);
         tl.set(overlay, { attr: { 'data-phase': 'unveil' } }, 4.06);
-        tl.to(layers, { ...target, duration: 1.02, ease: 'expo.inOut' }, 4.32);
-        tl.to(select('.intro-skip'), { opacity: 0, duration: .18 }, 3.65);
+        if (headerVisible) tl.to(layers, { ...target, duration: 1.02, ease: 'expo.inOut' }, 4.32);
+        else tl.to(layers, { opacity: 0, duration: .48, ease: 'power2.inOut' }, 4.12);
+        if (home) {
         tl.fromTo(images, { scale: 1.06, y: 24, clipPath: 'inset(0 0 100% 0)' },
           { scale: 1, y: 0, clipPath: 'inset(0%)', duration: 1.05, stagger: .1, ease: 'power3.out' }, 4.22);
         tl.fromTo(wrappers, { yPercent: 102 }, { yPercent: 0, duration: .85, stagger: .13, ease: 'power3.out' }, 4.63);
         tl.fromTo('.header .brand-rule, .header .fund, .header nav', { opacity: 0, y: 5 },
           { opacity: 1, y: 0, duration: .42, stagger: .06, ease: 'power2.out' }, 5.02);
         tl.fromTo('#explore', { opacity: 0 }, { opacity: 1, duration: .3 }, 5.42);
+        }
         tl.set(overlay, { attr: { 'data-phase': 'land' } }, 5.36);
         tl.to({}, { duration: .18 }, 5.7);
       });

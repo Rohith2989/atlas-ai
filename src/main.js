@@ -7,12 +7,14 @@ import { mountApproach, appendApproach, syncApproach, resetApproach, approachDur
 import { mountBeliefs, appendBeliefs, syncBeliefs, resetBeliefs, beliefsNames } from './beliefs';
 import { mountClosing } from './closing';
 import { mountIntro } from './intro';
+import { mountScrollbar } from './scrollbar';
 gsap.registerPlugin(ScrollTrigger);
 const root = document.documentElement;
 // Browser hash restoration must not scroll the nested, pinned artboard itself.
 history.scrollRestoration = 'manual';
 const reduced = matchMedia("(prefers-reduced-motion: reduce)");
 const intro = mountIntro();
+const scrollbar = mountScrollbar();
 const canvas = document.createElement("canvas").getContext("2d");
 let timeline, trigger, context, lenis, resizeTimer;
 let lastWidth = 0,
@@ -24,6 +26,7 @@ mountApproach();
 mountBeliefs();
 function syncScenes() {
   if (!timeline) return;
+  scrollbar.setScene(timeline.time() >= 6.3);
   syncPortfolio(timeline.time(),33.2,37.2,approachStart);
   syncApproach(timeline.time(),approachStart);
   syncBeliefs(timeline.time(),beliefsStart);
@@ -84,6 +87,7 @@ function build() {
     .querySelectorAll("#artboard [style],.header[style]")
     .forEach((el) => el.removeAttribute("style"));
   root.classList.toggle("motion-ready", desktop);
+  scrollbar.setPinned(desktop);
   const art = document.getElementById("artboard"),
     scale = document.documentElement.clientWidth / 1600,
     H = innerHeight / scale;

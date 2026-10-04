@@ -1,0 +1,40 @@
+/* A 4px visible thumb inside the browser's 16px native drag target. */
+html {
+  --scroll-thumb: rgb(37 108 80 / .8);
+  --scroll-thumb-active: #256c50;
+  --scroll-surface: #f5f6f3;
+  background: var(--scroll-surface);
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) var(--scroll-surface);
+}
+html.scroll-field {
+  --scroll-thumb: rgb(243 241 227 / .75);
+  --scroll-thumb-active: #f3f1e3;
+  --scroll-surface: #256c50;
+}
+html.atlas-entering {
+  --scroll-thumb: transparent;
+  --scroll-surface: #256c50;
+}
+@supports selector(::-webkit-scrollbar) {
+  /* Non-auto standard properties override the precise WebKit thumb styling. */
+  html { scrollbar-width: auto; scrollbar-color: auto; }
+  html::-webkit-scrollbar { width: 16px; height: 16px; background: var(--scroll-surface); }
+  html::-webkit-scrollbar-track { background: transparent; }
+  html::-webkit-scrollbar-thumb {
+    min-height: 72px;
+    border: 6px solid transparent;
+    border-radius: 12px;
+    background: var(--scroll-thumb);
+    background-clip: padding-box;
+  }
+  html::-webkit-scrollbar-thumb:hover,
+  html::-webkit-scrollbar-thumb:active { background-color: var(--scroll-thumb-active); }
+  html::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+  html::-webkit-scrollbar-corner { background: var(--scroll-surface); }
+}
+@media (forced-colors: active) {
+  html { scrollbar-width: auto; scrollbar-color: auto; }
+  html::-webkit-scrollbar { width: auto; height: auto; background: Canvas; }
+  html::-webkit-scrollbar-thumb { border: 0; border-radius: 0; background: ButtonText; }
+}

@@ -5,7 +5,7 @@ import { runInNewContext } from 'node:vm';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const boot = html.match(/<script id="atlas-intro-boot">([\s\S]*?)<\/script>/)[1];
-function start({ reduced = false, seen = false, hash = '', search = '', storageBlocked = false } = {}) {
+function start({ reduced = false, hash = '', search = '', navigationType = 'navigate' } = {}) {
   const classes = new Set();
   const events = [];
   const listeners = {};
@@ -15,10 +15,8 @@ function start({ reduced = false, seen = false, hash = '', search = '', storageB
     window: {}, URLSearchParams, Event,
     location: { hash, search },
     matchMedia: () => ({ matches: reduced }),
-    sessionStorage: {
-      getItem() { if (storageBlocked) throw Error('blocked'); return seen ? 'seen' : null; },
-      setItem() { if (storageBlocked) throw Error('blocked'); events.push('stored'); },
-    },
+    performance: { getEntriesByType: () => [{ type: navigationType }] },
+    sessionStorage: { getItem() { throw Error('The entrance must not depend on session storage'); } },
     document: {
       documentElement: { classList: { add: c => classes.add(c), remove: c => classes.delete(c) } },
       querySelectorAll: () => [node],
@@ -31,13 +29,13 @@ function start({ reduced = false, seen = false, hash = '', search = '', storageB
   runInNewContext(boot, env);
   return { env, classes, events, node, timeout: () => watchdog?.(), listeners };
 }
-test('the entrance respects reduced motion, deep links and the per-tab visit', () => {
-  for (const options of [{ reduced: true }, { seen: true }, { hash: '#companies' }, { hash: '#contact', search: '?intro=replay' }]) {
+test('the entrance replays on reload, including chapter reloads, and respects reduced motion', () => {
+  for (const options of [{ reduced: true }, { reduced: true, navigationType: 'reload' }, { hash: '#companies' }, { hash: '#contact', search: '?intro=replay' }]) {
     const state = start(options);
     assert.equal(state.classes.size, 0);
     assert.equal(state.env.window.__atlasIntro, undefined);
   }
-  for (const options of [{}, { hash: '#hero' }, { seen: true, search: '?intro=replay' }, { storageBlocked: true }]) {
+  for (const options of [{}, { hash: '#hero' }, { navigationType: 'reload' }, { navigationType: 'reload', hash: '#companies' }, { navigationType: 'reload', hash: '#contact' }]) {
     const state = start(options);
     assert.equal(state.env.window.__atlasIntro.active, true);
     assert.ok(state.classes.has('atlas-entering'));
@@ -45,7 +43,7 @@ test('the entrance respects reduced motion, deep links and the per-tab visit', (
 });
 test('failure timeout and back-forward restoration release scrolling and focusable content once', () => {
   for (const cause of ['timeout', 'back-forward', 'skip']) {
-    const state = start({ storageBlocked: true });
+    const state = start();
     if (cause === 'timeout') state.timeout();
     if (cause === 'back-forward') state.listeners.pageshow({ persisted: true });
     if (cause === 'skip') state.env.window.__atlasIntro.release();
