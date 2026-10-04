@@ -20,6 +20,11 @@ const beliefsStart = approachStart + approachDuration;
 mountPortfolio();
 mountApproach();
 mountBeliefs();
+function syncScenes() {
+  if (!timeline) return;
+  syncApproach(timeline.time(),approachStart);
+  syncBeliefs(timeline.time(),beliefsStart);
+}
 function fitType() {
   canvas.font = "900 500px Bodoni";
   canvas.letterSpacing = "-7.5px";
@@ -425,10 +430,7 @@ function build() {
     tl.to('#approach', {opacity:0,y:-H*.035,duration:.95,ease:'sine.inOut'},beliefsStart);
     tl.to('.header', {backgroundColor:'#256C50',duration:.6,ease:'sine.inOut'},beliefsStart);
     appendBeliefs(tl,H,beliefsStart);
-    tl.eventCallback('onUpdate',()=>{
-      syncApproach(tl.time(),approachStart);
-      syncBeliefs(tl.time(),beliefsStart);
-    });
+    tl.eventCallback('onUpdate',syncScenes);
     tl.addLabel("hero", 0)
       .addLabel("people", 16.5)
       .addLabel("thesis", 32)
@@ -442,6 +444,7 @@ function build() {
       scrub: 0.55,
       anticipatePin: 1,
       invalidateOnRefresh: true,
+      onRefresh: syncScenes,
       onUpdate(self) {
         const t = self.progress * tl.duration();
         document.getElementById("thesis").inert = t < 18.4 || t > 34.4;
@@ -455,6 +458,7 @@ function build() {
       },
     });
     tl.time(previous ? previous * tl.duration() : 2.5);
+    syncScenes();
   });
   ScrollTrigger.refresh();
   if (previous && trigger && lenis) {
@@ -474,6 +478,8 @@ function applyInitialScene() {
   if (hash === 'contact') {
     lenis.resize();
     lenis.scrollTo('#contact', {immediate:true,force:true});
+    timeline.time(timeline.duration());
+    syncScenes();
     return;
   }
   const alias = [...document.querySelectorAll('[data-scene]')].find(a => a.getAttribute('href') === location.hash)?.dataset.scene;
@@ -484,6 +490,7 @@ function applyInitialScene() {
   lenis.resize();
   lenis.scrollTo(destination, {immediate:true,force:true});
   timeline.time(time);
+  syncScenes();
 }
 function goToCompany(direction) {
   if(!trigger) return;

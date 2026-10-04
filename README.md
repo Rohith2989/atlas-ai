@@ -40,6 +40,12 @@ Start at `/#approach`. Reading holds are `/#approach-founders`, `/#approach-engi
 
 See `docs/APPROACH.md` for choreography, asset provenance and implementation details. Run `npm test` to check motion sampling and renderer lifecycle behavior.
 
+## Investment thesis and pillars
+
+After the wafer, two text-and-cutout compositions lead into the four strategic investment pillars on the same pinned scroll timeline. Words reveal inside masks, the first word holds through a continuous image handoff, and the four open columns draw in before their paragraphs arrive. Each complete thought has a reading hold. Six new transparent artwork assets are local and decode before the section enters.
+
+Open `/#investment-thesis` or use Manifesto. The reading holds are `/#thesis-people`, `/#thesis-risk`, and `/#investment-pillars`; the six preview poses are `/#thesis-frame-1` through `/#thesis-frame-6`. Phones and reduced-motion preferences use natural document flow. See `docs/BELIEFS.md` for timing, layout and provenance. The sequence currently leads into the existing Contact footer.
+
 ## Motion and accessibility
 
 - Desktop widths of 900px and above use one pinned, reversible scroll sequence.

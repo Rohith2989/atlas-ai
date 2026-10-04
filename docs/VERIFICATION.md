@@ -32,6 +32,17 @@
 - No browser errors or warnings were recorded during the new scene review. The existing hero, actual team portraits and six-company sequence are preserved. The new approach now sits between the final 8x company and the existing footer.
 - Individual wafer components are not animated in this pass; its reveal, hand and detail crop are implemented for review first.
 
+## Investment thesis and strategic pillars
+
+- Integrated the approved two inline-image text compositions and four new pillar illustrations into the main pinned timeline after the wafer. The section uses semantic HTML, reversible word and paragraph masks, and a continuous notebook path.
+- Reviewed desktop reading holds and the handoff at 1440 × 900 and 1100 × 800. At the narrower desktop width, all four columns, artwork and paragraphs fit within the viewport.
+- Forward and reverse wheel input returned through the same new reveal state (36.79% → 47.08% → 36.79%). The chapter links return from the four-pillar layout to the first statement.
+- Mobile review at 390 × 844 confirmed readable inline-image statements, stacked pillar cards, loaded artwork and zero horizontal overflow. Changing between mobile and desktop rebuilds the measured paragraph masks and restores the selected chapter.
+- All six new image assets decoded in the browser. The set is requested before the preceding approach sequence finishes, avoiding first-reveal loading gaps. Transparent WebP payload is 1,107,252 bytes.
+- Cold Contact reload exposed a visual/accessibility-state mismatch; explicit state synchronization after timeline seeks and refreshes corrected it. Retest showed the final 03 / 03 chapter, active Four beliefs link, visible section and 100% progress. The footer enters on the same green field without a white seam; the opaque header prevents passing text from colliding with navigation.
+- Existing five Node motion/renderer tests and the Vite production build passed. These unit tests cover the prior approach renderer; the new DOM choreography was checked through actual browser interactions.
+- Main navigation now links Manifesto to the complete investment thesis. The new sequence ends in the existing Contact footer; the later Get in Touch form is not part of this change.
+
 ## Limits
 
 This is visual and functional browser verification, focused automated tests and a production build. Reduced-motion fallback is implemented; the browser review did not emulate the operating system setting. Physical phones and Safari have not been tested. Desktop screenshots capture the visible in-app browser panel; its right edge can crop the larger test viewport. Malachite remains selected. Historical checks above describe the site at their respective implementation stages; the approved approach section supersedes the earlier portfolio-to-footer ending.
