@@ -1,0 +1,17 @@
+{
+  "id": "tilki",
+  "order": 4,
+  "name": "Tilki",
+  "sector": "Generative game worlds",
+  "country": "United Kingdom",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/tilki",
+  "cover": "/portfolio/tilki-cover.webp",
+  "logo": "/portfolio/tilki-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/tilki",
+    "cover": "https://static.wixstatic.com/media/00bf0d_230287f812114561b911e8409052470d~mv2.webp",
+    "logo": "https://static.wixstatic.com/media/00bf0d_0b0456842b8f41878e4c65e4ef3bca7f~mv2.webp",
+    "checked": "2026-10-04"
+  }
+}
