@@ -1,0 +1,17 @@
+{
+  "id": "tylo-ai",
+  "order": 3,
+  "name": "Tylo AI",
+  "sector": "Research intelligence",
+  "country": "United Kingdom",
+  "status": "Exited",
+  "url": "https://www.atlasaivbfund.com/portafoglio/tylo-ai",
+  "cover": "/portfolio/tylo-ai-cover.webp",
+  "logo": "/portfolio/tylo-ai-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/tylo-ai",
+    "cover": "https://static.wixstatic.com/media/00bf0d_8024c93bd0fb42b0a837d7a0f6c0a5df~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_ae3bbe9b72af42d692946779fd2952e1~mv2.webp",
+    "checked": "2026-10-04"
+  }
+}
