@@ -6,12 +6,20 @@
   "country": "United Kingdom",
   "status": "In portfolio",
   "url": "https://www.atlasaivbfund.com/portafoglio/sekkari",
-  "cover": "/portfolio/sekkari-cover.webp",
+  "cover": "/portfolio/sekkari-brand-v3.webp",
   "logo": "/portfolio/sekkari-logo.webp",
   "source": {
     "page": "https://www.atlasaivbfund.com/portafoglio/sekkari",
     "cover": "https://static.wixstatic.com/media/00bf0d_244f5b1a59f5408aac052c4e8447a04c~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_0bcc960212a148668cd9c11f6ba6a240~mv2.png",
-    "checked": "2026-10-04"
+    "checked": "2026-10-04",
+    "website": "https://www.sekkari.co.uk/"
+  },
+  "artwork": {
+    "type": "generated-brand-editorial",
+    "alt": "Sekkari brand artwork of photonic waveguide routing in cobalt, silver and graphite.",
+    "width": 1024,
+    "height": 1536,
+    "provenance": "docs/company-artwork-prompts.json"
   }
 }
