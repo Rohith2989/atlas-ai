@@ -3,9 +3,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import "./styles.css";
 import { mountPortfolio, layoutPortfolio, setActiveCompany, currentCompany, featured } from './portfolio';
-import { mountApproach, appendApproach, syncApproach, resetApproach, approachStops } from './approach';
+import { mountApproach, appendApproach, syncApproach, resetApproach, approachStops, approachNames } from './approach';
 gsap.registerPlugin(ScrollTrigger);
 const root = document.documentElement;
+// Browser hash restoration must not scroll the nested, pinned artboard itself.
+history.scrollRestoration = 'manual';
 const reduced = matchMedia("(prefers-reduced-motion: reduce)");
 const canvas = document.createElement("canvas").getContext("2d");
 let timeline, trigger, context, lenis, resizeTimer;
@@ -72,7 +74,7 @@ function build() {
     .forEach((el) => el.removeAttribute("style"));
   root.classList.toggle("motion-ready", desktop);
   const art = document.getElementById("artboard"),
-    scale = innerWidth / 1600,
+    scale = document.documentElement.clientWidth / 1600,
     H = innerHeight / scale;
   art.style.setProperty("--art-height", H + "px");
   art.style.transform = desktop ? "scale(" + scale + ")" : "none";
@@ -407,12 +409,14 @@ function build() {
     tl.to('#biology', {x:750,y:-H*.45,opacity:0,duration:2,ease:'power2.in'},33.7);
     tl.fromTo('.company-toolbar,.company-sequence', {opacity:0,y:18}, {opacity:1,y:0,duration:1.15,stagger:.15,ease:'power3.out'},35);
     tl.to('#company-world', {x:-(featured.length-2)*660,y:-(featured.length-2)*H*.30,duration:galleryDuration,ease:'none'},galleryStart);
-    // Settle on 8x before carrying the diagonal into the shared working table.
+    // Settle on 8x before carrying its diagonal into the portrait's grain reveal.
     tl.to({}, {duration:2.4}, galleryStart + galleryDuration);
     const finalX=-(featured.length-2)*660, finalY=-(featured.length-2)*H*.30;
-    tl.to('#company-world',{x:finalX-280,y:finalY-H*.52,opacity:0,duration:1.8,ease:'power2.inOut'},approachStart);
+    tl.set('#companies',{backgroundColor:'transparent'},approachStart);
+    tl.to('.header',{backgroundColor:'rgba(37,108,80,0)',duration:.4,ease:'none'},approachStart+.4);
+    tl.to('#company-world',{x:finalX-280,y:finalY-H*.52,opacity:0,duration:1.15,ease:'power2.inOut'},approachStart);
     tl.to('.company-toolbar,.company-sequence',{opacity:0,y:-18,duration:.65,ease:'power2.in'},approachStart);
-    tl.to('#companies',{opacity:0,duration:1.1,ease:'sine.inOut'},approachStart+.8);
+    tl.to('#companies',{opacity:0,duration:.45,ease:'sine.inOut'},approachStart+.7);
     appendApproach(tl,H,approachStart);
     tl.eventCallback('onUpdate',()=>syncApproach(tl.time(),approachStart));
     tl.addLabel("hero", 0)
@@ -443,6 +447,27 @@ function build() {
     tl.time(previous ? previous * tl.duration() : 2.5);
   });
   ScrollTrigger.refresh();
+  if (previous && trigger && lenis) {
+    lenis.resize();
+    lenis.scrollTo(trigger.start + previous * (trigger.end - trigger.start), {immediate:true});
+  }
+}
+function applyInitialScene() {
+  const hash = location.hash.slice(1);
+  if (!trigger) {
+    const frame = /^approach-frame-([1-6])$/.exec(hash);
+    const mobileId = frame ? 'approach-' + approachNames[Math.floor((Number(frame[1])-1)/2)] : hash;
+    document.getElementById(mobileId)?.scrollIntoView({block:'start',behavior:'instant'});
+    return;
+  }
+  const alias = [...document.querySelectorAll('[data-scene]')].find(a => a.getAttribute('href') === location.hash)?.dataset.scene;
+  const name = Object.hasOwn(timeline?.labels || {}, hash) ? hash : alias;
+  if (!trigger || !name || !Object.hasOwn(timeline.labels, name)) return;
+  const time = timeline.labels[name];
+  const destination = name === 'hero' ? 0 : trigger.start + time / timeline.duration() * (trigger.end - trigger.start);
+  lenis.resize();
+  lenis.scrollTo(destination, {immediate:true,force:true});
+  timeline.time(time);
 }
 function goToCompany(direction) {
   if(!trigger) return;
@@ -475,18 +500,19 @@ Promise.all([
       gsap.ticker.lagSmoothing(0);
     }
     build();
-    const hashScene=location.hash.slice(1);
-    const initialScene=Object.hasOwn(timeline?.labels||{},hashScene)?hashScene:[...document.querySelectorAll('[data-scene]')].find(a=>a.getAttribute('href')===location.hash)?.dataset.scene;
-    if(trigger && initialScene && Object.hasOwn(timeline.labels,initialScene)) {
-      lenis.scrollTo(initialScene==='hero'?0:trigger.start+timeline.labels[initialScene]/timeline.duration()*(trigger.end-trigger.start),{immediate:true});
-    }
+    applyInitialScene();
+    // Restore again after the browser has painted ScrollTrigger's initial pin spacing.
+    // A cold-load scroll can otherwise be clamped to the pre-pin document height.
+    requestAnimationFrame(() => requestAnimationFrame(applyInitialScene));
+    window.addEventListener('hashchange', applyInitialScene);
     document.querySelector('[data-company-prev]').addEventListener('click',()=>goToCompany(-1));
     document.querySelector('[data-company-next]').addEventListener('click',()=>goToCompany(1));
-    document.querySelectorAll('[data-working-stop]').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('[data-approach-stop]').forEach(b=>b.addEventListener('click',event=>{
       if(!trigger || !lenis)return;
-      const index=Number(b.dataset.workingStop);
+      event.preventDefault();
+      const index=Number(b.dataset.approachStop);
       const time=approachStart+approachStops[index];
-      const name=['together','begin','founder','explore','compound','build'][index];
+      const name=approachNames[index];
       history.replaceState(null,'',`#approach-${name}`);
       lenis.scrollTo(trigger.start+time/timeline.duration()*(trigger.end-trigger.start),{duration:1.3});
     }));
@@ -530,15 +556,17 @@ Promise.all([
         return;
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
+        const modeChanged = root.classList.contains('motion-ready') !== (innerWidth >= 900 && !reduced.matches);
         lastWidth = innerWidth;
         lastHeight = innerHeight;
         build();
+        if (modeChanged) requestAnimationFrame(applyInitialScene);
       }, 180);
     });
     lastWidth = innerWidth;
     lastHeight = innerHeight;
     reduced.addEventListener("change", () => location.reload());
-    window.addEventListener("load", () => ScrollTrigger.refresh(), {
+    window.addEventListener("load", () => { ScrollTrigger.refresh(); applyInitialScene(); }, {
       once: true,
     });
   })

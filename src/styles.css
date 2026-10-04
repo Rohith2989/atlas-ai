@@ -378,7 +378,7 @@ img {
 .motion-ready #viewport {
   height: 100svh;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
 }
 .motion-ready #artboard {
   position: absolute;
@@ -387,7 +387,7 @@ img {
   width: 1600px;
   height: var(--art-height, 1000px);
   transform-origin: 0 0;
-  overflow: hidden;
+  overflow: clip;
   background: var(--paper);
 }
 .motion-ready .scene {

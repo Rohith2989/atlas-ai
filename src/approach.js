@@ -1,122 +1,164 @@
 import './approach.css';
+import { approachDuration, approachStops, approachNames, sampleApproach, clamp } from './approach-motion.js';
+export { approachDuration, approachStops, approachNames };
 
-export const approachDuration = 23.6;
-export const approachStops = [3.45, 6.5, 9.3, 13.8, 18.3, 22.5];
 const chapters = [
-  { id:'together', label:'01 / Venture builders', title:'Built in good company.', body:'Founders. Operators. Real customers.<br>Progress tested together.', side:'left' },
-  { id:'begin', label:'Our investment approach', title:'A place to begin.', body:'', side:'left' },
-  { id:'founder', label:'02 / Outlier founders', title:'The person before the pitch.', body:'Technical depth. Fast execution.<br>A reason to keep building.', side:'left' },
-  { id:'explore', label:'03 / Technical risk', title:'Hard problems.<br>Room to explore.', body:'We back difficult engineering<br>when the opportunity is bigger.', side:'right' },
-  { id:'compound', label:'04 / Defensible AI', title:'What gets stronger with use?', body:'Unique data.<br>Deep workflows.<br>Proprietary technology.', side:'left' },
-  { id:'build', label:'The Atlas approach', title:'Build something difficult.', body:'<a href="https://www.atlasaivbfund.com/manifesto" target="_blank" rel="noopener noreferrer">Read our manifesto <span aria-hidden="true">↗</span></a>', side:'left' },
+  { id:'founders', label:'Outlier founders', title:['See what','others don’t.'], body:['Technical depth.','The drive to make it real.'], image:'founder', alt:'Editorial portrait of a technical founder, with optical research and engineering sketches.' },
+  { id:'engineering', label:'Technical risk', title:['Take the','difficult route.'], body:['We back hard engineering','with the potential to change a market.'], image:'engineering', alt:'A precision microgripper testing a silicon wafer, revealed through four unequal openings.' },
+  { id:'defensible', label:'Defensible AI', title:['An edge that','gets stronger.'], body:['Unique data. Deep workflows.','Proprietary technology.'], image:'wafer', alt:'A hand holding a silicon wafer with a separate magnified view of its circuitry.' },
 ];
-let active = -1;
+let section, stage, articles, fallback, nav, progressLine, count;
+let active = -1, renderer, rendererModule, requested = false, generation = 0, current = -1;
+let smallScreenObserver;
+const failure = () => { if (stage) stage.dataset.renderer = 'fallback'; };
 
-export function mountApproach() {
-  const section = document.createElement('section');
-  section.id = 'approach';
-  section.className = 'scene working-section';
-  section.setAttribute('aria-label', 'Our investment approach');
-  section.innerHTML = `<div class="working-stage" aria-hidden="true"><div class="working-roll"><div class="working-camera"><div class="working-reveal"><img class="working-world" src="/assets/working-table-world.webp" width="1672" height="941" alt="" decoding="async" fetchpriority="low"></div></div></div></div>
-    <div class="working-captions">${chapters.map((c,i)=>`<article class="working-copy working-copy--${c.side}" data-working-copy="${i}" id="approach-${c.id}"><p class="working-label">${c.label}</p><h2><span class="working-line"><span>${c.title.replace('<br>','</span></span><span class="working-line"><span>')}</span></span></h2>${c.body?`<p class="working-body">${c.body}</p>`:''}</article>`).join('')}</div>
-    <nav class="working-navigation" aria-label="Investment approach chapters">${chapters.map((c,i)=>`<button type="button" data-working-stop="${i}" aria-label="${c.title.replace('<br>',' ')}"><span>${String(i+1).padStart(2,'0')}</span><i aria-hidden="true"></i></button>`).join('')}<span class="working-nav-title">Our investment approach</span></nav>
-    <p class="working-photo-note sr-only">Editorial illustration of builders at work. The people shown are not identified as Atlas team members or portfolio founders.</p>`;
-  document.getElementById('artboard').append(section);
+function prepare() {
+  if (renderer || requested) return;
+  requested = true;
+  const version = generation;
+  rendererModule ||= import('./approach-renderer.js');
+  rendererModule.then(({createRevealRenderer}) => {
+    if (version !== generation) return;
+    return createRevealRenderer(stage, failure).then(instance => {
+      if (version !== generation) { instance.dispose(); return; }
+      renderer = instance;
+      renderer.draw(sampleApproach(current));
+      stage.dataset.renderer = 'webgl';
+    });
+  }).catch(failure);
 }
 
-// Every shot refers to the same fixed world coordinates. Only this camera moves.
-// Captions live outside the camera, so reading never competes with a moving lens.
-export function appendApproach(tl, H, start) {
-  const imageHeight = 900;
-  const fit = Math.min(1, H / 850);
-  const pose = (zoom, focusX, focusY, screenX, screenY) => {
-    const scale = zoom * fit;
-    return { scale, x:1600*screenX - 1600*focusX*scale, y:H*screenY - imageHeight*focusY*scale };
-  };
-  const wide = pose(1.02, .5, .54, .62, .66);
-  const begin = pose(1.38, .30, .44, .75, .60);
-  const founder = pose(2.05, .30, .40, .76, .57);
-  const travel = pose(1.04, .52, .51, .56, .64);
-  const engineer = pose(1.94, .79, .35, .35, .57);
-  const evidence = pose(2.22, .63, .70, .74, .63);
-  const resolved = pose(.94, .5, .51, .59, .67);
-  const camera = '.working-camera';
-  const reveal = '.working-reveal';
-  tl.set('#approach',{opacity:0},0);
-  tl.set(camera,{...wide,x:wide.x+130,y:wide.y+65,transformOrigin:'0 0'},0);
-  tl.set('.working-roll',{rotation:0,transformOrigin:`800px ${H*.55}px`},0);
-  tl.set(reveal,{clipPath:'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)'},0);
-  tl.set('.working-copy',{opacity:0},0);
-  tl.set('.working-line > span',{yPercent:105},0);
-  tl.set('.working-label,.working-body',{opacity:0,y:8},0);
-  tl.set('.working-navigation',{opacity:0,y:12},0);
+const lines = (items, className) => items.map(line => '<span class="' + className + '"><span>' + line + '</span></span>').join('');
 
-  // 01. Establish: the diagonal edge opens, then the people resolve above it.
-  tl.to('#approach',{opacity:1,duration:.35},start+.2);
-  tl.to(camera,{...wide,duration:2.7,ease:'power2.inOut'},start+.25);
-  tl.to(reveal,{clipPath:'polygon(0% 100%, 100% 100%, 100% 39%, 0% 79%)',duration:1.3,ease:'power2.inOut'},start+.4);
-  tl.to(reveal,{clipPath:'polygon(0% 100%, 100% 100%, 100% -4%, 0% -4%)',duration:1.65,ease:'power2.inOut'},start+1.4);
-  tl.to('.working-navigation',{opacity:1,y:0,duration:.6},start+2.9);
+export function mountApproach() {
+  section = document.createElement('section');
+  section.id = 'approach';
+  section.className = 'scene approach-section';
+  section.setAttribute('aria-label', 'Our investment approach');
+  section.innerHTML = `
+    <div class="approach-stage" aria-hidden="true">
+      <div class="approach-fallback">
+        ${chapters.map((c,i) => '<img data-approach-poster="' + i + '" src="/assets/approach/' + c.image + '.webp" width="1586" height="992" alt="" loading="lazy" decoding="async">').join('')}
+      </div>
+    </div>
+    <div class="approach-composition">
+      ${chapters.map((c,i) => `<article class="approach-chapter" id="pillar-${c.id}" data-approach-chapter="${i}">
+        <figure class="approach-mobile-art"><img src="/assets/approach/${c.image}.webp" alt="${c.alt}" width="1586" height="992" loading="lazy" decoding="async"></figure>
+        <div class="approach-copy">
+          <p class="approach-label"><span>${c.label}</span></p>
+          <h2>${lines(c.title,'approach-line')}</h2>
+          <p class="approach-body">${lines(c.body,'approach-body-line')}</p>
+        </div>
+      </article>`).join('')}
+    </div>
+    <nav class="approach-navigation" aria-label="Investment approach chapters">
+      <span class="approach-nav-label">Our investment approach</span>
+      <div class="approach-track"><i aria-hidden="true"></i>${chapters.map((c,i) => `<a href="#approach-${c.id}" data-approach-stop="${i}" aria-label="${c.label}"><span>${String(i+1).padStart(2,'0')}</span></a>`).join('')}</div>
+      <span class="approach-count" aria-hidden="true">01 / 03</span>
+    </nav>
+    <p class="sr-only">Editorial illustrations. The person pictured is not identified as an Atlas team member or portfolio founder.</p>`;
+  document.getElementById('artboard').append(section);
+  stage = section.querySelector('.approach-stage');
+  articles = [...section.querySelectorAll('[data-approach-chapter]')];
+  fallback = [...section.querySelectorAll('[data-approach-poster]')];
+  nav = [...section.querySelectorAll('[data-approach-stop]')];
+  progressLine = section.querySelector('.approach-track i');
+  count = section.querySelector('.approach-count');
+}
+
+export function appendApproach(tl, H, start) {
+  const time = fraction => start + fraction * approachDuration;
+  const composition = section.querySelector('.approach-composition');
+  const height = Math.min(H, 1600 * 992 / 1586);
+  const width = height * 1586 / 992;
+  Object.assign(composition.style,{width:width+'px',height:height+'px',left:(1600-width)/2+'px',top:(H-height)/2+'px'});
+  tl.set(section, {opacity:0}, 0);
+  tl.set('.approach-label > span,.approach-line > span,.approach-body-line > span', {yPercent:112}, 0);
+  tl.set('.approach-navigation', {opacity:0, y:12}, 0);
+  // The photo starts in a void while 8x completes its diagonal exit above it.
+  tl.to(section, {opacity:1,duration:.35,ease:'none'}, start+.35);
+  tl.to('.approach-navigation', {opacity:1,y:0,duration:.45,ease:'power2.out'}, time(.07));
 
   const caption = (index, at, out) => {
-    const selector = `[data-working-copy="${index}"]`;
-    tl.to(selector,{opacity:1,duration:.12},start+at);
-    tl.to(`${selector} .working-label`,{opacity:1,y:0,duration:.42,ease:'power2.out'},start+at);
-    tl.to(`${selector} .working-line > span`,{yPercent:0,duration:.65,stagger:.07,ease:'power3.out'},start+at+.1);
-    tl.to(`${selector} .working-body`,{opacity:1,y:0,duration:.5,ease:'power2.out'},start+at+.34);
-    if(out) tl.to(selector,{opacity:0,duration:.35,ease:'power1.in'},start+out);
+    const article = articles[index];
+    const label = article.querySelector('.approach-label > span');
+    const title = article.querySelectorAll('.approach-line > span');
+    const body = article.querySelectorAll('.approach-body-line > span');
+    tl.to(label, {yPercent:0,duration:.38,ease:'power2.out'}, time(at));
+    if (index === 1) {
+      tl.to(title[0], {yPercent:0,duration:.48,ease:'power3.out'}, time(.367));
+      tl.to(title[1], {yPercent:0,duration:.68,ease:'power3.out'}, time(.416));
+      tl.to(body, {yPercent:0,duration:.58,stagger:.08,ease:'power2.out'}, time(.459));
+    } else {
+      tl.to(title, {yPercent:0,duration:.78,stagger:.15,ease:'power3.out'}, time(index===2?.793:at+.025));
+      tl.to(body, {yPercent:0,duration:.58,stagger:.08,ease:'power2.out'}, time(index===2?.844:at+.073));
+    }
+    if (out !== undefined) tl.to([label,...title,...body], {yPercent:-115,duration:.47,stagger:.028,ease:'power2.in'},time(out));
   };
-  caption(0,3.03,4.05);
-
-  // 02. Find the founder: a restrained lateral move into a medium view.
-  tl.to(camera,{...begin,duration:1.9,ease:'power2.inOut'},start+4.15);
-  caption(1,6.12,6.95);
-
-  // 03. Push in: no new photograph, no cut, and no perspective stretch.
-  tl.to(camera,{...founder,duration:1.7,ease:'sine.inOut'},start+7.05);
-  caption(2,8.82,10.25);
-
-  // 04. Pull back before trucking to the engineer. The wide view is a bridge.
-  tl.to(camera,{...travel,duration:1.25,ease:'power2.inOut'},start+10.35);
-  tl.to(camera,{...engineer,duration:1.6,ease:'power2.inOut'},start+11.6);
-  caption(3,13.28,14.55);
-
-  // 05. Return to the shared table, then push toward the working evidence.
-  tl.to(camera,{...travel,duration:1.2,ease:'power2.inOut'},start+14.65);
-  tl.to(camera,{...evidence,duration:1.85,ease:'power2.inOut'},start+15.85);
-  tl.to('.working-roll',{rotation:-3.2,duration:1.85,ease:'sine.inOut'},start+15.85);
-  caption(4,17.8,19.25);
-
-  // 06. Resolve: restore the full scene and the horizon before releasing the pin.
-  tl.to(camera,{...resolved,duration:2.4,ease:'power2.inOut'},start+19.35);
-  tl.to('.working-roll',{rotation:0,duration:2.4,ease:'sine.inOut'},start+19.35);
-  caption(5,21.85);
-  tl.to({}, {duration:1.75},start+21.85);
-  approachStops.forEach((at,i)=>tl.addLabel(`approach-${chapters[i].id}`,start+at));
-  tl.addLabel('approach',start+approachStops[0]);
+  caption(0,.073,.30);
+  caption(1,.356,.646);
+  caption(2,.706);
+  approachNames.forEach((name,index) => tl.addLabel('approach-'+name,start+approachStops[index]));
+  // Bookmarked poses map to the six approved storyboard moments.
+  [.08,.24,.40,.57,.74,.90].forEach((p,index) => tl.addLabel('approach-frame-'+(index+1),time(p)));
+  tl.addLabel('approach',time(.08));
+  tl.to({}, {duration:approachDuration}, start);
   return {start,end:start+approachDuration};
 }
 
 export function syncApproach(time, start) {
-  const section = document.getElementById('approach');
-  const local = time-start;
-  const visible = local>=.2;
-  section.inert=!visible;
+  if (!section || !document.documentElement.classList.contains('motion-ready')) return;
+  current = (time-start) / approachDuration;
+  if (current >= -.7) prepare();
+  const visible = current >= .002;
+  section.inert = !visible;
   section.classList.toggle('is-active',visible);
-  let next=0;
-  [6.12,8.82,13.28,17.8,21.85].forEach((at,i)=>{if(local>=at)next=i+1});
-  if(next===active)return;
-  active=next;
-  section.dataset.chapter=chapters[next].id;
-  section.querySelectorAll('[data-working-copy]').forEach((copy,i)=>{copy.inert=i!==next;copy.setAttribute('aria-hidden',String(i!==next))});
-  section.querySelectorAll('[data-working-stop]').forEach((b,i)=>{if(i===next)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+  const state = sampleApproach(current);
+  renderer?.draw(state);
+  section.dataset.progress = clamp(current).toFixed(4);
+  // A real image remains available during decoding and on WebGL context loss.
+  fallback.forEach((image,index) => {
+    image.style.opacity = index === state.chapter ? '1' : '0';
+    const amount = index === 0 ? state.portrait : index === 1 ? Math.min(...state.engineering) : state.wafer;
+    image.style.clipPath = 'inset(0 0 0 '+(1-amount)*100+'%)';
+  });
+  progressLine.style.transform = 'scaleX('+clamp(current)+')';
+  if (state.chapter === active) return;
+  active = state.chapter;
+  section.dataset.chapter = chapters[active].id;
+  count.textContent = '0'+(active+1)+' / 03';
+  articles.forEach((article,index) => {
+    article.inert = index !== active;
+    article.setAttribute('aria-hidden',String(index !== active));
+  });
+  nav.forEach((link,index) => {
+    if (index === active) link.setAttribute('aria-current','step');
+    else link.removeAttribute('aria-current');
+  });
 }
 
 export function resetApproach() {
-  active=-1;
-  const section=document.getElementById('approach');
+  generation++;
+  requested=false; current=-1; active=-1;
+  renderer?.dispose(); renderer=undefined;
+  smallScreenObserver?.disconnect();
+  if (!section) return;
+  stage.dataset.renderer='fallback';
   section.inert=false;
   section.classList.remove('is-active');
   section.removeAttribute('data-chapter');
-  section.querySelectorAll('[data-working-copy]').forEach(copy=>{copy.inert=false;copy.removeAttribute('aria-hidden')});
+  section.removeAttribute('data-progress');
+  const desktop = document.documentElement.classList.contains('motion-ready');
+  articles.forEach((article,index) => {
+    article.inert=false; article.removeAttribute('aria-hidden'); article.classList.remove('is-in-view');
+    // Desktop chapter hashes belong to the scroll timeline; native anchors would scroll a pinned ancestor.
+    article.id=(desktop?'pillar-':'approach-')+chapters[index].id;
+  });
+  nav.forEach(link=>link.removeAttribute('aria-current'));
+  if (!document.documentElement.classList.contains('motion-ready') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    smallScreenObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {if(entry.isIntersecting){entry.target.classList.add('is-in-view');smallScreenObserver.unobserve(entry.target)}});
+    }, {threshold:.12});
+    articles.forEach(article => smallScreenObserver.observe(article));
+  }
 }
