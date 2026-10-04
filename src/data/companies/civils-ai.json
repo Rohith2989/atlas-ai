@@ -1,0 +1,17 @@
+{
+  "id": "civils-ai",
+  "order": 1,
+  "name": "Civils.ai",
+  "sector": "Construction intelligence",
+  "country": "Singapore",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/civils.ai",
+  "cover": "/portfolio/civils-ai-cover.webp",
+  "logo": "/portfolio/civils-ai-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/civils.ai",
+    "cover": "https://static.wixstatic.com/media/00bf0d_3171c0c7ac9547b89d8c400bd7acd5ef~mv2.webp",
+    "logo": "https://static.wixstatic.com/media/00bf0d_384eceb46cf9401b91e48dd7984afc35~mv2.webp",
+    "checked": "2026-10-04"
+  }
+}
