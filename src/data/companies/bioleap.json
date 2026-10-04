@@ -1,0 +1,17 @@
+{
+  "id": "bioleap",
+  "order": 2,
+  "name": "Bioleap",
+  "sector": "Hybrid-AI biosimulation",
+  "country": "United Kingdom",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/bioleap",
+  "cover": "/portfolio/bioleap-cover.webp",
+  "logo": "/portfolio/bioleap-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/bioleap",
+    "cover": "https://static.wixstatic.com/media/00bf0d_5f9a841c0bdd49de8586e627e8ea702e~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_686d08b0a590454ab6cf3144352d88af~mv2.webp",
+    "checked": "2026-10-04"
+  }
+}
