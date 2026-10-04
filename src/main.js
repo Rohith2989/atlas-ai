@@ -2,6 +2,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import "./styles.css";
+import { mountPortfolio, layoutPortfolio, setActiveCompany, currentCompany, featured } from './portfolio';
+import { mountProof, animateProof, updateProof } from './proof';
 gsap.registerPlugin(ScrollTrigger);
 const root = document.documentElement;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)");
@@ -9,6 +11,9 @@ const canvas = document.createElement("canvas").getContext("2d");
 let timeline, trigger, context, lenis, resizeTimer;
 let lastWidth = 0,
   lastHeight = 0;
+const galleryStart = 35.6, galleryDuration = 18, proofStart = 56.5;
+mountPortfolio();
+mountProof();
 function fitType() {
   canvas.font = "900 500px Bodoni";
   canvas.letterSpacing = "-7.5px";
@@ -72,7 +77,11 @@ function build() {
   art.style.transform = desktop ? "scale(" + scale + ")" : "none";
   document.getElementById("people").inert = false;
   document.getElementById("thesis").inert = false;
+  document.getElementById("companies").inert = false;
+  document.getElementById("proof").inert = false;
   document.getElementById("explore").inert = false;
+  document.getElementById('hero').inert=false;
+  document.querySelectorAll('.company-frame,.proof-panel').forEach(e=>e.inert=false);
   strips();
   fitType();
   if (!desktop) {
@@ -82,6 +91,11 @@ function build() {
     return;
   }
   const y = (n) => (n * H) / 1000;
+  layoutPortfolio(H);
+  document.getElementById('people').inert=true;
+  document.getElementById('thesis').inert=true;
+  document.getElementById('companies').inert=true;
+  document.getElementById('proof').inert=true;
   context = gsap.context(() => {
     timeline = gsap.timeline({ paused: true });
     const tl = timeline;
@@ -385,30 +399,56 @@ function build() {
       { opacity: 1, duration: 0.7, stagger: 0.2 },
       31.1,
     );
-    tl.to({}, { duration: 2 }, 32);
+    tl.to({}, { duration: 1.2 }, 32);
+    // Preserve coordinates as the thesis photographs join the moving portfolio.
+    tl.to('#edge,#deep,#thesis-copy,#criteria,#thesis-kicker,#all-companies', {y:'-=65',opacity:0,duration:1.8,stagger:.07,ease:'power2.in'},33.2);
+    tl.set('#companies', {opacity:1},34.4);
+    tl.set('#science,#material', {opacity:0},34.4);
+    tl.to('#biology', {x:750,y:-H*.45,opacity:0,duration:2,ease:'power2.in'},33.7);
+    tl.fromTo('.company-toolbar,.company-sequence,.company-next', {opacity:0,y:18}, {opacity:1,y:0,duration:1.15,stagger:.15,ease:'power3.out'},35);
+    tl.to('#company-world', {x:-(featured.length-2)*660,y:-(featured.length-2)*H*.30,duration:galleryDuration,ease:'none'},galleryStart);
+    tl.to('#company-world', {x:'-=1000',y:-H*3.1,duration:2.6,ease:'power3.inOut'},55.3);
+    tl.to('.company-toolbar,.company-sequence,.company-next',{opacity:0,y:-25,duration:1},55.6);
+    tl.to('#companies',{opacity:0,duration:1},57);
+    animateProof(tl,H,proofStart);
     tl.addLabel("hero", 0)
       .addLabel("people", 16.5)
-      .addLabel("thesis", 29)
-      .addLabel("companies", 33);
+      .addLabel("thesis", 32)
+      .addLabel("companies", 35.5);
     trigger = ScrollTrigger.create({
       trigger: "#viewport",
       pin: true,
       animation: tl,
       start: "top top",
-      end: () => "+=" + innerHeight * 9.5,
+      end: () => "+=" + innerHeight * 19,
       scrub: 0.55,
       anticipatePin: 1,
       invalidateOnRefresh: true,
       onUpdate(self) {
         const t = self.progress * tl.duration();
-        document.getElementById("thesis").inert = t < 18.4;
+        document.getElementById("thesis").inert = t < 18.4 || t > 34.4;
         document.getElementById("people").inert = t < 10 || t > 21;
         document.getElementById("explore").inert = t > 6;
+        document.getElementById('hero').inert=t>6;
+        const galleryActive=t>=34.4&&t<57;
+        const proofActive=t>=proofStart;
+        document.getElementById('companies').inert=!galleryActive;
+        document.getElementById('proof').inert=!proofActive;
+        document.getElementById('companies').classList.toggle('is-active',galleryActive);
+        document.getElementById('proof').classList.toggle('is-active',proofActive);
+        if(galleryActive) setActiveCompany(1+Math.round(Math.max(0,Math.min(1,(t-galleryStart)/galleryDuration))*(featured.length-2)));
+        if(proofActive) updateProof(t,proofStart);
       },
     });
     tl.time(previous ? previous * tl.duration() : 2.5);
   });
   ScrollTrigger.refresh();
+}
+function goToCompany(direction) {
+  if(!trigger) return;
+  const index=Math.max(1,Math.min(featured.length-1,currentCompany()+direction));
+  const time=galleryStart+(index-1)/(featured.length-2)*galleryDuration;
+  lenis.scrollTo(trigger.start+time/timeline.duration()*(trigger.end-trigger.start),{duration:1.1});
 }
 function navigate(a, event) {
   if (!trigger) return;
@@ -434,6 +474,9 @@ Promise.all([
       gsap.ticker.lagSmoothing(0);
     }
     build();
+    document.querySelector('[data-company-prev]').addEventListener('click',()=>goToCompany(-1));
+    document.querySelector('[data-company-next]').addEventListener('click',()=>goToCompany(1));
+    document.addEventListener('atlas:index',e=>{ if(lenis) e.detail?lenis.stop():lenis.start(); });
     if (!reduced.matches)
       gsap.fromTo(
         "#hero .sheen",

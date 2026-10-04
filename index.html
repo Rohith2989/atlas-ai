@@ -228,6 +228,41 @@
               >Explore companies ↗</a
             >
           </section>
+          <section id="companies" class="scene" aria-label="Selected Atlas portfolio companies">
+            <div class="company-toolbar">
+              <div><p class="overline">CONVICTION, IN MOTION</p><h2>A different kind of company.</h2></div>
+              <button class="index-button" type="button" data-open-index>All 28 companies ↗</button>
+            </div>
+            <div id="company-world"></div>
+            <div class="company-sequence" aria-label="Featured portfolio navigation">
+              <span id="company-count">02 / 10</span><span id="company-current">Bioleap</span>
+              <div class="sequence-controls"><button type="button" data-company-prev aria-label="Previous company">↖</button><button type="button" data-company-next aria-label="Next company">↘</button></div>
+            </div>
+            <div class="company-next"><a class="next-chapter" href="#proof" data-scene="proof">Under the surface ↓</a></div>
+          </section>
+          <section id="proof" class="scene" aria-label="What makes an advantage defensible">
+            <h2 class="proof-heading">An advantage.<br>Layer by layer.</h2>
+            <p class="proof-intro">We look beneath the pitch.<br>For what makes a company hard to replicate.</p>
+            <nav class="proof-tabs" aria-label="Explore investment criteria">
+              <a href="#proof-data" data-scene="proof-data" class="is-selected">Data</a>
+              <a href="#proof-distribution" data-scene="proof-distribution">Distribution</a>
+              <a href="#proof-technology" data-scene="proof-technology">Technology</a>
+            </nav>
+            <div class="proof-field-wrap" aria-hidden="true">
+              <svg id="proof-field" viewBox="0 0 1080 1000" preserveAspectRatio="xMidYMid meet">
+                <defs><linearGradient id="seam-glow"><stop offset="0" stop-color="#CBBDE5" stop-opacity="0"/><stop offset=".5" stop-color="#F3F1E3" stop-opacity=".8"/><stop offset="1" stop-color="#CBBDE5" stop-opacity="0"/></linearGradient></defs>
+                <g class="contour-layer contour-layer-0"></g><g class="contour-layer contour-layer-1"></g><g class="contour-layer contour-layer-2"></g>
+                <rect id="field-seam" x="1000" y="0" width="2" height="1000" fill="url(#seam-glow)"/>
+              </svg>
+              <span class="field-label field-label-0">01 / DATA <i></i></span><span class="field-label field-label-1">02 / REACH <i></i></span><span class="field-label field-label-2">03 / DEPTH <i></i></span>
+            </div>
+            <div class="proof-panels">
+              <article id="proof-data" class="proof-panel"><p class="overline proof-line"><span>01 / A BETTER STARTING POINT</span></p><h3><span class="proof-line"><span>Knowledge others</span></span><span class="proof-line"><span>can’t access.</span></span></h3><p class="proof-line"><span>Unique data. A deeper understanding.<br>An advantage that compounds.</span></p></article>
+              <article id="proof-distribution" class="proof-panel"><p class="overline proof-line"><span>02 / A WAY INTO THE WORLD</span></p><h3><span class="proof-line"><span>Reach that makes</span></span><span class="proof-line"><span>the difference.</span></span></h3><p class="proof-line"><span>Distribution built into the company.<br>From the very beginning.</span></p></article>
+              <article id="proof-technology" class="proof-panel"><p class="overline proof-line"><span>03 / SOMETHING OF YOUR OWN</span></p><h3><span class="proof-line"><span>Technology that</span></span><span class="proof-line"><span>belongs to you.</span></span></h3><p class="proof-line"><span>Proprietary technology.<br>Defensibility beyond the demo.</span></p></article>
+            </div>
+            <div class="proof-footer"><a href="https://www.atlasaivbfund.com/manifesto" target="_blank" rel="noopener noreferrer">Inside our conviction ↗</a><span>Global perspective. Early conviction.</span></div>
+          </section>
         </div>
       </div>
     </main>
@@ -260,6 +295,11 @@
         </nav>
       </div>
     </footer>
+    <dialog id="portfolio-index" class="portfolio-index" aria-labelledby="index-title" data-lenis-prevent>
+      <div class="index-header"><div><p class="overline">ATLAS AI VB FUND</p><h2 id="index-title">The company we keep.</h2></div><button type="button" data-close-index aria-label="Close company index">×</button></div>
+      <label class="index-search"><span class="sr-only">Search companies by name, country or sector</span><input type="search" placeholder="Search companies, sectors, places…" autocomplete="off"><span class="index-results" aria-live="polite">28 companies</span></label>
+      <div class="index-list"></div>
+    </dialog>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
