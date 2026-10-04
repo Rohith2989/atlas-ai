@@ -1,0 +1,17 @@
+{
+  "id": "imitation-machines",
+  "order": 6,
+  "name": "Imitation Machines",
+  "sector": "Robotics learning",
+  "country": "Australia",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/imitation-machines",
+  "cover": "/portfolio/imitation-machines-cover.webp",
+  "logo": "/portfolio/imitation-machines-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/imitation-machines",
+    "cover": "https://static.wixstatic.com/media/00bf0d_e0226750cbc84135b5f02b32b430167e~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_21637771c86e4d8bb9b670d3e2835437~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
