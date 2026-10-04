@@ -2,16 +2,24 @@
   "id": "8x",
   "order": 27,
   "name": "8x",
-  "sector": "Human-in-the-loop AI",
+  "sector": "Creator networks",
   "country": "United States",
   "status": "In portfolio",
   "url": "https://www.atlasaivbfund.com/portafoglio/8x",
-  "cover": "/portfolio/8x-cover.webp",
-  "logo": null,
+  "cover": "/portfolio/8x-brand-v3.svg",
+  "logo": "/portfolio/8x-logo.svg",
   "source": {
     "page": "https://www.atlasaivbfund.com/portafoglio/8x",
     "cover": "https://static.wixstatic.com/media/00bf0d_d02f0bc38dd849e4a05228bea5b6e403~mv2.png",
-    "logo": null,
-    "checked": "2026-10-04"
+    "logo": "https://www.8x.social/assets/brand/8x_logo.svg",
+    "checked": "2026-10-04",
+    "website": "https://www.8x.social/en/for-brands"
+  },
+  "artwork": {
+    "type": "authored-svg",
+    "alt": "Official 8x mark with a satin finish on its navy brand field.",
+    "width": 1536,
+    "height": 1024,
+    "provenance": "docs/company-artwork-prompts.json"
   }
 }
