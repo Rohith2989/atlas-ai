@@ -57,9 +57,9 @@ export function layoutPortfolio(H) {
 
 export function setActiveCompany(index) {
   index = Math.max(0, Math.min(featured.length-1, index));
+  if(document.documentElement.classList.contains('motion-ready')) document.querySelectorAll('.company-frame').forEach((f,i)=>f.inert=Math.abs(i-index)>1);
   if(active === index) return;
   active = index;
-  if(document.documentElement.classList.contains('motion-ready')) document.querySelectorAll('.company-frame').forEach((f,i)=>f.inert=Math.abs(i-index)>1);
   const c = featured[index];
   document.getElementById('company-count').textContent = `${String(index+1).padStart(2,'0')} / ${String(featured.length).padStart(2,'0')}`;
   document.getElementById('company-current').textContent = c.name;

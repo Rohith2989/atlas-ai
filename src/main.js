@@ -454,6 +454,7 @@ function navigate(a, event) {
   if (!trigger) return;
   const label = a.dataset.scene;
   event.preventDefault();
+  history.replaceState(null,'',a.getAttribute('href'));
   const destination =
     label === "hero"
       ? 0
@@ -474,6 +475,10 @@ Promise.all([
       gsap.ticker.lagSmoothing(0);
     }
     build();
+    const initialScene=[...document.querySelectorAll('[data-scene]')].find(a=>a.getAttribute('href')===location.hash)?.dataset.scene;
+    if(trigger && initialScene && Object.hasOwn(timeline.labels,initialScene)) {
+      lenis.scrollTo(initialScene==='hero'?0:trigger.start+timeline.labels[initialScene]/timeline.duration()*(trigger.end-trigger.start),{immediate:true});
+    }
     document.querySelector('[data-company-prev]').addEventListener('click',()=>goToCompany(-1));
     document.querySelector('[data-company-next]').addEventListener('click',()=>goToCompany(1));
     document.addEventListener('atlas:index',e=>{ if(lenis) e.detail?lenis.stop():lenis.start(); });

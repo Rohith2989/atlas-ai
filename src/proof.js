@@ -46,7 +46,7 @@ export function animateProof(tl, H, start) {
   tl.to('#field-seam',{attr:{x:20},duration:9.8,ease:'none'},start+2);
   tl.to('#proof-field',{rotation:-4,duration:11,ease:'sine.inOut',transformOrigin:'55% 50%'},start+2);
   tl.to({}, {duration:1.5},start+12);
-  tl.addLabel('proof',start+3.4).addLabel('proof-data',start+3.4).addLabel('proof-distribution',start+6.9).addLabel('proof-technology',start+10.4);
+  tl.addLabel('proof',start+3.9).addLabel('proof-data',start+3.9).addLabel('proof-distribution',start+7.4).addLabel('proof-technology',start+10.9);
 }
 
 export function updateProof(time, start) {
