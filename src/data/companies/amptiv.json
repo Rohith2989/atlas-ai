@@ -1,0 +1,17 @@
+{
+  "id": "amptiv",
+  "order": 21,
+  "name": "Amptiv",
+  "sector": "mRNA therapeutics",
+  "country": "United States",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/amptiv",
+  "cover": "/portfolio/amptiv-cover.webp",
+  "logo": "/portfolio/amptiv-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/amptiv",
+    "cover": "https://static.wixstatic.com/media/00bf0d_046ac522fd4841978ffd1ffa2e35836e~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_bd31c489e7f54ab5b099c14bd577adea~mv2.webp",
+    "checked": "2026-10-04"
+  }
+}
