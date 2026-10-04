@@ -3,10 +3,10 @@ import './portfolio.css';
 
 const records = import.meta.glob('./data/companies/*.json', { eager: true, import: 'default' });
 export const companies = Object.values(records).sort((a, b) => a.order - b.order);
-const featuredIds = ['civils-ai', 'bioleap', 'zero-drift', 'tilki', 'sekkari', 'otee', 'mirron', 'imitation-machines', 'oscorp-energy', '8x'];
+const featuredIds = ['civils-ai', 'bioleap', 'zero-drift', 'tilki', 'sekkari', '8x'];
 export const featured = featuredIds.map(id => companies.find(c => c.id === id));
 const editorial = { 'civils-ai':'/assets/material-intelligence.webp', bioleap:'/assets/optical-specimen.webp' };
-const sizes = [[600,.225],[435,.564],[570,.35],[570,.38],[340,.52],[510,.35],[420,.5],[520,.37],[430,.48],[500,.36]];
+const sizes = [[600,.225],[435,.564],[570,.35],[570,.38],[340,.52],[500,.36]];
 let active = -1;
 
 export function mountPortfolio() {
