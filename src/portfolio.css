@@ -6,6 +6,7 @@ button:focus-visible, input:focus-visible { outline:2px solid var(--accent); out
 .company-toolbar h2 { font-size:28px; font-weight:400; letter-spacing:-.045em; margin:12px 0 25px; }
 .index-button { background:none; border:0; padding:0 0 7px; border-bottom:1px solid currentColor; font-size:14px; }
 .company-toolbar .index-button { margin-top:12px; }
+.company-actions { display:flex; flex-direction:column; gap:16px; align-items:flex-end; font-size:14px; }
 .company-sequence { display:none; }
 .sequence-controls { display:flex; gap:5px; margin-left:auto; }
 .sequence-controls button { border:1px solid #f3f1e345; border-radius:50%; background:transparent; width:42px; height:42px; font-size:22px; transition:background .2s; }

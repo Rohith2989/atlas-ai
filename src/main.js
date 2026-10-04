@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import "./styles.css";
 import { mountPortfolio, layoutPortfolio, setActiveCompany, currentCompany, featured } from './portfolio';
+import { mountApproach, appendApproach, syncApproach, resetApproach, approachStops } from './approach';
 gsap.registerPlugin(ScrollTrigger);
 const root = document.documentElement;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)");
@@ -11,7 +12,9 @@ let timeline, trigger, context, lenis, resizeTimer;
 let lastWidth = 0,
   lastHeight = 0;
 const galleryStart = 35.6, galleryDuration = 9;
+const approachStart = galleryStart + galleryDuration + 2.4;
 mountPortfolio();
+mountApproach();
 function fitType() {
   canvas.font = "900 500px Bodoni";
   canvas.letterSpacing = "-7.5px";
@@ -88,6 +91,7 @@ function build() {
   document.getElementById("explore").inert = false;
   document.getElementById('hero').inert=false;
   document.querySelectorAll('.company-frame').forEach(e=>e.inert=false);
+  resetApproach();
   strips();
   fitType();
   if (!desktop) {
@@ -412,8 +416,14 @@ function build() {
     tl.to('#biology', {x:750,y:-H*.45,opacity:0,duration:2,ease:'power2.in'},33.7);
     tl.fromTo('.company-toolbar,.company-sequence', {opacity:0,y:18}, {opacity:1,y:0,duration:1.15,stagger:.15,ease:'power3.out'},35);
     tl.to('#company-world', {x:-(featured.length-2)*660,y:-(featured.length-2)*H*.30,duration:galleryDuration,ease:'none'},galleryStart);
-    // Settle on 8x, then let the existing contact footer enter in normal page flow.
+    // Settle on 8x before carrying the diagonal into the shared working table.
     tl.to({}, {duration:2.4}, galleryStart + galleryDuration);
+    const finalX=-(featured.length-2)*660, finalY=-(featured.length-2)*H*.30;
+    tl.to('#company-world',{x:finalX-280,y:finalY-H*.52,opacity:0,duration:1.8,ease:'power2.inOut'},approachStart);
+    tl.to('.company-toolbar,.company-sequence',{opacity:0,y:-18,duration:.65,ease:'power2.in'},approachStart);
+    tl.to('#companies',{opacity:0,duration:1.1,ease:'sine.inOut'},approachStart+.8);
+    appendApproach(tl,H,approachStart);
+    tl.eventCallback('onUpdate',()=>syncApproach(tl.time(),approachStart));
     tl.addLabel("hero", 0)
       .addLabel("people", 16.5)
       .addLabel("thesis", 32)
@@ -433,7 +443,7 @@ function build() {
         document.getElementById("people").inert = t < 10 || t > 21;
         document.getElementById("explore").inert = t > 6;
         document.getElementById('hero').inert=t>6;
-        const galleryActive=t>=34.4;
+        const galleryActive=t>=34.4 && t<approachStart+1.3;
         document.getElementById('companies').inert=!galleryActive;
         document.getElementById('companies').classList.toggle('is-active',galleryActive);
         if(galleryActive) setActiveCompany(1+Math.round(Math.max(0,Math.min(1,(t-galleryStart)/galleryDuration))*(featured.length-2)));
@@ -474,12 +484,21 @@ Promise.all([
       gsap.ticker.lagSmoothing(0);
     }
     build();
-    const initialScene=[...document.querySelectorAll('[data-scene]')].find(a=>a.getAttribute('href')===location.hash)?.dataset.scene;
+    const hashScene=location.hash.slice(1);
+    const initialScene=Object.hasOwn(timeline?.labels||{},hashScene)?hashScene:[...document.querySelectorAll('[data-scene]')].find(a=>a.getAttribute('href')===location.hash)?.dataset.scene;
     if(trigger && initialScene && Object.hasOwn(timeline.labels,initialScene)) {
       lenis.scrollTo(initialScene==='hero'?0:trigger.start+timeline.labels[initialScene]/timeline.duration()*(trigger.end-trigger.start),{immediate:true});
     }
     document.querySelector('[data-company-prev]').addEventListener('click',()=>goToCompany(-1));
     document.querySelector('[data-company-next]').addEventListener('click',()=>goToCompany(1));
+    document.querySelectorAll('[data-working-stop]').forEach(b=>b.addEventListener('click',()=>{
+      if(!trigger || !lenis)return;
+      const index=Number(b.dataset.workingStop);
+      const time=approachStart+approachStops[index];
+      const name=['together','begin','founder','explore','compound','build'][index];
+      history.replaceState(null,'',`#approach-${name}`);
+      lenis.scrollTo(trigger.start+time/timeline.duration()*(trigger.end-trigger.start),{duration:1.3});
+    }));
     document.addEventListener('atlas:index',e=>{ if(lenis) e.detail?lenis.stop():lenis.start(); });
     if (!reduced.matches)
       gsap.fromTo(

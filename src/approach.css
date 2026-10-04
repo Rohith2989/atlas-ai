@@ -10,7 +10,8 @@
 .working-body{font-size:17px;line-height:1.5;margin-top:16px}
 .working-body a{display:inline-flex;gap:22px;border-bottom:1px solid #f3f1e370;padding-bottom:5px}
 .working-navigation{display:none}
-.motion-ready #approach{padding:0;z-index:24;background:none;opacity:0;overflow:hidden}
+.motion-ready #approach{padding:0;z-index:26;background:none;opacity:0;overflow:hidden;pointer-events:none}
+.motion-ready #approach.is-active{pointer-events:auto}
 .motion-ready .working-stage{position:absolute;inset:0;width:1600px;height:100%;aspect-ratio:auto;margin:0;pointer-events:none}
 .motion-ready .working-roll{position:absolute;inset:0;width:1600px;height:100%;will-change:transform}
 .motion-ready .working-camera{position:absolute;top:0;left:0;width:1600px;height:900px;transform-origin:0 0;will-change:transform}
