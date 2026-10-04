@@ -1,0 +1,703 @@
+@font-face {
+  font-family: Bodoni;
+  src: url("/assets/bodoni-display.woff2") format("woff2");
+  font-weight: 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: Instrument;
+  src: url("/assets/instrument-sans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+:root {
+  --paper: #f5f6f3;
+  --orange: #ff5d35;
+  --plum: #351039;
+  --acid: #edff75;
+  --ink: #222221;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+}
+body {
+  font:
+    16px/1.4 Instrument,
+    sans-serif;
+  color: var(--plum);
+  background: var(--paper);
+}
+figure,
+h1,
+h2,
+p {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+.skip {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  background: var(--paper);
+  padding: 12px;
+  transform: translateY(-150%);
+}
+.skip:focus {
+  transform: none;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  min-height: 75px;
+  padding: 16px 3%;
+  background: var(--paper);
+  position: relative;
+  z-index: 50;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.brand:hover {
+  text-decoration: none;
+}
+.brand img {
+  width: 151px;
+  height: 44px;
+  object-fit: contain;
+}
+.brand-rule {
+  height: 27px;
+  width: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+.fund {
+  font-size: 14px;
+  letter-spacing: 0.24em;
+  white-space: nowrap;
+}
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.arrow {
+  font-size: 23px;
+}
+.scene {
+  position: relative;
+  padding: 25px 4%;
+  overflow: hidden;
+}
+#people,
+#thesis {
+  background: var(--orange);
+  padding-top: 45px;
+  padding-bottom: 65px;
+}
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media {
+  overflow: hidden;
+}
+#architecture {
+  height: 34vw;
+  max-height: 400px;
+  margin-bottom: 18px;
+}
+#optics {
+  height: 60vw;
+  max-height: 500px;
+  width: 45%;
+  float: right;
+  margin: 18px 0 28px 20px;
+}
+#biology {
+  display: none;
+}
+.type-space {
+  height: 23vw;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  line-height: 1;
+}
+.type-move {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.ink {
+  display: block;
+  position: relative;
+  font-family: Bodoni, serif;
+  font-weight: 900;
+  white-space: nowrap;
+  transform-origin: 0 0;
+  letter-spacing: -0.015em;
+  word-spacing: 0.13em;
+  font-optical-sizing: none;
+  -webkit-text-stroke: 4.5px currentColor;
+  paint-order: stroke fill;
+  line-height: 1;
+}
+#hero-sub {
+  height: 14vw;
+  width: 60%;
+  min-height: 70px;
+}
+#hero-copy {
+  padding: 24px 0;
+}
+#explore {
+  display: inline-block;
+  margin: 20px 0;
+}
+#hero-companies {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid #35103925;
+  font-size: 13px;
+}
+.overline {
+  font-size: 11px;
+  letter-spacing: 0.23em;
+  margin-bottom: 16px;
+}
+#conviction {
+  height: 19vw;
+}
+#human {
+  width: 79%;
+  height: 16vw;
+  margin-bottom: 28px;
+}
+#wild {
+  display: none;
+}
+.portraits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px 20px;
+}
+.portrait-image {
+  position: relative;
+  height: 58vw;
+  max-height: 450px;
+  overflow: hidden;
+}
+.portrait-flat {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.portrait figcaption {
+  margin-top: 10px;
+  font-size: 15px;
+}
+.portrait figcaption span,
+.portfolio-photo figcaption span {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.portrait figcaption i {
+  display: block;
+  width: 27px;
+  height: 2px;
+  background: var(--acid);
+  margin-top: 10px;
+}
+#edge,
+#deep {
+  height: 24vw;
+}
+#thesis-copy {
+  font-size: 19px;
+  max-width: 700px;
+  margin: 24px 0;
+}
+#criteria {
+  display: flex;
+  gap: 15px 30px;
+  flex-wrap: wrap;
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+.portfolio-photo .image-window {
+  height: 100%;
+  overflow: hidden;
+}
+.portfolio-photo img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.portfolio-photo figcaption {
+  margin-top: 10px;
+  font-size: 18px;
+}
+.portfolio-photo figcaption span {
+  font-size: 14px;
+}
+#science {
+  width: 73%;
+  height: 87vw;
+  max-height: 650px;
+  margin-left: 27%;
+}
+#material {
+  width: 84%;
+  height: 34vw;
+  margin-top: 100px;
+}
+#all-companies {
+  display: inline-block;
+  margin-top: 75px;
+}
+.sheen {
+  --tone: currentColor;
+  background: linear-gradient(
+    130deg,
+    currentColor 0%,
+    currentColor 40%,
+    color-mix(in srgb, #80756f 40%, currentColor) 47%,
+    #80756f 50%,
+    color-mix(in srgb, #80756f 40%, currentColor) 53%,
+    currentColor 60%,
+    currentColor 100%
+  );
+  background-size: 300% 100%;
+  background-position: 100% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#people .sheen {
+  background-image: linear-gradient(
+    130deg,
+    currentColor 0%,
+    currentColor 40%,
+    color-mix(in srgb, #632b49 40%, currentColor) 47%,
+    #632b49 50%,
+    color-mix(in srgb, #632b49 40%, currentColor) 53%,
+    currentColor 60%,
+    currentColor 100%
+  );
+}
+#contact {
+  padding: 80px 4% 28px;
+  background: var(--orange);
+}
+.footer-title {
+  font-family: Bodoni, serif;
+  font-weight: 900;
+  font-size: clamp(48px, 7vw, 110px);
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+}
+.footer-meta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  border-top: 1px solid #35103930;
+  margin-top: 65px;
+  padding-top: 24px;
+  font-size: 13px;
+}
+.footer-meta img {
+  width: 151px;
+}
+.footer-meta p {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  margin-top: 8px;
+}
+.footer-meta nav {
+  display: flex;
+  gap: 28px;
+}
+.strip {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 16.68%;
+  overflow: hidden;
+}
+.strip img {
+  position: absolute;
+  width: 100%;
+  height: 600%;
+  max-width: none;
+  object-fit: cover;
+}
+.motion-ready .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8.5svh;
+  min-height: 64px;
+  padding: 0 2.5%;
+}
+.motion-ready #viewport {
+  height: 100svh;
+  position: relative;
+  overflow: hidden;
+}
+.motion-ready #artboard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: var(--art-height, 1000px);
+  transform-origin: 0 0;
+  overflow: hidden;
+  background: var(--paper);
+}
+.motion-ready .scene {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  overflow: visible;
+  background: none;
+}
+.motion-ready #people,
+.motion-ready #thesis {
+  background: transparent;
+  padding: 0;
+}
+.motion-ready #architecture,
+.motion-ready #optics,
+.motion-ready #science,
+.motion-ready #material {
+  max-height: none;
+  margin: 0;
+}
+.motion-ready #substrate {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 0;
+}
+.motion-ready #substrate i {
+  width: 20.05%;
+  height: 100%;
+  background: var(--orange);
+  clip-path: inset(100% 0 0 0);
+}
+.motion-ready .media {
+  position: absolute;
+  float: none;
+  margin: 0;
+  max-height: none;
+  z-index: 2;
+}
+.motion-ready #architecture {
+  left: 5.25%;
+  top: 9.1%;
+  width: 61.625%;
+  height: 32.4%;
+}
+.motion-ready #optics {
+  left: 46.25%;
+  top: 67%;
+  width: 21.625%;
+  height: 43%;
+  z-index: 12;
+}
+.motion-ready #biology {
+  display: block;
+  left: 79.25%;
+  top: 9%;
+  width: 20.75%;
+  height: 56%;
+  z-index: 5;
+}
+.motion-ready .type-space {
+  position: absolute;
+  margin: 0;
+  z-index: 10;
+  transform-origin: 0 0;
+}
+.motion-ready #hero-main {
+  left: 2.125%;
+  top: 31%;
+  width: 93.44%;
+  height: 39.5%;
+  color: var(--ink);
+}
+.motion-ready #hero-sub {
+  left: 2.69%;
+  top: 74.7%;
+  width: 38.75%;
+  height: 14.5%;
+  min-height: 0;
+  color: var(--ink);
+}
+.motion-ready #hero-copy {
+  position: absolute;
+  left: 2.75%;
+  top: 94.1%;
+  font-size: 18px;
+  padding: 0;
+  color: var(--ink);
+}
+.motion-ready #explore {
+  position: absolute;
+  right: 3%;
+  top: 88%;
+  margin: 0;
+  font-size: 19px;
+  z-index: 15;
+  color: var(--ink);
+}
+.motion-ready #hero-companies {
+  position: absolute;
+  right: 3%;
+  bottom: 2.5%;
+  font-size: 14px;
+  gap: 35px;
+  z-index: 15;
+}
+.motion-ready #people-kicker {
+  position: absolute;
+  left: 3.69%;
+  top: 9.9%;
+  opacity: 0;
+}
+.motion-ready #conviction {
+  left: 3.44%;
+  top: 11.7%;
+  width: 65.625%;
+  height: 17.7%;
+  opacity: 0;
+  z-index: 11;
+}
+.motion-ready #human {
+  left: 3.125%;
+  top: 30.3%;
+  width: 50%;
+  height: 14.5%;
+  opacity: 0;
+  z-index: 11;
+}
+.motion-ready #wild {
+  display: block;
+  left: 3.125%;
+  top: 82.5%;
+  width: 60.94%;
+  height: 14%;
+  opacity: 0;
+}
+.motion-ready .portraits {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+}
+.motion-ready .portrait {
+  position: absolute;
+}
+.motion-ready .portrait-image {
+  height: 100%;
+  max-height: none;
+}
+.motion-ready .portrait figcaption {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  margin: 0;
+  white-space: nowrap;
+  opacity: 0;
+  font-size: 18px;
+}
+.motion-ready .portrait figcaption span {
+  font-size: 13px;
+}
+.motion-ready #matteo {
+  left: 3.44%;
+  top: 49.5%;
+  width: 18.75%;
+  height: 38%;
+}
+.motion-ready #vitantonio {
+  left: 28.75%;
+  top: 45.4%;
+  width: 23.25%;
+  height: 45.6%;
+}
+.motion-ready #leonardo {
+  left: 52.5%;
+  top: 53.4%;
+  width: 23.75%;
+  height: 34%;
+}
+.motion-ready #luca {
+  left: 78.75%;
+  top: 45.1%;
+  width: 18.44%;
+  height: 32.2%;
+}
+.motion-ready #thesis {
+  opacity: 0;
+  z-index: 15;
+}
+.motion-ready #thesis-kicker {
+  position: absolute;
+  left: 3.44%;
+  top: 11%;
+  opacity: 0;
+}
+.motion-ready #edge {
+  left: 3.44%;
+  top: 15%;
+  width: 92%;
+  height: 25.4%;
+}
+.motion-ready #deep {
+  left: 3.44%;
+  top: 62%;
+  width: 92%;
+  height: 25.4%;
+}
+.motion-ready #thesis-copy {
+  position: absolute;
+  left: 3.44%;
+  top: 53%;
+  width: 44%;
+  max-width: none;
+  font-size: 23px;
+  line-height: 1.35;
+  margin: 0;
+  opacity: 0;
+  z-index: 10;
+}
+.motion-ready #criteria {
+  position: absolute;
+  left: 3.44%;
+  top: 62%;
+  gap: 58px;
+  font-size: 21px;
+  margin: 0;
+  z-index: 10;
+}
+.motion-ready #criteria span {
+  opacity: 0;
+}
+.motion-ready .portfolio-photo {
+  position: absolute;
+  margin: 0;
+  max-height: none;
+  opacity: 0;
+}
+.motion-ready #science {
+  left: 63.5%;
+  top: 23%;
+  width: 27.2%;
+  height: 54%;
+}
+.motion-ready #material {
+  left: 20.6%;
+  top: 85%;
+  width: 38%;
+  height: 22.5%;
+}
+.motion-ready .portfolio-photo figcaption {
+  position: absolute;
+  top: calc(100% + 10px);
+  margin: 0;
+  opacity: 0;
+  font-size: 17px;
+  white-space: nowrap;
+}
+.motion-ready .portfolio-photo figcaption span {
+  font-size: 14px;
+}
+.motion-ready #all-companies {
+  position: absolute;
+  left: 3.44%;
+  top: 94%;
+  margin: 0;
+  font-size: 18px;
+  opacity: 0;
+}
+@media (max-width: 600px) {
+  .brand img {
+    width: 115px;
+    height: 36px;
+  }
+  .brand-rule,
+  .fund {
+    display: none;
+  }
+  .header {
+    padding: 12px 4%;
+    gap: 10px;
+    min-height: 65px;
+  }
+  .header nav {
+    font-size: 12px;
+    gap: 17px;
+  }
+  .header .arrow {
+    display: none;
+  }
+  .footer-meta {
+    display: block;
+  }
+  .footer-meta nav {
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .portrait figcaption {
+    font-size: 13px;
+  }
+  #hero-sub {
+    width: 78%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheen {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}
