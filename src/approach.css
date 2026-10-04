@@ -2,15 +2,13 @@
 .approach-stage{display:none}
 .approach-chapter{position:relative;padding:30px 5% 70px;scroll-margin-top:70px}
 .approach-copy{position:relative;z-index:2}
-.approach-label{font-size:11px;text-transform:uppercase;letter-spacing:.25em;line-height:1.5;margin-bottom:22px;overflow:hidden}
-.approach-label>span,.approach-line>span,.approach-body-line>span{display:block}
+.approach-line>span,.approach-body-line>span{display:block}
 .approach-copy h2{font:400 clamp(35px,5vw,58px)/1.08 Instrument,sans-serif;letter-spacing:-.046em}
 .approach-line{display:block;overflow:hidden;padding-bottom:.09em;margin-bottom:-.09em}
 .approach-body{font-size:17px;line-height:1.45;margin-top:25px;letter-spacing:-.018em}
 .approach-body-line{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
 .approach-mobile-art{position:relative;overflow:hidden;width:calc(100% + 11.12%);margin-left:-5.56%;aspect-ratio:1.25;margin-bottom:32px}
 .approach-mobile-art img{width:170%;height:auto;max-width:none;transform:translateX(-39%);transform-origin:center center}
-.approach-navigation{display:none}
 .motion-ready #approach{z-index:24;position:absolute;inset:0;opacity:0;background:var(--field);padding:0;overflow:clip;pointer-events:none}
 .motion-ready #approach.is-active{pointer-events:auto}
 .motion-ready .approach-stage{display:block;position:absolute;inset:0}
@@ -23,29 +21,14 @@
 .motion-ready .approach-chapter{position:absolute;inset:0;padding:0;pointer-events:none}
 .motion-ready .approach-mobile-art{display:none}
 .motion-ready .approach-copy{position:absolute;left:4.65%;top:37.5%;width:34%;max-width:550px}
-.motion-ready .approach-label{font-size:.82cqw;letter-spacing:.29em;margin-bottom:2.2cqw}
 .motion-ready .approach-copy h2{font-size:4.8cqw;line-height:1.02;letter-spacing:-.044em;font-weight:400}
 .motion-ready .approach-body{font-size:1.92cqw;line-height:1.3;margin-top:2.5cqw}
 .motion-ready [data-approach-chapter="1"] .approach-copy{left:7.45%;top:30.5%;width:32%}
-.motion-ready [data-approach-chapter="1"] .approach-label{margin-bottom:1.25cqw;color:var(--accent)}
 .motion-ready [data-approach-chapter="1"] h2{font-size:3.65cqw;line-height:1.04}
 .motion-ready [data-approach-chapter="1"] .approach-body{font-size:1.38cqw;line-height:1.3;margin-top:1.8cqw}
 .motion-ready [data-approach-chapter="2"] .approach-copy{left:3.85%;top:35.3%;width:33%}
-.motion-ready [data-approach-chapter="2"] .approach-label{color:var(--accent);margin-bottom:2.15cqw}
 .motion-ready [data-approach-chapter="2"] h2{font-size:4.22cqw;line-height:1.02}
 .motion-ready [data-approach-chapter="2"] .approach-body{font-size:1.47cqw;line-height:1.28;margin-top:2.6cqw}
-.motion-ready .approach-navigation{position:absolute;bottom:3%;left:4.65%;right:4.65%;display:flex;align-items:center;gap:36px;z-index:3;pointer-events:none}
-.motion-ready #approach.is-active .approach-navigation{pointer-events:auto}
-.approach-nav-label{text-transform:uppercase;letter-spacing:.18em;font-size:11px;width:250px;flex-shrink:0}
-.approach-count{font-size:11px;letter-spacing:.22em;white-space:nowrap}
-.approach-track{position:relative;height:44px;display:flex;flex:1}
-.approach-track:before,.approach-track i{content:'';position:absolute;top:22px;left:0;width:100%;height:1px;background:#f3f1e34d;pointer-events:none}
-.approach-track i{background:var(--accent);height:2px;transform-origin:0 50%}
-.approach-track a{display:flex;align-items:flex-start;justify-content:center;flex:1;position:relative;font-size:11px;letter-spacing:.13em;padding-top:2px}
-.approach-track a:after{content:'';position:absolute;width:5px;height:5px;border-radius:50%;background:var(--field-ink);top:20px;opacity:0;transition:opacity .2s}
-.approach-track a span{opacity:0;transition:opacity .2s}
-.approach-track a:hover span,.approach-track a:focus-visible span,.approach-track a:hover:after,.approach-track a:focus-visible:after{opacity:1}
-.approach-track a:hover{text-decoration:none}
 @media(max-width:899px) and (prefers-reduced-motion:no-preference){
  .approach-mobile-art{clip-path:inset(0 0 0 0);transition:clip-path 1.1s cubic-bezier(.2,.7,.25,1)}
  .approach-chapter:not(.is-in-view) .approach-mobile-art{clip-path:inset(0 0 0 45%)}
@@ -61,5 +44,4 @@
 @media(prefers-reduced-motion:reduce){
  .approach-chapter{max-width:1250px;margin:auto}
  .approach-mobile-art{aspect-ratio:1.65}
- .approach-track a span,.approach-track a:after{transition:none}
 }

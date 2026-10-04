@@ -175,21 +175,9 @@ img {
   width: 60%;
   min-height: 70px;
 }
-#hero-copy {
-  padding: 24px 0;
-}
 #explore {
   display: inline-block;
   margin: 20px 0;
-}
-#hero-companies {
-  clear: both;
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 18px;
-  border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
-  font-size: 13px;
 }
 .overline {
   font-size: 11px;
@@ -437,14 +425,6 @@ img {
   min-height: 0;
   color: var(--ink);
 }
-.motion-ready #hero-copy {
-  position: absolute;
-  left: 2.75%;
-  top: 94.1%;
-  font-size: 18px;
-  padding: 0;
-  color: var(--ink);
-}
 .motion-ready #explore {
   position: absolute;
   right: 3%;
@@ -453,20 +433,6 @@ img {
   font-size: 19px;
   z-index: 15;
   color: var(--ink);
-}
-.motion-ready #hero-companies {
-  position: absolute;
-  right: 3%;
-  bottom: 2.5%;
-  font-size: 14px;
-  gap: 35px;
-  z-index: 15;
-}
-.motion-ready #people-kicker {
-  position: absolute;
-  left: 3.69%;
-  top: 9.9%;
-  opacity: 0;
 }
 .motion-ready #conviction {
   left: 3.44%;
@@ -544,12 +510,6 @@ img {
 .motion-ready #thesis {
   opacity: 0;
   z-index: 15;
-}
-.motion-ready #thesis-kicker {
-  position: absolute;
-  left: 3.44%;
-  top: 11%;
-  opacity: 0;
 }
 .motion-ready #edge {
   left: 3.44%;
@@ -664,7 +624,6 @@ img {
 
 /* Atlas c02 — Malachite. The hero keeps its paper background. */
 #people, #thesis, #companies, #contact { color: var(--field-ink); }
-#hero-companies { color: var(--ink); }
 .atlas-lockup { display: block; width: 151px; height: 44px; background: currentColor; mask: url('/assets/atlas-header.svg') center / contain no-repeat; }
 .atlas-lockup img { width: 100%; height: 100%; opacity: 0; }
 @media (max-width:600px) { .atlas-lockup { width:115px; height:36px; } }

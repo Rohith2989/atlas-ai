@@ -1,8 +1,7 @@
 import * as THREE from "three";
 import { ribbonPose, smooth, mix } from "./portfolio-motion.js";
 
-const FIELD = "#256c50",
-  IVORY = "#f3f1e3",
+const IVORY = "#f3f1e3",
   COLS = 144,
   CROSS = 8;
 const images = new Map();
@@ -92,6 +91,9 @@ function paintInk(ctx, element, rect) {
 }
 
 export async function createRibbonRenderer(stage, companies, onFailure) {
+  const field = getComputedStyle(document.documentElement)
+    .getPropertyValue("--field")
+    .trim();
   const loaded = await Promise.all(companies.map((c) => loadImage(c.image)));
   await Promise.all(
     ["#science img", "#material img", "#biology img"].map((s) =>
@@ -178,10 +180,18 @@ export async function createRibbonRenderer(stage, companies, onFailure) {
       shader.fragmentShader = "uniform float uFlat;\n" + shader.fragmentShader;
       shader.fragmentShader = shader.fragmentShader.replace(
         "#include <opaque_fragment>",
-        "outgoingLight = mix(outgoingLight, diffuseColor.rgb, uFlat);\n#include <opaque_fragment>",
+        `
+        // Printed colour stays identical to the page on flat faces. Retain
+        // neutral fold shading without washing the green with coloured light.
+        float inkLuma = max(dot(diffuseColor.rgb, vec3(0.2126, 0.7152, 0.0722)), 0.001);
+        float litLuma = dot(outgoingLight, vec3(0.2126, 0.7152, 0.0722));
+        float foldShade = clamp(litLuma / inkLuma, 0.65, 1.03);
+        float foldAmount = 1.0 - smoothstep(0.90, 1.0, abs(normal.z));
+        outgoingLight = diffuseColor.rgb * mix(1.0, foldShade, foldAmount * (1.0 - uFlat));
+        #include <opaque_fragment>`,
       );
     };
-    m.customProgramCacheKey = () => "atlas-printed-ribbon-v1";
+    m.customProgramCacheKey = () => "atlas-printed-ribbon-v2-colour-matched";
     return m;
   }
   function clearLeaves() {
@@ -278,7 +288,7 @@ export async function createRibbonRenderer(stage, companies, onFailure) {
       full = makeCanvas(1600, H),
       ctx = full.getContext("2d"),
       rect = layout.rect;
-    ctx.fillStyle = FIELD;
+    ctx.fillStyle = field;
     ctx.fillRect(0, 0, 1600, H);
     for (const selector of [
       "#biology",
@@ -295,7 +305,6 @@ export async function createRibbonRenderer(stage, companies, onFailure) {
       paintInk(ctx, document.querySelector(s), rect),
     );
     [
-      "#thesis-kicker",
       "#thesis-copy",
       "#criteria",
       "#science figcaption",
@@ -333,7 +342,7 @@ export async function createRibbonRenderer(stage, companies, onFailure) {
         h = c.height,
         row = l.element;
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = FIELD;
+      ctx.fillStyle = field;
       ctx.fillRect(0, 0, w, h);
       const x = w * 0.255,
         y = mix(0, h * 0.17, crop),

@@ -10,14 +10,8 @@
   gap: 25px;
   margin-bottom: 22px;
 }
-.company-toolbar h2.overline {
-  font:
-    500 12px/1.4 Instrument,
-    sans-serif;
-  letter-spacing: 0.25em;
-  margin: 0;
-}
 .company-toolbar .index-button {
+  margin-left: auto;
   font-size: 15px;
   padding: 0;
 }
@@ -318,9 +312,6 @@
   .company-detail a {
     margin-top: 12px;
     font-size: 13px;
-  }
-  .company-toolbar h2.overline {
-    font-size: 10px;
   }
   .company-toolbar .index-button {
     font-size: 12px;

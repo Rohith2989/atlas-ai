@@ -2,8 +2,7 @@
 #investment-thesis{background:var(--field);color:var(--field-ink);padding:64px 5% 80px;overflow:clip}
 .beliefs-composition{position:relative;transform-origin:0 0;max-width:1380px;margin:auto}
 .belief-chapter{position:relative;padding:45px 0 64px;scroll-margin-top:24px}
-.belief-shared,.beliefs-navigation,.belief-desktop-break{display:none}
-.belief-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.24em;margin-bottom:28px}
+.belief-shared,.belief-desktop-break{display:none}
 .belief-statement{font-size:clamp(30px,5.7vw,72px);font-weight:400;line-height:1.28;letter-spacing:-.043em}
 .belief-line{display:inline}
 .belief-line:after{content:' '}
@@ -29,7 +28,6 @@
 .belief-rule-h,.belief-rule-v{position:absolute;background:#f3f1e380;transform-origin:0 0}
 .belief-rule-h{height:1px;top:0;left:0;width:100%}
 .belief-rule-v{width:1px;top:0;bottom:0;left:0}
-.belief-number{position:absolute;left:24px;top:20px;letter-spacing:.25em;font-size:11px}
 .belief-card-image{width:100%;height:220px;object-fit:contain;margin-bottom:15px}
 .belief-card h3{font-weight:400;font-size:26px;line-height:1.1;letter-spacing:-.04em;margin:0 0 18px}
 .belief-card-body{font-size:17px;line-height:1.45;letter-spacing:-.016em}
@@ -42,7 +40,6 @@
 .motion-ready .belief-chapter{position:absolute;inset:0;padding:0;pointer-events:none}
 .motion-ready .belief-shared{display:block;position:absolute;left:180px;top:244px;font-size:82px;line-height:1.13;letter-spacing:-.043em}
 .motion-ready .belief-mobile-we{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-.motion-ready .belief-eyebrow{position:absolute;left:121px;top:141px;font-size:14px;letter-spacing:.30em;margin:0}
 .motion-ready .belief-statement{font-size:82px;line-height:1.13;font-weight:400}
 .motion-ready .belief-line{position:absolute;white-space:nowrap}
 .motion-ready .belief-line:after{content:none}
@@ -70,7 +67,6 @@
 .motion-ready .belief-risk .belief-note{left:302px;top:706px}
 .motion-ready .belief-support{position:absolute;left:183px;top:834px;font-size:24px;line-height:1.36;max-width:1260px;width:1260px}
 .motion-ready .belief-risk .belief-support{top:802px}
-.motion-ready .belief-pillars .belief-eyebrow{left:120px;top:132px}
 .motion-ready #belief-pillars-title{position:absolute;left:120px;top:170px;max-width:none;font-size:65px;white-space:nowrap}
 .motion-ready .belief-pillars .belief-note{right:120px;top:200px;font-size:30px}
 .motion-ready .belief-cards{display:contents;margin:0}
@@ -80,19 +76,12 @@
 .motion-ready .belief-card[data-pillar="2"]{left:807px;top:288px}
 .motion-ready .belief-card[data-pillar="3"]{left:1155px;top:328px}
 .motion-ready .belief-rule-v{bottom:-22px}
-.motion-ready .belief-number{font-size:16px;top:22px}
 .motion-ready .belief-card-image{position:absolute;left:14px;top:40px;width:272px;height:207px;margin:0}
 .motion-ready [data-pillar="3"] .belief-card-image{left:32px;top:11px;width:235px;height:237px}
 .motion-ready .belief-card h3{margin:251px 0 19px;font-size:35px;line-height:1.04;white-space:nowrap}
 .motion-ready .belief-card-body{font-size:23px;line-height:1.31}
 .motion-ready .belief-body-mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
 .motion-ready .belief-body-mask>span{display:block}
-.motion-ready .beliefs-navigation{position:absolute;bottom:28px;left:120px;right:120px;display:flex;align-items:center;gap:30px;font-size:13px;z-index:4}
-.beliefs-navigation a{padding:12px 0;opacity:.5;transition:opacity .2s}
-.beliefs-navigation a[aria-current],.beliefs-navigation a:hover,.beliefs-navigation a:focus-visible{opacity:1}
-.belief-progress{flex:1;height:1px;background:#f3f1e33a;position:relative}
-.belief-progress i{position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(0)}
-.belief-count{font-size:12px;letter-spacing:.2em}
 .motion-ready .belief-contact{position:absolute;right:120px;bottom:69px;margin:0;padding:5px 0;font-size:20px;border:0;gap:16px;z-index:4}
 .motion-ready .belief-contact span{font-size:22px}
 @media(max-width:599px){

@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import "./styles.css";
 import { mountPortfolio, resetPortfolio, syncPortfolio, appendPortfolio } from './portfolio';
-import { mountApproach, appendApproach, syncApproach, resetApproach, approachDuration, approachStops, approachNames } from './approach';
+import { mountApproach, appendApproach, syncApproach, resetApproach, approachDuration, approachNames } from './approach';
 import { mountBeliefs, appendBeliefs, syncBeliefs, resetBeliefs, beliefsNames } from './beliefs';
 import { mountClosing } from './closing';
 gsap.registerPlugin(ScrollTrigger);
@@ -159,7 +159,7 @@ function build() {
       3.65,
     );
     tl.to(
-      "#hero-copy,#hero-companies,#explore",
+      "#explore",
       { y: y(-45), opacity: 0, duration: 0.52, ease: "power1.in" },
       3.15,
     );
@@ -252,7 +252,6 @@ function build() {
       { opacity: 1, clipPath: "inset(0)", duration: 0.7, ease: "power4.out" },
       10.8,
     );
-    tl.to("#people-kicker", { opacity: 1, duration: 0.4 }, 11.46);
     const order = [2, 3, 1, 4, 0, 5],
       offsets = [-46, 35, -31, 52, -27, 42];
     document.querySelectorAll(".portrait").forEach((p, index) => {
@@ -389,7 +388,6 @@ function build() {
       { top: "16.6%", height: "56.4%", duration: 2.2, ease: "power3.inOut" },
       26,
     );
-    tl.to("#thesis-kicker", { opacity: 1, duration: 0.7 }, 27.8);
     tl.to(
       "#criteria span",
       { opacity: 1, duration: 0.8, stagger: 0.45, ease: "power2.out" },
@@ -513,15 +511,6 @@ Promise.all([
     // A cold-load scroll can otherwise be clamped to the pre-pin document height.
     requestAnimationFrame(() => requestAnimationFrame(applyInitialScene));
     window.addEventListener('hashchange', applyInitialScene);
-    document.querySelectorAll('[data-approach-stop]').forEach(b=>b.addEventListener('click',event=>{
-      if(!trigger || !lenis)return;
-      event.preventDefault();
-      const index=Number(b.dataset.approachStop);
-      const time=approachStart+approachStops[index];
-      const name=approachNames[index];
-      history.replaceState(null,'',`#approach-${name}`);
-      lenis.scrollTo(trigger.start+time/timeline.duration()*(trigger.end-trigger.start),{duration:1.3});
-    }));
     document.addEventListener('atlas:index',e=>{ if(lenis) e.detail?lenis.stop():lenis.start(); });
     if (!reduced.matches)
       gsap.fromTo(

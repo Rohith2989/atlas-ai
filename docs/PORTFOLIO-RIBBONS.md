@@ -12,9 +12,11 @@ printed ribbons, then settles into a compact, clickable portfolio index.
 - `portfolio-ribbons.js` measures the outgoing DOM and paints its real text and
   photographs onto front-face canvas textures. The reverse faces contain the
   existing company artwork, original company names and sectors.
-- Three.js provides perspective, warm directional light, a cooler fill, surface
-  normals, soft VSM shadows and a thin lit edge. The materials become unlit at
-  either endpoint to match the surrounding HTML precisely.
+- Three.js provides perspective, surface normals, soft VSM shadows and a thin
+  lit edge. Printed textures use the page’s `--field` colour. Flat faces retain
+  that exact colour throughout the turn; curved faces use bounded, neutral
+  luminance shading so the lights cannot add a pale tint to the green. Both
+  endpoints remain unlit for the handoff to HTML.
 - Final geometry uses the measured HTML row coordinates. The canvas becomes
   hidden once the real buttons take over. No video, generated screenshot or API
   key is used at runtime.

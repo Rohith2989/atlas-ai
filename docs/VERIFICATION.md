@@ -60,6 +60,14 @@
 - Nine tests and the production build passed. The corrected VSM renderer produced no new console errors or warnings in the final browser review. The lazy renderer chunk is 135 kB gzipped; the build retains Vite’s default large-chunk advisory.
 - Contact still lands below the pinned sequence and links to the original Atlas website. Implementation notes and limits are in `PORTFOLIO-RIBBONS.md`.
 
+## Malachite colour match and quieter page
+
+- Corrected the pale tint visible in the supplied ribbon recording. The texture now reads the same `--field` token as the page, and the shader keeps flat faces at the printed colour. Bends retain bounded neutral shading, with the existing cast shadows, geometry and scroll timing unchanged.
+- Removed the hero caption/company list, small section eyebrows, approach and thesis chapter bars/counters, pillar numbers and contact eyebrow. Main copy, actual company/team identities, navigation and the original-site contact destination remain. Removed their unused CSS, animation targets and navigation handlers as well.
+- Browser review confirmed the opening and midpoint folds, cleaned hero, founder composition, first thesis composition and contact layout. Mobile checks at 390 × 844 confirmed the hero flows into Conviction, contact content fits, and content/scroll widths match at 375px. The viewport was restored afterward.
+- All nine tests and the production build passed; no browser errors or warnings were recorded. The existing Vite advisory remains for the lazy Three.js ribbon chunk (approximately 135.5 kB gzipped).
+- Browser proof: `screenshots/portfolio-ribbon-colour-matched.jpg`. The logo loading screen is a later task.
+
 ## Limits
 
 This is visual and functional browser verification, focused automated tests and a production build. Reduced-motion fallback is implemented; the browser review did not emulate the operating system setting. Physical phones and Safari have not been tested. Desktop screenshots capture the visible in-app browser panel; its right edge can crop the larger test viewport. Malachite remains selected. Historical checks above describe the site at their respective implementation stages; the approved approach section supersedes the earlier portfolio-to-footer ending.
