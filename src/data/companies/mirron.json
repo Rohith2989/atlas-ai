@@ -1,0 +1,17 @@
+{
+  "id": "mirron",
+  "order": 13,
+  "name": "Mirron",
+  "sector": "Genome activity",
+  "country": "Italy",
+  "status": "In portfolio",
+  "url": "https://www.atlasaivbfund.com/portafoglio/mirron",
+  "cover": "/portfolio/mirron-cover.webp",
+  "logo": "/portfolio/mirron-logo.webp",
+  "source": {
+    "page": "https://www.atlasaivbfund.com/portafoglio/mirron",
+    "cover": "https://static.wixstatic.com/media/00bf0d_09adbf479fb243d9af9565bf5ede78bd~mv2.png",
+    "logo": "https://static.wixstatic.com/media/00bf0d_44c55447a67c4c73b4d35c0d199afee3~mv2.png",
+    "checked": "2026-10-04"
+  }
+}
