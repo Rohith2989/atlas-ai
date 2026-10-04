@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/irismed",
     "cover": "https://static.wixstatic.com/media/00bf0d_b4cbf726e5e54989a6897e9fa4285269~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_9c37260661ac4f618a2844c17161d10f~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Maximizing Healthcare Reimbursements with AI-Powered Revenue Cycle Automation",
+  "industry": "Healthcare",
+  "builders": [
+    "Antler"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.irismed.co/"
 }

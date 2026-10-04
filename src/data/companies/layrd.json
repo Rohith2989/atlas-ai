@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/layrd",
     "cover": "https://static.wixstatic.com/media/00bf0d_f55c0dec84864f9ba58a41db3f869b57~mv2.jpg",
     "logo": "https://static.wixstatic.com/media/00bf0d_93baa1b38f5e4437b99c5b1b3c34587a~mv2.jpg",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "AI Operating Layer for Medical Practices",
+  "industry": "Healthcare",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://thelayrd.com/"
 }

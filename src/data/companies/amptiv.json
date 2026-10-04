@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/amptiv",
     "cover": "https://static.wixstatic.com/media/00bf0d_046ac522fd4841978ffd1ffa2e35836e~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_bd31c489e7f54ab5b099c14bd577adea~mv2.webp",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "AI-Guided Chemical Modification to Unlock Enhanced mRNA Performance",
+  "industry": "Biotech",
+  "builders": [
+    "Antler"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://amptivbio.com/"
 }

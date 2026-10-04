@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/genie-fertility",
     "cover": "https://static.wixstatic.com/media/00bf0d_54f89666ed6b4cf28cf55ab2d17d99c9~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_a20600c9f2a642728bade102f84a498d~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Non-Invasive Insights to Boost IVF Success",
+  "industry": "Biotech",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.geniefertility.com/"
 }

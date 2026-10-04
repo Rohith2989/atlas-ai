@@ -13,7 +13,8 @@
     "cover": "https://static.wixstatic.com/media/00bf0d_a9a3d52435ba46f6ac93e8ddfc340da9~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_75f65abd75b3491790158ea9f8916464~mv2.png",
     "checked": "2026-10-04",
-    "website": "https://zerodrift.com/"
+    "website": "https://zerodrift.com/",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
   },
   "artwork": {
     "type": "generated-brand-editorial",
@@ -21,5 +22,12 @@
     "width": 1536,
     "height": 1024,
     "provenance": "docs/company-artwork-prompts.json"
-  }
+  },
+  "description": "Pre-delivery compliance layer for enterprise communications",
+  "industry": "Financial Services",
+  "builders": [
+    "A16z Speedrun"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.zerodrift.ai/"
 }

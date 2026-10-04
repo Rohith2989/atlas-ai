@@ -13,7 +13,8 @@
     "cover": "https://static.wixstatic.com/media/00bf0d_230287f812114561b911e8409052470d~mv2.webp",
     "logo": "https://static.wixstatic.com/media/00bf0d_0b0456842b8f41878e4c65e4ef3bca7f~mv2.webp",
     "checked": "2026-10-04",
-    "website": "https://tilki.com/"
+    "website": "https://tilki.com/",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
   },
   "artwork": {
     "type": "generated-brand-editorial",
@@ -21,5 +22,12 @@
     "width": 1536,
     "height": 1024,
     "provenance": "docs/company-artwork-prompts.json"
-  }
+  },
+  "description": "Generative AI for Evolving Game Worlds",
+  "industry": "Gaming",
+  "builders": [
+    "Post Urban Ventures"
+  ],
+  "stage": "Seed",
+  "website": "https://tilki.com/"
 }

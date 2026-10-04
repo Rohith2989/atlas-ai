@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/civils.ai",
     "cover": "https://static.wixstatic.com/media/00bf0d_3171c0c7ac9547b89d8c400bd7acd5ef~mv2.webp",
     "logo": "https://static.wixstatic.com/media/00bf0d_384eceb46cf9401b91e48dd7984afc35~mv2.webp",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Civils.ai builds advanced ML to automate CAD take-off in the construction industry",
+  "industry": "Construction",
+  "builders": [
+    "Antler"
+  ],
+  "stage": "Seed",
+  "website": "https://www.civils.ai"
 }

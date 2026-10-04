@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/helicon",
     "cover": "https://static.wixstatic.com/media/00bf0d_25659e358ef94a1f81c4fbc1f74ef053~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_e6662260c2194174a51501b581d91d32~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Automated production of carbon-fiber drone frames at industrial scale",
+  "industry": "Manufacturing",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://heliconindustries.com/"
 }

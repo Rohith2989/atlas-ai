@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/axiom",
     "cover": "https://static.wixstatic.com/media/00bf0d_b4f3ee2c652a4281826bc064dc757506~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_3e67d4e68f8a49c7b547a564575b7a20~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "AI-Powered Drug Discovery for Untreatable Cancers",
+  "industry": "Biotech",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.axiom-therapeutics.com/"
 }

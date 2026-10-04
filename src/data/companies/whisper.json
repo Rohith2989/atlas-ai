@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/whisper",
     "cover": "https://static.wixstatic.com/media/00bf0d_db8e3ba79d124b2d82856fc4df9b5599~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_cb918dd7d909497d8f9384f2c832a72a~mv2.avif",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Predictive Cybersecurity with Knowledge Graph Intelligence",
+  "industry": "Cybersecurity",
+  "builders": [
+    "Antler"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.whisper.security/"
 }

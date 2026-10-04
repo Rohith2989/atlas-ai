@@ -13,7 +13,8 @@
     "cover": "https://static.wixstatic.com/media/00bf0d_244f5b1a59f5408aac052c4e8447a04c~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_0bcc960212a148668cd9c11f6ba6a240~mv2.png",
     "checked": "2026-10-04",
-    "website": "https://www.sekkari.co.uk/"
+    "website": "https://www.sekkari.co.uk/",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
   },
   "artwork": {
     "type": "generated-brand-editorial",
@@ -21,5 +22,12 @@
     "width": 1024,
     "height": 1536,
     "provenance": "docs/company-artwork-prompts.json"
-  }
+  },
+  "description": "Unlocking 50x Faster AI with Photonic Processing",
+  "industry": "Semiconductor",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.sekkari.co.uk/"
 }

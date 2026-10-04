@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/nerva-ai",
     "cover": "https://static.wixstatic.com/media/00bf0d_ca026c2e356e492391a406701603b291~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_6d087ec30de74c2c98c4449e604158ce~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Intelligent Operations for Data Centers",
+  "industry": "Data Centers",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://nerva-ai.com/"
 }

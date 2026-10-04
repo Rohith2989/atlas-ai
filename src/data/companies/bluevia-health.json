@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/bluevia-health",
     "cover": "https://static.wixstatic.com/media/00bf0d_7ce9c95e325b4279b0826fc72f5ce9d3~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_5c98b73a7ced44edb8e94d676268111e~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "AI to Prevent Post-Surgical Complications",
+  "industry": "Healthcare",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.blueviahealth.com/"
 }

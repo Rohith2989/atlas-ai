@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/movable-voice",
     "cover": "https://static.wixstatic.com/media/00bf0d_e82fc094215c4bacb2b13fc491e0f982~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_847cf7e759d845e3bbeb0a09d35f54d8~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "The Voice AI layer for automating complex frontline workflows.",
+  "industry": "Cross industry",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://movablevoice.com/"
 }

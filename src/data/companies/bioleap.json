@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/bioleap",
     "cover": "https://static.wixstatic.com/media/00bf0d_5f9a841c0bdd49de8586e627e8ea702e~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_686d08b0a590454ab6cf3144352d88af~mv2.webp",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Bioleap builds mechanistic models that simulate human biology to accelerate drug discovery",
+  "industry": "Biotech",
+  "builders": [
+    "Post Urban Ventures"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.bioleap.ai/"
 }

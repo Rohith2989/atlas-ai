@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/otee",
     "cover": "https://static.wixstatic.com/media/00bf0d_97287bcb6886434c82824238258fefab~mv2.avif",
     "logo": "https://static.wixstatic.com/media/00bf0d_b07db52d940b48e88b02c72ab5a85ea9~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Open, Cloud-Native vPLCs for Industrial Automation",
+  "industry": "Manufacturing",
+  "builders": [
+    "Antler"
+  ],
+  "stage": "Seed",
+  "website": "https://www.otee.com/"
 }

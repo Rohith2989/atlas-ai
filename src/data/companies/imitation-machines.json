@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/imitation-machines",
     "cover": "https://static.wixstatic.com/media/00bf0d_e0226750cbc84135b5f02b32b430167e~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_21637771c86e4d8bb9b670d3e2835437~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Teach Robots by Doing, Not Coding",
+  "industry": "Robotics",
+  "builders": [
+    "Antler"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://imitationmachines.com/"
 }

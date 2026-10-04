@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/spiraldot-health",
     "cover": "https://static.wixstatic.com/media/00bf0d_a7c8fb876b5b4c5bbfe99ef06ea5e440~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_f1a0d7a7dca848349028a754f544b711~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "AI-Powered Clinical Decision Support for Precision Oncology",
+  "industry": "Healthcare",
+  "builders": [
+    "Antler"
+  ],
+  "stage": "Seed",
+  "website": "https://www.spiraldothealth.com/"
 }

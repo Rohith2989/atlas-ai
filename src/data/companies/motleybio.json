@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/motleybio",
     "cover": "https://static.wixstatic.com/media/00bf0d_27b8d1fe58084d95b558fb363ad24dc2~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_a47a996e41a0431fabba823820196dc9~mv2.webp",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Digitizing Biology with Comprehensive Multiomics for Early Detection",
+  "industry": "Biotech",
+  "builders": [
+    "Antler"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.motley.bio/"
 }

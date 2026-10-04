@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/locksmith",
     "cover": "https://static.wixstatic.com/media/00bf0d_f8b75aa0b264428387211c2466d5fcdf~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_a52eddbe44b845b189bac28cfc57b5ee~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Unlocking Undruggable Targets with Physics-Based AI",
+  "industry": "Biotech",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Seed",
+  "website": "https://locksmithbio.org/"
 }

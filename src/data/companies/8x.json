@@ -13,7 +13,8 @@
     "cover": "https://static.wixstatic.com/media/00bf0d_d02f0bc38dd849e4a05228bea5b6e403~mv2.png",
     "logo": "https://www.8x.social/assets/brand/8x_logo.svg",
     "checked": "2026-10-04",
-    "website": "https://www.8x.social/en/for-brands"
+    "website": "https://www.8x.social/en/for-brands",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
   },
   "artwork": {
     "type": "authored-svg",
@@ -21,5 +22,12 @@
     "width": 1536,
     "height": 1024,
     "provenance": "docs/company-artwork-prompts.json"
-  }
+  },
+  "description": "Human in the loop orchestrator",
+  "industry": "Media",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.8x.social/en"
 }

@@ -12,6 +12,15 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/claro",
     "cover": "https://static.wixstatic.com/media/00bf0d_b6e46830d03944c7805197f28aa375f5~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_c791da56fa27410096fe4ebfba995892~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "AI Master Data Platform: Your Single Source of Truth",
+  "industry": "IT",
+  "builders": [
+    "Antler",
+    "Founders Factory"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://getclaro.ai/"
 }

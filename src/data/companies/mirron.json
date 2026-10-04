@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/mirron",
     "cover": "https://static.wixstatic.com/media/00bf0d_09adbf479fb243d9af9565bf5ede78bd~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_44c55447a67c4c73b4d35c0d199afee3~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Building real-time movies of genome activity.",
+  "industry": "Biotech",
+  "builders": [
+    "Post Urban Ventures"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://www.mirron-bio.com/"
 }

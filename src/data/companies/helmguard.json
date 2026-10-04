@@ -12,6 +12,14 @@
     "page": "https://www.atlasaivbfund.com/portafoglio/helmguard",
     "cover": "https://static.wixstatic.com/media/00bf0d_62ab6c2b6d644a1593a9da4d6f370275~mv2.png",
     "logo": "https://static.wixstatic.com/media/00bf0d_56dbff7ed6054aa9b39113f64b091e36~mv2.png",
-    "checked": "2026-10-04"
-  }
+    "checked": "2026-10-04",
+    "portfolio": "https://www.atlasaivbfund.com/portfolio"
+  },
+  "description": "Automate Risk and Compliance with Enterprise AI",
+  "industry": "Cybersecurity",
+  "builders": [
+    "Entrepreneur First"
+  ],
+  "stage": "Pre-seed",
+  "website": "https://helmguard.ai/"
 }
